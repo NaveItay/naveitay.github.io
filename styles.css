@@ -1,75 +1,73 @@
 /* General Styles */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Poppins', sans-serif; /* Modern font */
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
 }
 
+/* Header Styles */
 header {
-    background-color: #333;
+    background-color: #004d99; /* Modern deep blue */
+    padding: 20px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    width: 100%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Shadow for a sleek look */
+}
+
+/* Navigation Bar */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Logo */
+.logo h1 {
     color: white;
-    padding: 15px 0;
-    text-align: center;
+    font-size: 1.8rem;
+    letter-spacing: 2px;
 }
 
-nav ul {
+/* Navigation Links */
+.nav-links {
     list-style: none;
-    padding: 0;
+    display: flex;
 }
 
-nav ul li {
-    display: inline;
-    margin-right: 15px;
+.nav-links li {
+    margin-left: 25px;
 }
 
-nav ul li a {
+.nav-links li a {
     color: white;
     text-decoration: none;
     font-weight: bold;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    transition: color 0.3s ease;
 }
 
-h2 {
-    color: #333;
-    text-align: center;
+/* Hover Effect on Links */
+.nav-links li a:hover {
+    color: #ffcc00; /* Modern hover color */
 }
 
-p, ul {
-    max-width: 800px;
-    margin: 0 auto 20px;
-    line-height: 1.6;
-    padding: 0 15px;
-}
-
-ul li {
-    margin: 5px 0;
-}
-
-section {
-    padding: 40px 0;
-}
-
-footer {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 15px 0;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-}
-
-/* Product Section Styles */
-.product {
-    background-color: white;
-    padding: 20px;
-    margin: 10px auto;
-    max-width: 500px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-h3 {
-    color: #004d99;
-    text-align: center;
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+    }
+    .nav-links {
+        flex-direction: column;
+        margin-top: 15px;
+    }
+    .nav-links li {
+        margin: 10px 0;
+    }
 }
