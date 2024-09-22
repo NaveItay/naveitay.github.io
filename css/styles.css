@@ -10,52 +10,59 @@ body {
 /* Header Styles */
 header {
     background-color: #000000;
-    padding: 20px 0;
     position: sticky;
     top: 0;
     z-index: 100;
     width: 100%;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     /* Shadow for a sleek look */
+}
+
+.header-container {
     display: flex;
-    justify-content: space-between;
-    /* Spacing between logo and navigation */
     align-items: center;
+    /* Center items vertically */
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    /* Center the container horizontally */
 }
 
 /* Logo Styles */
+.logo {
+    margin-right: 50px;
+    /* Spacing between logo and navigation */
+}
+
 .logo h1 {
     font-family: 'Days One', sans-serif;
     /* Days One font */
     color: white;
     font-size: 1.8rem;
-    /* Adjust the size as needed */
-    margin-left: 20px;
-    /* Add margin for spacing from the left */
     text-transform: uppercase;
     /* Uppercase text */
+    margin: 0;
+    /* Remove default margin */
 }
 
 /* Navigation Bar */
 nav {
-    display: flex;
-    justify-content: center;
-    /* Centering the navigation */
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
+    /* No styles needed here */
 }
 
 /* Navigation Links */
 .nav-links {
     list-style: none;
     display: flex;
-    justify-content: center;
 }
 
 .nav-links li {
     margin-left: 25px;
+}
+
+.nav-links li:first-child {
+    margin-left: 0;
+    /* Remove left margin for the first link */
 }
 
 .nav-links li a {
@@ -77,13 +84,19 @@ nav {
 
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
-    nav {
+    .header-container {
         flex-direction: column;
+        align-items: center;
+    }
+
+    .logo {
+        margin-right: 0;
+        margin-bottom: 15px;
     }
 
     .nav-links {
         flex-direction: column;
-        margin-top: 15px;
+        align-items: center;
     }
 
     .nav-links li {
