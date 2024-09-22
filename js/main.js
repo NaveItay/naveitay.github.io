@@ -1,25 +1,21 @@
 // main.js
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Select DOM Items
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
 
-    // Remove unused variable
-    // let showMenu = false; // Not used, so it can be removed
-
     hamburger.addEventListener('click', () => {
-        // Toggle Menu Visibility
+        // Toggle navigation menu visibility
         navLinks.classList.toggle('nav-active');
 
-        // Animate Hamburger Icon
+        // Animate hamburger icon
         hamburger.classList.toggle('toggle');
 
-        // Prevent Scrolling When Menu is Open
-        if (navLinks.classList.contains('nav-active')) {
-            document.body.style.overflow = 'hidden';
-        } else {
-            document.body.style.overflow = 'auto';
-        }
+        // Toggle body class to hide scrollbar when menu is open
+        document.body.classList.toggle('menu-open');
+
+        // Update aria-expanded attribute for accessibility
+        const expanded = hamburger.getAttribute('aria-expanded') === 'true';
+        hamburger.setAttribute('aria-expanded', !expanded);
     });
 });
