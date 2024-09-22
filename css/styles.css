@@ -92,13 +92,28 @@ nav {
         position: absolute;
         top: 60px;
         /* Adjust according to header height */
-        right: 0;
+        left: 0;
+        /* Align menu to the left */
         width: 100%;
-        text-align: center;
+        /* Span full width */
     }
 
     .nav-links li {
-        margin: 15px 0;
+        margin: 0;
+        /* Remove margins */
+        width: 100%;
+        /* Make list items full width */
+    }
+
+    .nav-links li a {
+        display: block;
+        /* Make links block elements */
+        padding: 15px 0;
+        /* Vertical padding */
+        width: 100%;
+        /* Span full width */
+        text-align: center;
+        /* Center text */
     }
 
     .header-container {
