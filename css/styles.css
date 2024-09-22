@@ -1,7 +1,6 @@
 /* General Styles */
 body {
     font-family: 'Montserrat', sans-serif;
-    /* Montserrat font */
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
@@ -15,42 +14,31 @@ header {
     z-index: 100;
     width: 100%;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    /* Shadow for a sleek look */
 }
 
 .header-container {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    /* Space between logo and navigation */
-    padding: 20px 40px; /* Added horizontal padding */
-    max-width: 1200px;
+    padding: 20px 40px;
+    max-width: 1500px;
     margin: 0 auto;
-    /* Center the container horizontally */
 }
 
 /* Logo Styles */
-.logo {
-    /* No additional styles needed */
-}
-
 .logo h1 {
     font-family: 'Days One', sans-serif;
-    /* Days One font */
     color: white;
     font-size: 1.8rem;
     text-transform: uppercase;
-    /* Uppercase text */
     margin: 0;
-    /* Remove default margin */
 }
 
-/* Navigation Bar */
+/* Navigation Styles */
 nav {
-    /* No additional styles needed */
+    position: relative;
 }
 
-/* Navigation Links */
 .nav-links {
     list-style: none;
     display: flex;
@@ -64,7 +52,6 @@ nav {
 
 .nav-links li:first-child {
     margin-left: 0;
-    /* Remove left margin for the first link */
 }
 
 .nav-links li a {
@@ -74,33 +61,69 @@ nav {
     font-size: 1rem;
     letter-spacing: 1px;
     text-transform: uppercase;
-    /* Make all letters uppercase */
     transition: color 0.3s ease;
 }
 
-/* Hover Effect on Links */
 .nav-links li a:hover {
     color: #ffcc00;
-    /* Modern hover color */
+}
+
+/* Hamburger Menu Styles */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.hamburger .bar {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 4px 0;
+    transition: 0.3s;
 }
 
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
-    .header-container {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    nav {
-        margin-top: 15px;
-    }
-
     .nav-links {
+        display: none;
         flex-direction: column;
-        align-items: center;
+        background-color: #000000;
+        position: absolute;
+        top: 60px;
+        /* Adjust according to header height */
+        right: 0;
+        width: 100%;
+        text-align: center;
     }
 
     .nav-links li {
-        margin: 10px 0;
+        margin: 15px 0;
+    }
+
+    .header-container {
+        padding: 20px;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    /* Toggle Menu */
+    .nav-active {
+        display: flex;
+    }
+
+    /* Animate Hamburger Icon */
+    .hamburger.toggle .bar:nth-child(1) {
+        transform: rotate(-45deg) translate(-5px, 6px);
+    }
+
+    .hamburger.toggle .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.toggle .bar:nth-child(3) {
+        transform: rotate(45deg) translate(-5px, -6px);
     }
 }
