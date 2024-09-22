@@ -12,7 +12,6 @@ header {
     position: sticky;
     top: 0;
     z-index: 1000;
-    /* Increased z-index to stay above other elements */
     width: 100%;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
@@ -24,7 +23,7 @@ header {
     justify-content: space-between;
     padding: 20px 5%;
     width: 100%;
-    max-width: 100%;
+    max-width: 90%;
     margin: 0 auto;
 }
 
@@ -40,6 +39,7 @@ header {
 /* Navigation Styles */
 nav {
     position: relative;
+    /* Ensure nav is positioned */
     display: flex;
     align-items: center;
 }
@@ -105,11 +105,14 @@ nav {
 
     .nav-links {
         display: none;
-    }
-
-    /* Adjust header container */
-    .header-container {
-        padding: 20px;
+        position: absolute;
+        /* Add position absolute */
+        top: 100%;
+        /* Position below the nav element */
+        left: 0;
+        width: 100%;
+        background-color: #000000;
+        z-index: 999;
     }
 
     /* Position the hamburger icon on the right */
@@ -117,21 +120,25 @@ nav {
         flex: 1;
         display: flex;
         justify-content: flex-end;
+        position: relative;
+        /* Ensure nav is positioned */
     }
 
-    /* Full-screen navigation menu */
+    /* Adjust header container */
+    .header-container {
+        padding: 20px;
+    }
+
+    /* Navigation menu when active */
     .nav-active {
         display: flex;
         flex-direction: column;
-        background-color: #000000;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 999;
+        height: 50vh;
+        /* Set height to 50% of viewport height */
         align-items: center;
         justify-content: center;
+        overflow-y: auto;
+        /* Allow scrolling if content overflows */
     }
 
     .nav-active li {
