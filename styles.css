@@ -16,7 +16,17 @@ header {
     width: 100%;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Shadow for a sleek look */
     display: flex;
-    justify-content: center;
+    justify-content: space-between; /* Spacing between logo and navigation */
+    align-items: center;
+}
+
+/* Logo Styles */
+.logo h1 {
+    font-family: 'Days One', sans-serif; /* Days One font */
+    color: white;
+    font-size: 1.8rem; /* Adjust the size as needed */
+    margin-left: 20px; /* Add margin for spacing from the left */
+    text-transform: uppercase; /* Uppercase text */
 }
 
 /* Navigation Bar */
