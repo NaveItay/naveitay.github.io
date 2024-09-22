@@ -1,7 +1,65 @@
 /* content.css */
 
-/* Content Placeholder Styles */
-.content-placeholder {
-    height: 2000px;
+/* About Us Section Styles */
+.about-section {
+    padding: 60px 20px;
     background-color: #ffffff;
+}
+
+.about-section .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.about-section h2 {
+    font-size: 2.5rem;
+    color: #333333;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.about-section p {
+    font-size: 1.1rem;
+    color: #555555;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+/* Optional Team Section Styles */
+.team {
+    margin-top: 50px;
+}
+
+.team h3 {
+    font-size: 2rem;
+    color: #333333;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.team-member {
+    display: inline-block;
+    width: 250px;
+    margin: 0 15px;
+    vertical-align: top;
+}
+
+.team-member img {
+    width: 100%;
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
+
+.team-member h4 {
+    font-size: 1.2rem;
+    color: #333333;
+    margin-bottom: 5px;
+}
+
+.team-member p {
+    font-size: 1rem;
+    color: #777777;
 }

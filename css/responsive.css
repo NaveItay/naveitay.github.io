@@ -71,4 +71,27 @@
     .hamburger.toggle .bar:nth-child(3) {
         transform: rotate(45deg) translate(-5px, -6px);
     }
+
+    /* About Us Section Responsive Styles */
+    .about-section {
+        padding: 40px 15px;
+    }
+
+    .about-section h2 {
+        font-size: 2rem;
+    }
+
+    .about-section p {
+        font-size: 1rem;
+    }
+
+    /* Adjust team member styles if used */
+    .team-member {
+        width: 100%;
+        margin: 20px 0;
+    }
+
+    .about-image {
+        width: 100%;
+    }
 }
