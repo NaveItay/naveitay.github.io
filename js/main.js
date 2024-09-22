@@ -1,21 +1,25 @@
-// Select DOM Items
-const hamburger = document.querySelector('.hamburger');
-const navLinks = document.querySelector('.nav-links');
+// main.js
 
-// Set Initial State of Menu
-let showMenu = false;
+document.addEventListener('DOMContentLoaded', () => {
+    // Select DOM Items
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
 
-hamburger.addEventListener('click', () => {
-    // Toggle Menu Visibility
-    navLinks.classList.toggle('nav-active');
+    // Remove unused variable
+    // let showMenu = false; // Not used, so it can be removed
 
-    // Animate Hamburger Icon
-    hamburger.classList.toggle('toggle');
+    hamburger.addEventListener('click', () => {
+        // Toggle Menu Visibility
+        navLinks.classList.toggle('nav-active');
 
-    // Prevent Scrolling When Menu is Open
-    if (navLinks.classList.contains('nav-active')) {
-        document.body.style.overflow = 'hidden';
-    } else {
-        document.body.style.overflow = 'auto';
-    }
+        // Animate Hamburger Icon
+        hamburger.classList.toggle('toggle');
+
+        // Prevent Scrolling When Menu is Open
+        if (navLinks.classList.contains('nav-active')) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'auto';
+        }
+    });
 });
