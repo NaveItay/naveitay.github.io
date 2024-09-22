@@ -21,8 +21,9 @@ header {
 .header-container {
     display: flex;
     align-items: center;
-    /* Center items vertically */
-    padding: 20px;
+    justify-content: space-between;
+    /* Space between logo and navigation */
+    padding: 20px 40px; /* Added horizontal padding */
     max-width: 1200px;
     margin: 0 auto;
     /* Center the container horizontally */
@@ -30,8 +31,7 @@ header {
 
 /* Logo Styles */
 .logo {
-    margin-right: 50px;
-    /* Spacing between logo and navigation */
+    /* No additional styles needed */
 }
 
 .logo h1 {
@@ -47,13 +47,15 @@ header {
 
 /* Navigation Bar */
 nav {
-    /* No styles needed here */
+    /* No additional styles needed */
 }
 
 /* Navigation Links */
 .nav-links {
     list-style: none;
     display: flex;
+    margin: 0;
+    padding: 0;
 }
 
 .nav-links li {
@@ -89,9 +91,8 @@ nav {
         align-items: center;
     }
 
-    .logo {
-        margin-right: 0;
-        margin-bottom: 15px;
+    nav {
+        margin-top: 15px;
     }
 
     .nav-links {
