@@ -1,3 +1,5 @@
+/* fonts.css */
+
 /* Importing Fonts Locally */
 @font-face {
     font-family: 'Montserrat';
@@ -15,4 +17,17 @@
     font-family: 'Days One';
     src: url('../fonts/Days_One/DaysOne-Regular.ttf') format('truetype');
     font-weight: 400;
+}
+
+/* Importing Poppins Font */
+@font-face {
+    font-family: 'Poppins';
+    src: url('../fonts/Poppins/Poppins-Regular.ttf') format('truetype');
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('../fonts/Poppins/Poppins-Bold.ttf') format('truetype');
+    font-weight: 700;
 }
