@@ -1,6 +1,6 @@
 /* General Styles */
 body {
-    font-family: 'Poppins', sans-serif; /* Modern font */
+    font-family: 'Montserrat', sans-serif; /* Montserrat font */
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
@@ -8,36 +8,32 @@ body {
 
 /* Header Styles */
 header {
-    background-color: #004d99; /* Modern deep blue */
+    background-color: #000000; /* Modern deep blue */
     padding: 20px 0;
     position: sticky;
     top: 0;
     z-index: 100;
     width: 100%;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Shadow for a sleek look */
+    display: flex;
+    justify-content: center;
 }
 
 /* Navigation Bar */
 nav {
     display: flex;
-    justify-content: space-between;
+    justify-content: center; /* Centering the navigation */
     align-items: center;
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
 }
 
-/* Logo */
-.logo h1 {
-    color: white;
-    font-size: 1.8rem;
-    letter-spacing: 2px;
-}
-
 /* Navigation Links */
 .nav-links {
     list-style: none;
     display: flex;
+    justify-content: center;
 }
 
 .nav-links li {
@@ -50,6 +46,7 @@ nav {
     font-weight: bold;
     font-size: 1rem;
     letter-spacing: 1px;
+    text-transform: uppercase; /* Make all letters uppercase */
     transition: color 0.3s ease;
 }
 
