@@ -146,3 +146,11 @@ nav {
         transform: rotate(45deg) translate(-5px, -6px);
     }
 }
+
+/* Content Placeholder Styles */
+.content-placeholder {
+    height: 2000px;
+    /* Adjust the height as needed */
+    background-color: #ffffff;
+    /* White background */
+}

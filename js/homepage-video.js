@@ -1,6 +1,5 @@
-// video.js
+// homepage-video.js
 
-// Scroll-Controlled Video Playback
 document.addEventListener('DOMContentLoaded', () => {
     const video = document.getElementById('scroll-video');
     let scrollPos = 0;
@@ -11,10 +10,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const handleScroll = () => {
             scrollPos = window.scrollY;
+
+            // Calculate the scroll percentage
             const scrollPercent = scrollPos / (document.body.scrollHeight - window.innerHeight);
+
+            // Map scroll percentage to video duration
             let videoTime = scrollPercent * videoDuration;
+
+            // Clamp videoTime between 0 and videoDuration
             videoTime = Math.max(0, Math.min(videoTime, videoDuration));
+
+            // Set video current time
             video.currentTime = videoTime;
+
             ticking = false;
         };
 
