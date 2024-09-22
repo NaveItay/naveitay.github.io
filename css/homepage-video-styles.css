@@ -1,0 +1,30 @@
+/* Video Section Styles */
+.video-section {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.video-section video {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+/* Hide Video Controls Across Different Browsers */
+video::-webkit-media-controls {
+    display: none !important;
+}
+
+video::-moz-media-controls {
+    display: none !important;
+}
+
+video::-ms-media-controls {
+    display: none !important;
+}
+
+video::-o-media-controls {
+    display: none !important;
+}
