@@ -20,8 +20,12 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 20px 40px;
-    max-width: 1500px;
+    padding: 20px 5%;
+    /* Use percentage for horizontal padding */
+    width: 100%;
+    /* Make the container full width */
+    max-width: 100%;
+    /* Remove the fixed max-width */
     margin: 0 auto;
 }
 
