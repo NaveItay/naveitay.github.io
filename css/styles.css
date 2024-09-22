@@ -11,8 +11,7 @@ header {
     background-color: #000000;
     position: sticky;
     top: 0;
-    z-index: 1000;
-    /* Increased z-index to stay above other elements */
+    z-index: 1000; /* Increased z-index to stay above other elements */
     width: 100%;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
@@ -93,7 +92,6 @@ nav {
 
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
-
     /* Ensure the nav container spans the full width */
     nav {
         width: 100%;
@@ -104,8 +102,7 @@ nav {
         flex-direction: column;
         background-color: #000000;
         position: absolute;
-        top: 100%;
-        /* Position below the header */
+        top: 100%; /* Position below the header */
         left: 0;
         width: 100%;
         z-index: 999;
