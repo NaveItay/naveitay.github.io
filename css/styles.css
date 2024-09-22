@@ -11,7 +11,8 @@ header {
     background-color: #000000;
     position: sticky;
     top: 0;
-    z-index: 100;
+    z-index: 1000;
+    /* Increased z-index to stay above other elements */
     width: 100%;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
@@ -21,11 +22,8 @@ header {
     align-items: center;
     justify-content: space-between;
     padding: 20px 5%;
-    /* Use percentage for horizontal padding */
-    width: 90%;
-    /* Make the container full width */
+    width: 100%;
     max-width: 100%;
-    /* Remove the fixed max-width */
     margin: 0 auto;
 }
 
@@ -87,37 +85,43 @@ nav {
     transition: 0.3s;
 }
 
+/* Content Placeholder Styles */
+.content-placeholder {
+    height: 2000px;
+    background-color: #ffffff;
+}
+
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
+
+    /* Ensure the nav container spans the full width */
+    nav {
+        width: 100%;
+    }
+
     .nav-links {
         display: none;
         flex-direction: column;
         background-color: #000000;
         position: absolute;
-        top: 60px;
-        /* Adjust according to header height */
+        top: 100%;
+        /* Position below the header */
         left: 0;
-        /* Align menu to the left */
         width: 100%;
-        /* Span full width */
+        z-index: 999;
+        transition: all 0.3s ease-in-out;
     }
 
     .nav-links li {
         margin: 0;
-        /* Remove margins */
         width: 100%;
-        /* Make list items full width */
     }
 
     .nav-links li a {
         display: block;
-        /* Make links block elements */
         padding: 15px 0;
-        /* Vertical padding */
         width: 100%;
-        /* Span full width */
         text-align: center;
-        /* Center text */
     }
 
     .header-container {
@@ -145,12 +149,4 @@ nav {
     .hamburger.toggle .bar:nth-child(3) {
         transform: rotate(45deg) translate(-5px, -6px);
     }
-}
-
-/* Content Placeholder Styles */
-.content-placeholder {
-    height: 2000px;
-    /* Adjust the height as needed */
-    background-color: #ffffff;
-    /* White background */
 }
