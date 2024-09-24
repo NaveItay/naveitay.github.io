@@ -101,16 +101,22 @@
         font-size: 1rem;
     }
 
-    /* Adjust team member styles if used */
-    .team-member {
-        width: 100%;
-        margin: 20px 0;
+    /* Our Specialties Section Responsive Styles */
+    .specialties-grid {
+        flex-direction: column;
+        align-items: center;
     }
 
-    .about-image {
+    .specialty-card {
         width: 100%;
+        margin-bottom: 20px;
     }
 
+    .specialty-card img {
+        height: auto;
+    }
+
+    /* Founders Section Responsive Styles */
     .founders {
         flex-direction: column;
         /* Stack founders vertically on small screens */
@@ -126,5 +132,15 @@
     .founder img {
         max-width: 200px;
         /* Adjust image size */
+    }
+
+    /* Adjust team member styles if used */
+    .team-member {
+        width: 100%;
+        margin: 20px 0;
+    }
+
+    .about-image {
+        width: 100%;
     }
 }
