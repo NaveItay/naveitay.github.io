@@ -110,4 +110,21 @@
     .about-image {
         width: 100%;
     }
+
+    .founders {
+        flex-direction: column;
+        /* Stack founders vertically on small screens */
+        gap: 20px;
+        /* Reduce gap between founders */
+    }
+
+    .founder {
+        max-width: 200px;
+        /* Adjust founder card width */
+    }
+
+    .founder img {
+        max-width: 200px;
+        /* Adjust image size */
+    }
 }

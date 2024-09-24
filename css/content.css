@@ -102,3 +102,47 @@
     color: #555555;
     padding: 0 15px 20px;
 }
+
+/* Founders Section Styles */
+.founders {
+    display: flex;
+    justify-content: center;
+    /* Center the founders horizontally */
+    align-items: center;
+    /* Center items vertically if needed */
+    gap: 40px;
+    /* Space between founder cards */
+    flex-wrap: wrap;
+    /* Allow wrapping on smaller screens */
+    margin: 40px 0;
+}
+
+.founder {
+    text-align: center;
+    max-width: 250px;
+    /* Limit the width of each founder card */
+}
+
+.founder img {
+    width: 100%;
+    /* Make the image fit the container */
+    height: auto;
+    max-width: 250px;
+    /* Limit the maximum width */
+    border-radius: 50%;
+    /* Make the image circular */
+    object-fit: cover;
+    /* Ensure the image covers the container */
+}
+
+.founder h3 {
+    font-size: 1.2rem;
+    margin: 15px 0 5px;
+    color: #333;
+}
+
+.founder h4 {
+    font-size: 1rem;
+    margin: 0;
+    color: #777;
+}
