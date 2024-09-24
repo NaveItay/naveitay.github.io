@@ -12,16 +12,12 @@
     .nav-links {
         display: none;
         position: absolute;
-        /* Position below the header */
         top: 100%;
-        /* Place it right below the header */
         left: 0;
         width: 100%;
-        /* Set width to 100% of viewport */
         background-color: #000000;
         z-index: 999;
         padding: 0 10px;
-        /* Optional: reduce padding to maximize space */
         box-sizing: border-box;
     }
 
@@ -32,7 +28,6 @@
         align-items: center;
         justify-content: center;
         overflow-y: auto;
-        /* Allow scrolling if content overflows */
     }
 
     /* Position the hamburger icon on the right */
@@ -41,7 +36,6 @@
         display: flex;
         justify-content: flex-end;
         position: relative;
-        /* Ensure nav is positioned */
     }
 
     /* Adjust header container */
@@ -56,14 +50,12 @@
 
     .nav-links li a {
         font-size: clamp(12px, 4vw, 1rem);
-        /* Adjust font size dynamically */
         color: white;
         text-decoration: none;
         text-transform: uppercase;
         font-weight: bold;
         transition: color 0.3s ease;
         white-space: nowrap;
-        /* Prevent text from wrapping */
     }
 
     .nav-links li a:hover {
@@ -102,36 +94,45 @@
     }
 
     /* Our Specialties Section Responsive Styles */
-    .specialties-grid {
+    .specialties-grid,
+    .specialty-details {
         flex-direction: column;
         align-items: center;
     }
 
-    .specialty-card {
+    .specialty-card,
+    .specialty-item {
         width: 100%;
         margin-bottom: 20px;
     }
 
-    .specialty-card img {
+    .specialty-card img,
+    .specialty-item img {
         height: auto;
+    }
+
+    .specialty-card h3,
+    .specialty-item h3 {
+        font-size: 1.5rem;
+    }
+
+    .specialty-card p,
+    .specialty-item p {
+        font-size: 0.95rem;
     }
 
     /* Founders Section Responsive Styles */
     .founders {
         flex-direction: column;
-        /* Stack founders vertically on small screens */
         gap: 20px;
-        /* Reduce gap between founders */
     }
 
     .founder {
         max-width: 200px;
-        /* Adjust founder card width */
     }
 
     .founder img {
         max-width: 200px;
-        /* Adjust image size */
     }
 
     /* Adjust team member styles if used */
