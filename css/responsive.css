@@ -17,17 +17,18 @@
         /* Place it right below the header */
         left: 0;
         width: 100%;
-        /* Full width */
+        /* Set width to 100% of viewport */
         background-color: #000000;
         z-index: 999;
+        padding: 0 10px;
+        /* Optional: reduce padding to maximize space */
+        box-sizing: border-box;
     }
 
     /* Show the nav-links when nav-active class is added */
     .nav-active {
         display: flex;
         flex-direction: column;
-        height: 40vh;
-        /* Set height to 40% of viewport height */
         align-items: center;
         justify-content: center;
         overflow-y: auto;
@@ -50,17 +51,19 @@
 
     /* Navigation Links Styles */
     .nav-links li {
-        margin: 15px 0;
+        margin: 10px 0;
     }
 
     .nav-links li a {
-        font-size: 1rem;
-        /* Decreased font size */
+        font-size: clamp(12px, 4vw, 1rem);
+        /* Adjust font size dynamically */
         color: white;
         text-decoration: none;
         text-transform: uppercase;
         font-weight: bold;
         transition: color 0.3s ease;
+        white-space: nowrap;
+        /* Prevent text from wrapping */
     }
 
     .nav-links li a:hover {

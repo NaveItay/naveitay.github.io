@@ -28,45 +28,6 @@
     margin-bottom: 20px;
 }
 
-/* Optional Team Section Styles */
-.team {
-    margin-top: 50px;
-}
-
-.team h3 {
-    font-size: 2rem;
-    color: #333333;
-    margin-bottom: 30px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.team-member {
-    display: inline-block;
-    width: 250px;
-    margin: 0 15px;
-    vertical-align: top;
-}
-
-.team-member img {
-    width: 100%;
-    border-radius: 50%;
-    margin-bottom: 15px;
-}
-
-.team-member h4 {
-    font-size: 1.2rem;
-    color: #333333;
-    margin-bottom: 5px;
-}
-
-.team-member p {
-    font-size: 1rem;
-    color: #777777;
-}
-
-/* content.css */
-
 /* Read More Button Styles */
 .read-more {
     display: inline-block;
@@ -84,4 +45,60 @@
 .read-more:hover {
     background-color: #ffcc00;
     color: #000000;
+}
+
+/* Our Specialties Section Styles */
+.specialties-section {
+    padding: 60px 20px;
+    background-color: #f9f9f9;
+    font-family: 'Poppins', sans-serif;
+}
+
+.specialties-section h2 {
+    font-size: 2.5rem;
+    color: #333333;
+    margin-bottom: 40px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.specialties-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+}
+
+.specialty-card {
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    border-radius: 10px;
+    width: 300px;
+    text-align: center;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.specialty-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.specialty-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.specialty-card h3 {
+    font-size: 1.5rem;
+    color: #333333;
+    margin: 20px 0 10px;
+}
+
+.specialty-card p {
+    font-size: 1rem;
+    color: #555555;
+    padding: 0 15px 20px;
 }
