@@ -144,4 +144,14 @@
     .about-image {
         width: 100%;
     }
+
+    /* Responsive Styles for Idea to Product Section */
+    .process-steps {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .process-step {
+        width: 100%;
+    }
 }
