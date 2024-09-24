@@ -8,15 +8,18 @@
         display: flex;
     }
 
+    /* Hide the nav-links by default */
     .nav-links {
         display: none;
-        position: absolute;
-        /* Add position absolute */
-        top: 100%;
-        /* Position below the nav element */
+        position: fixed; /* Use fixed positioning */
+        top: 0;
         left: 0;
-        width: 100%;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height to cover the screen */
         background-color: #000000;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
         z-index: 999;
     }
 
@@ -25,8 +28,7 @@
         flex: 1;
         display: flex;
         justify-content: flex-end;
-        position: relative;
-        /* Ensure nav is positioned */
+        position: relative; /* Ensure nav is positioned */
     }
 
     /* Adjust header container */
@@ -34,24 +36,27 @@
         padding: 20px;
     }
 
-    /* Navigation menu when active */
+    /* Show the nav-links when nav-active class is added */
     .nav-active {
         display: flex;
-        flex-direction: column;
-        height: 50vh;
-        /* Set height to 50% of viewport height */
-        align-items: center;
-        justify-content: center;
-        overflow-y: auto;
-        /* Allow scrolling if content overflows */
     }
 
-    .nav-active li {
+    /* Navigation Links Styles */
+    .nav-links li {
         margin: 15px 0;
     }
 
-    .nav-active li a {
+    .nav-links li a {
         font-size: 1.5rem;
+        color: white;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-weight: bold;
+        transition: color 0.3s ease;
+    }
+
+    .nav-links li a:hover {
+        color: #ffcc00;
     }
 
     /* Hide scrollbar when menu is open */
