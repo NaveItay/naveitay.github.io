@@ -42,6 +42,13 @@
     transition: background-color 0.3s ease;
 }
 
+/* Center the Read More button in Our Specialties section */
+.read-more-container {
+    text-align: center;
+    margin-top: 20px;
+    /* Optional: adjust spacing as needed */
+}
+
 .read-more:hover {
     background-color: #ffcc00;
     color: #000000;
