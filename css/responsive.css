@@ -1,7 +1,25 @@
 /* responsive.css */
 
+/* Hide mobile-specific links in desktop view */
+.desktop-only {
+    display: block;
+}
+
+.mobile-only {
+    display: none;
+}
+
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
+
+    /* Hide desktop-specific links in mobile view */
+    .desktop-only {
+        display: none;
+    }
+
+    .mobile-only {
+        display: block;
+    }
 
     /* Decrease the size of the h1 inside the logo */
     .logo h1 {
