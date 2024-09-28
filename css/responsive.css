@@ -1,5 +1,3 @@
-/* responsive.css */
-
 /* Hide mobile-specific links in desktop view */
 .desktop-only {
     display: block;
@@ -177,5 +175,24 @@
 
     .process-step {
         width: 100%;
+    }
+
+    /* Contact Us Section Responsive Styles */
+    .contact-section {
+        padding: 40px 15px;
+    }
+
+    .contact-section h2 {
+        font-size: 2rem;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+        font-size: 1rem;
+        padding: 8px;
+    }
+
+    .contact-form button {
+        padding: 10px 20px;
     }
 }

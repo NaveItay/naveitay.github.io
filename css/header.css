@@ -1,4 +1,7 @@
-/* header.css */
+/* Smooth Scrolling */
+html {
+    scroll-behavior: smooth;
+}
 
 /* Header Styles */
 header {
