@@ -1,12 +1,31 @@
 /* base.css */
 
 /* General Styles */
-body {
+body,
+html {
     font-family: 'Poppins', sans-serif;
     color: #333333;
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
+    width: 100%;
+    /* Ensure full-width */
+    box-sizing: border-box;
+}
+
+.container {
+    width: 100%;
+    max-width: 100%;
+    /* Use full width */
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1200px;
+        /* Limit max-width on larger screens */
+    }
 }
 
 h2 {

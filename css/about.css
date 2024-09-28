@@ -4,22 +4,50 @@
 .about-section {
     padding: 60px 20px;
     background-color: #ffffff;
+    width: 100%;
+    /* Ensure the section takes full width */
 }
 
 .about-section .container {
+    width: 100%;
     max-width: 1200px;
+    /* Limit max width to 1200px on larger screens */
     margin: 0 auto;
     text-align: center;
+    box-sizing: border-box;
+    /* Ensure padding is included in the width */
 }
 
 /* About Content Section Styles */
 .about-content-section {
     background-color: #ffffff;
     padding: 60px 20px;
+    width: 100%;
+    /* Ensure the section takes full width */
 }
 
 .about-content-section .container {
+    width: 100%;
     max-width: 800px;
+    /* Limit max width to 800px for content */
     margin: 0 auto;
     text-align: center;
+    box-sizing: border-box;
+    /* Ensure padding is included in the width */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+
+    .about-section,
+    .about-content-section {
+        padding: 40px 15px;
+        /* Reduce padding for smaller screens */
+    }
+
+    .about-section .container,
+    .about-content-section .container {
+        max-width: 100%;
+        /* Use full width on smaller screens */
+    }
 }

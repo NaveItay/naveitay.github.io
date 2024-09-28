@@ -4,12 +4,18 @@
 .idea-to-product-section {
     padding: 60px 20px;
     background-color: #ffffff;
+    width: 100%;
+    /* Ensure full width */
+    box-sizing: border-box;
+    /* Include padding in width */
 }
 
 .idea-to-product-section .container {
     max-width: 1200px;
     margin: 0 auto;
     text-align: center;
+    width: 100%;
+    /* Ensure the container fills available space */
 }
 
 .idea-to-product-section h2 {
@@ -25,14 +31,22 @@
     color: #555555;
     line-height: 1.8;
     margin-bottom: 20px;
+    max-width: 800px;
+    /* Optional to limit the width of text */
+    margin-left: auto;
+    margin-right: auto;
 }
 
+/* Process Steps Section */
 .process-steps {
     display: flex;
     flex-wrap: wrap;
     gap: 40px;
     justify-content: center;
     margin-top: 40px;
+    width: 100%;
+    /* Ensure the full width of the section */
+    box-sizing: border-box;
 }
 
 .process-step {
@@ -45,6 +59,8 @@
     text-align: center;
     box-sizing: border-box;
     margin-bottom: 20px;
+    flex: 1 1 300px;
+    /* Allow flex growth and shrink */
 }
 
 .process-step img {
@@ -65,4 +81,25 @@
     font-size: 1rem;
     color: #555555;
     line-height: 1.6;
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+    .process-steps {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .process-step {
+        max-width: 100%;
+        /* Ensure full width on mobile */
+    }
+
+    .idea-to-product-section h2 {
+        font-size: 2rem;
+    }
+
+    .idea-to-product-section p {
+        font-size: 1rem;
+    }
 }
