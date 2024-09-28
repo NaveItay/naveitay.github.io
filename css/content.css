@@ -124,20 +124,20 @@
 
 .specialty-details {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     gap: 40px;
-    justify-content: center;
 }
 
 .specialty-item {
+    display: flex;
     background-color: #f9f9f9;
     border: 1px solid #dddddd;
     border-radius: 10px;
-    width: 350px;
     padding: 20px;
-    text-align: center;
-    box-sizing: border-box;
+    align-items: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .specialty-item:hover {
@@ -146,19 +146,23 @@
 }
 
 .specialty-item img {
-    width: 100%;
+    width: 30%;
     height: auto;
     border-radius: 10px;
-    margin-bottom: 20px;
+    margin-right: 20px;
 }
 
-.specialty-item h3 {
+.specialty-text {
+    flex: 1;
+}
+
+.specialty-text h3 {
     font-size: 1.8rem;
-    margin: 20px 0 10px;
+    margin: 0 0 15px;
     color: #333333;
 }
 
-.specialty-item p {
+.specialty-text p {
     font-size: 1rem;
     color: #555555;
     line-height: 1.6;
