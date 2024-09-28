@@ -1,0 +1,68 @@
+/* idea-to-product.css */
+
+/* Idea to Product Section Styles */
+.idea-to-product-section {
+    padding: 60px 20px;
+    background-color: #ffffff;
+}
+
+.idea-to-product-section .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.idea-to-product-section h2 {
+    font-size: 2.5rem;
+    color: #333333;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.idea-to-product-section p {
+    font-size: 1.1rem;
+    color: #555555;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+.process-steps {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.process-step {
+    background-color: #f9f9f9;
+    border: 1px solid #dddddd;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 350px;
+    padding: 20px;
+    text-align: center;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+}
+
+.process-step img {
+    width: 100%;
+    height: auto;
+    max-width: 300px;
+    object-fit: contain;
+    margin-bottom: 20px;
+}
+
+.process-step h3 {
+    font-size: 1.5rem;
+    color: #333333;
+    margin-bottom: 15px;
+}
+
+.process-step p {
+    font-size: 1rem;
+    color: #555555;
+    line-height: 1.6;
+}

@@ -1,0 +1,25 @@
+/* about.css */
+
+/* About Us Section Styles */
+.about-section {
+    padding: 60px 20px;
+    background-color: #ffffff;
+}
+
+.about-section .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* About Content Section Styles */
+.about-content-section {
+    background-color: #ffffff;
+    padding: 60px 20px;
+}
+
+.about-content-section .container {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}

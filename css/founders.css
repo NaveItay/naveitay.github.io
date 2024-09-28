@@ -1,0 +1,42 @@
+/* founders.css */
+
+/* Founders Section Styles */
+.founders-section {
+    background-color: #f9f9f9;
+    padding: 60px 20px;
+}
+
+.founders {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    max-width: 800px;
+}
+
+.founder {
+    text-align: center;
+    max-width: 250px;
+}
+
+.founder img {
+    width: 100%;
+    height: auto;
+    max-width: 250px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.founder h3 {
+    font-size: 1.2rem;
+    margin: 15px 0 5px;
+    color: #333;
+}
+
+.founder h4 {
+    font-size: 1rem;
+    margin: 0;
+    color: #777;
+}
