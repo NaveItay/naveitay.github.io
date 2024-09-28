@@ -335,7 +335,7 @@
 }
 
 .contact-section p.left-align {
-    text-align: left;
+    text-align: center;
     margin-left: 5%;
 }
 
@@ -387,11 +387,11 @@
 
 .contact-form input,
 .contact-form textarea {
-    width: 100%;
+    width: 90%;
     padding: 10px;
     margin-bottom: 20px;
     border: 1px solid #dddddd;
-    border-radius: 5px;
+    border-radius: 10px;
 }
 
 .contact-form input[type="text"],
