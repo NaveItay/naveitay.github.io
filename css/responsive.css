@@ -1,12 +1,3 @@
-/* Hide mobile-specific links in desktop view */
-.desktop-only {
-    display: block;
-}
-
-.mobile-only {
-    display: none;
-}
-
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
 
@@ -15,19 +6,21 @@
         display: none;
     }
 
+    /* Show mobile-specific links */
     .mobile-only {
         display: block;
     }
 
-    /* Decrease the size of the h1 inside the logo */
+    /* Adjust logo size */
     .logo h1 {
         font-size: clamp(20px, 5vw, 32px);
-        /* Adjusts font size between 20px and 32px based on viewport width */
+        /* Adjust font size between 20px and 32px based on viewport width */
     }
 
-    /* Display hamburger and hide desktop nav */
+    /* Display hamburger icon and hide desktop navigation */
     .hamburger {
         display: flex;
+        cursor: pointer;
     }
 
     /* Hide the nav-links by default */
@@ -40,10 +33,9 @@
         background-color: #000000;
         z-index: 999;
         padding: 0 10px;
-        box-sizing: border-box;
     }
 
-    /* Show the nav-links when nav-active class is added */
+    /* Show nav-links when nav-active class is added */
     .nav-active {
         display: flex;
         flex-direction: column;
@@ -52,15 +44,7 @@
         overflow-y: auto;
     }
 
-    /* Position the hamburger icon on the right */
-    nav {
-        flex: 1;
-        display: flex;
-        justify-content: flex-end;
-        position: relative;
-    }
-
-    /* Adjust header container */
+    /* Adjust header padding */
     .header-container {
         padding: 20px;
     }
@@ -84,12 +68,12 @@
         color: #ffcc00;
     }
 
-    /* Hide scrollbar when menu is open */
+    /* Hide body scroll when menu is open */
     body.menu-open {
         overflow: hidden;
     }
 
-    /* Animate Hamburger Icon */
+    /* Hamburger Icon Animation */
     .hamburger.toggle .bar:nth-child(1) {
         transform: rotate(-45deg) translate(-5px, 6px);
     }
@@ -115,31 +99,30 @@
         font-size: 1rem;
     }
 
-    /* Our Specialties Section Responsive Styles */
-    .specialties-grid,
-    .specialty-details {
-        flex-direction: column;
-        align-items: center;
+    /* Specialties Section Responsive Styles */
+    .specialties-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        justify-items: center;
     }
 
-    .specialty-card,
-    .specialty-item {
+    .specialty-card {
         width: 100%;
+        max-width: 250px;
         margin-bottom: 20px;
     }
 
-    .specialty-card img,
-    .specialty-item img {
+    .specialty-card img {
+        width: 100%;
         height: auto;
     }
 
-    .specialty-card h3,
-    .specialty-item h3 {
+    .specialty-card h3 {
         font-size: 1.5rem;
     }
 
-    .specialty-card p,
-    .specialty-item p {
+    .specialty-card p {
         font-size: 0.95rem;
     }
 
@@ -155,16 +138,6 @@
 
     .founder img {
         max-width: 200px;
-    }
-
-    /* Adjust team member styles if used */
-    .team-member {
-        width: 100%;
-        margin: 20px 0;
-    }
-
-    .about-image {
-        width: 100%;
     }
 
     /* Responsive Styles for Idea to Product Section */
@@ -194,23 +167,5 @@
 
     .contact-form button {
         padding: 10px 20px;
-    }
-
-    .specialties-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        /* 2 columns layout */
-        gap: 20px;
-        /* Add some space between the cards */
-        justify-items: center;
-        /* Center each card */
-    }
-
-    .specialty-card {
-        width: 100%;
-        /* Ensure the cards adjust to fit within the grid */
-        max-width: 250px;
-        /* Limit the max width for mobile view */
-        margin-bottom: 20px;
     }
 }
