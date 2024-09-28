@@ -24,7 +24,7 @@
     justify-content: center;
     gap: 30px;
     align-items: stretch;
-    /* Ensure all items stretch to the same height */
+    /* Ensure all cards stretch to the same height */
 }
 
 .specialty-card {
@@ -38,6 +38,9 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    /* Align the content inside the card evenly */
+    height: 100%;
+    /* Make the height flexible to match the tallest card */
 }
 
 .specialty-card:hover {
@@ -55,7 +58,6 @@
     font-size: 1.5rem;
     color: #333333;
     margin: 20px 0 10px;
-    padding: 0 15px;
 }
 
 .specialty-card p {
@@ -63,7 +65,7 @@
     color: #555555;
     padding: 0 15px 20px;
     flex-grow: 1;
-    /* Ensure the paragraph grows to fill the remaining space */
+    /* Ensure the paragraph grows to fill remaining space */
 }
 
 /* Founders Section Styles */
@@ -349,19 +351,19 @@
 
 /* Note Section */
 .note-container {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 40px;
-    /* Add space between the note and form */
-}
-
-.contact-note {
-    max-width: 500px;
-    text-align: center;
+    width: 100%;
+    max-width: 600px;
+    /* Same as .contact-form */
     background-color: #ffffff;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 40px;
+    /* Add space between the note and form */
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    /* Center align the note container */
 }
 
 .contact-note p {
@@ -380,6 +382,7 @@
 .contact-form {
     width: 100%;
     max-width: 600px;
+    /* Same width as note container */
     background-color: #ffffff;
     padding: 20px;
     border-radius: 8px;
