@@ -115,25 +115,30 @@
     <section id="contact" class="contact-section">
         <div class="container">
             <h2>Contact Us</h2>
-            <p>If you have any questions or inquiries, feel free to get in touch with us. We're here to help you with
-                your engineering and technology needs.</p>
+            <div class="contact-grid">
+                <!-- Note Section -->
+                <div class="contact-note">
+                    <p><strong>Note:</strong> EATS SYSTEMS is not open to any new services yet.</p>
+                </div>
 
-            <p><strong>Note:</strong> EATS SYSTEMS is not open to any new services yet.</p>
+                <!-- Contact Form Section -->
+                <div class="contact-form">
+                    <form action="/submit-contact-form" method="POST">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" required>
 
-            <!-- Contact Form -->
-            <div class="contact-form">
-                <form action="/submit-contact-form" method="POST">
-                    <label for="name">Name</label>
-                    <input type="text" id="name" name="name" required>
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
 
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required>
+                        <label for="message">Message:</label>
+                        <textarea id="message" name="message" rows="4" required></textarea>
 
-                    <label for="message">Message</label>
-                    <textarea id="message" name="message" rows="4" required></textarea>
-
-                    <button type="submit">Send Message</button>
-                </form>
+                        <!-- Centered Send Button -->
+                        <div class="button-container">
+                            <button type="submit">Send Message</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </section>

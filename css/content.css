@@ -208,8 +208,10 @@
     background-color: #f9f9f9;
     border: 1px solid #dddddd;
     border-radius: 10px;
-    width: 100%; /* Make each process step container full width */
-    max-width: 350px; /* Set a maximum width for the container */
+    width: 100%;
+    /* Make each process step container full width */
+    max-width: 350px;
+    /* Set a maximum width for the container */
     padding: 20px;
     text-align: center;
     box-sizing: border-box;
@@ -217,9 +219,12 @@
 }
 
 .process-step img {
-    width: 100%;  /* Make sure the image adjusts to the container width */
-    height: auto;  /* Maintain aspect ratio */
-    max-width: 300px;  /* Set a maximum width for the image */
+    width: 100%;
+    /* Make sure the image adjusts to the container width */
+    height: auto;
+    /* Maintain aspect ratio */
+    max-width: 300px;
+    /* Set a maximum width for the image */
     object-fit: contain;
     margin-bottom: 20px;
 }
@@ -267,7 +272,6 @@
 .contact-section .container {
     max-width: 1200px;
     margin: 0 auto;
-    text-align: center;
 }
 
 .contact-section h2 {
@@ -276,27 +280,38 @@
     margin-bottom: 40px;
     text-transform: uppercase;
     letter-spacing: 1px;
+    text-align: center;
 }
 
-.contact-section p {
+/* Contact Grid Layout */
+.contact-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    align-items: flex-start;
+}
+
+/* Contact Note Positioned Left */
+.contact-note {
+    flex: 1;
+    max-width: 300px;
+    text-align: left;
+}
+
+.contact-note p {
     font-size: 1.1rem;
-    color: #555555;
-    line-height: 1.8;
-    margin-bottom: 20px;
-}
-
-.contact-details p {
-    font-size: 1rem;
-    margin-bottom: 10px;
     color: #333;
+    margin: 0;
 }
 
+/* Contact Form Styles */
 .contact-form {
-    margin-top: 20px;
+    flex: 2;
 }
 
 .contact-form label {
     font-size: 1rem;
+    text-transform: lowercase;
     display: block;
     margin-bottom: 5px;
 }
@@ -308,6 +323,19 @@
     margin-bottom: 20px;
     border: 1px solid #dddddd;
     border-radius: 5px;
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"] {
+    height: 40px;
+}
+
+.contact-form textarea {
+    resize: vertical;
+}
+
+.button-container {
+    text-align: center;
 }
 
 .contact-form button {
