@@ -228,3 +228,25 @@
     color: #555555;
     line-height: 1.6;
 }
+
+/* Idea to Product Section Styles */
+.idea-section {
+    padding: 60px 20px;
+    background-color: #ffffff;
+}
+
+.idea-section .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+    /* This ensures that the text is centered */
+}
+
+.idea-section p {
+    font-size: 1.1rem;
+    color: #555555;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    text-align: center;
+    /* Add this line to center-align the text within the container */
+}
