@@ -304,6 +304,56 @@
     margin: 0;
 }
 
+/* Contact Us Section Styles */
+.contact-section {
+    padding: 60px 20px;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.contact-section .container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.contact-section h2 {
+    font-size: 2.5rem;
+    color: #333333;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.contact-section p {
+    font-size: 1.1rem;
+    color: #555555;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    text-align: center;
+    /* Centers the text */
+}
+
+/* Contact Grid Layout */
+.contact-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    align-items: flex-start;
+}
+
+/* Contact Note Positioned Left */
+.contact-note {
+    flex: 1;
+    max-width: 300px;
+    text-align: left;
+}
+
+.contact-note p {
+    font-size: 1.1rem;
+    color: #333;
+    margin: 0;
+}
+
 /* Contact Form Styles */
 .contact-form {
     flex: 2;
@@ -311,7 +361,7 @@
 
 .contact-form label {
     font-size: 1rem;
-    text-transform: lowercase;
+    text-transform: capitalize;
     display: block;
     margin-bottom: 5px;
 }
