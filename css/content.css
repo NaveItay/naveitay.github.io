@@ -308,7 +308,6 @@
 .contact-section {
     padding: 60px 20px;
     background-color: #f9f9f9;
-    text-align: left;
 }
 
 .contact-section .container {
@@ -330,7 +329,12 @@
     line-height: 1.8;
     margin-bottom: 20px;
     text-align: center;
-    /* Centers the text */
+    /* Centers the main text */
+}
+
+/* Align the email paragraph to the left */
+.contact-section p.left-align {
+    text-align: left;
 }
 
 /* Contact Grid Layout */
