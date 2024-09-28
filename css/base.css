@@ -49,3 +49,13 @@ p {
     text-align: center;
     margin-top: 20px;
 }
+
+/* Centering the text for the specific paragraphs */
+.center-text {
+    text-align: center;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    color: #555555;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
