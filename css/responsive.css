@@ -3,6 +3,12 @@
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
 
+    /* Decrease the size of the h1 inside the logo */
+    .logo h1 {
+        font-size: clamp(20px, 5vw, 32px);
+        /* Adjusts font size between 20px and 32px based on viewport width */
+    }
+
     /* Display hamburger and hide desktop nav */
     .hamburger {
         display: flex;
