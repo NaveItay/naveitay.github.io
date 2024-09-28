@@ -195,4 +195,22 @@
     .contact-form button {
         padding: 10px 20px;
     }
+
+    .specialties-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        /* 2 columns layout */
+        gap: 20px;
+        /* Add some space between the cards */
+        justify-items: center;
+        /* Center each card */
+    }
+
+    .specialty-card {
+        width: 100%;
+        /* Ensure the cards adjust to fit within the grid */
+        max-width: 250px;
+        /* Limit the max width for mobile view */
+        margin-bottom: 20px;
+    }
 }
