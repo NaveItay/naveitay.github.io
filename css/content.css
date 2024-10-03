@@ -57,7 +57,7 @@
 }
 
 .specialty-card p {
-    flex-grow: 1; /* זה יגרום לטקסט להתאים למקום הפנוי ויהפוך את הכרטיסים לאחידים */
+    flex-grow: 1;
     font-size: 1rem;
     color: #555555;
     padding: 0 15px 20px;
