@@ -119,7 +119,7 @@
     .specialties-grid,
     .specialty-details {
         flex-direction: column;
-        align-items: center;
+        align-items: stretch;
     }
 
     .specialty-card,
