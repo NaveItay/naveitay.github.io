@@ -116,31 +116,57 @@
     }
 
     /* Our Specialties Section Responsive Styles */
-    .specialties-grid,
-    .specialty-details {
-        flex-direction: column;
-        align-items: stretch;
+    .specialties-content-section .container {
+        padding: 20px 10px;
     }
 
-    .specialty-card,
     .specialty-item {
-        width: 100%;
-        margin-bottom: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 30px;
+        text-align: center;
     }
 
-    .specialty-card img,
     .specialty-item img {
+        width: 100%;
         height: auto;
+        max-width: 300px;
+        /* Adjust max-width for better mobile view */
+        margin-bottom: 15px;
     }
 
-    .specialty-card h3,
-    .specialty-item h3 {
+    .specialty-text {
+        padding: 10px;
+    }
+
+    .specialty-text h3 {
         font-size: 1.5rem;
+        margin-bottom: 10px;
     }
 
-    .specialty-card p,
-    .specialty-item p {
-        font-size: 0.95rem;
+    .specialty-text p {
+        font-size: 1rem;
+        line-height: 1.5;
+        margin-bottom: 10px;
+    }
+
+    .specialty-details {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        justify-content: center;
+    }
+
+    /* Adjust grid on mobile to a single column */
+    .specialties-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    /* Improve overall padding for mobile */
+    .specialties-content-section {
+        padding: 20px 15px;
     }
 
     /* Founders Section Responsive Styles */
