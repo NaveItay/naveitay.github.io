@@ -171,16 +171,30 @@
 
     /* Founders Section Responsive Styles */
     .founders {
-        flex-direction: column;
-        gap: 20px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
     }
 
     .founder {
-        max-width: 200px;
+        width: 45%;
+        /* Set width to make sure they fit side by side */
+        text-align: center;
     }
 
     .founder img {
-        max-width: 200px;
+        width: 100%;
+        height: auto;
+        max-width: 150px;
+        /* Adjust image size for mobile */
+        margin-bottom: 10px;
+    }
+
+    .founder h3,
+    .founder h4 {
+        font-size: 1rem;
+        /* Adjust font size for mobile */
     }
 
     /* Adjust team member styles if used */
