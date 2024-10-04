@@ -47,7 +47,7 @@
 .footer-contact-links {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: flex-end;
 }
 
 .footer-email-link {
@@ -86,6 +86,13 @@
 .footer-social-icons a:hover {
     transform: scale(1.2);
     /* Add scaling effect on hover for interaction */
+}
+
+/* Divider Line */
+.footer-divider {
+    width: 100%;
+    border: 1px solid #cccccc;
+    margin: 20px 0;
 }
 
 /* Footer Bottom Styles */
