@@ -1,8 +1,11 @@
 /* Footer Section Styles */
 .footer-section {
-    background-color: #1a1a1a; /* Dark gray background for a modern feel */
-    color: #ffffff; /* White text color */
-    padding: 40px 20px; /* Increase padding for a cleaner look */
+    background-color: #1a1a1a;
+    /* Dark gray background for a modern feel */
+    color: #ffffff;
+    /* White text color */
+    padding: 40px 20px;
+    /* Increase padding for a cleaner look */
     font-family: 'Arial', sans-serif;
 }
 
@@ -24,7 +27,8 @@
 }
 
 .footer-left {
-    flex: 2; /* Slogan occupies more space */
+    flex: 2;
+    /* Slogan occupies more space */
     text-align: left;
     padding-right: 20px;
 }
@@ -35,7 +39,8 @@
 }
 
 .footer-right {
-    flex: 1; /* Contact details occupy less space */
+    flex: 1;
+    /* Contact details occupy less space */
     text-align: right;
 }
 
@@ -55,13 +60,18 @@
 }
 
 .footer-email-link:hover {
-    color: #ffcc00; /* Yellow color on hover */
+    color: #ffcc00;
+    /* Yellow color on hover */
 }
 
-.contact-icon {
+.contact-icon,
+.social-icon {
     width: 24px;
     height: 24px;
     margin-right: 10px;
+    filter: brightness(0) invert(1);
+    /* Make icons white */
+    transition: filter 0.3s ease;
 }
 
 .footer-social-icons {
@@ -74,12 +84,8 @@
 }
 
 .footer-social-icons a:hover {
-    transform: scale(1.2); /* Add scaling effect on hover for interaction */
-}
-
-.footer-social-icons img {
-    width: 32px;
-    height: 32px;
+    transform: scale(1.2);
+    /* Add scaling effect on hover for interaction */
 }
 
 /* Footer Bottom Styles */
@@ -91,5 +97,6 @@
 
 .footer-copyright {
     font-size: 1rem;
-    color: #cccccc; /* Light gray for contrast */
+    color: #cccccc;
+    /* Light gray for contrast */
 }
