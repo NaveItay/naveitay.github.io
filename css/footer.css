@@ -1,40 +1,48 @@
 /* Footer Section Styles */
 .footer-section {
-    background-color: #1a1a1a;
-    /* Dark gray background for a modern feel */
-    color: #ffffff;
-    /* White text color */
-    padding: 40px 0;
-    /* Increase padding for a cleaner look */
+    background-color: #1a1a1a; /* Dark gray background for a modern feel */
+    color: #ffffff; /* White text color */
+    padding: 40px 20px; /* Increase padding for a cleaner look */
     font-family: 'Arial', sans-serif;
 }
 
 .footer-section .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
 }
 
-.footer-top {
-    text-align: center;
+/* Footer Columns Styles */
+.footer-columns {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
     margin-bottom: 20px;
+}
+
+.footer-left {
+    flex: 2; /* Slogan occupies more space */
+    text-align: left;
+    padding-right: 20px;
 }
 
 .footer-slogan {
     font-size: 1.5rem;
-    margin-bottom: 15px;
-    color: #ffcc00;
-    /* Use a bright color to catch attention */
+    color: #ffffff;
+}
+
+.footer-right {
+    flex: 1; /* Contact details occupy less space */
+    text-align: right;
 }
 
 .footer-contact-links {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
 }
 
 .footer-email-link {
@@ -47,8 +55,7 @@
 }
 
 .footer-email-link:hover {
-    color: #ffcc00;
-    /* Yellow color on hover */
+    color: #ffcc00; /* Yellow color on hover */
 }
 
 .contact-icon {
@@ -58,8 +65,6 @@
 }
 
 .footer-social-icons {
-    display: flex;
-    gap: 15px;
     margin-top: 10px;
 }
 
@@ -69,8 +74,7 @@
 }
 
 .footer-social-icons a:hover {
-    transform: scale(1.2);
-    /* Add scaling effect on hover for interaction */
+    transform: scale(1.2); /* Add scaling effect on hover for interaction */
 }
 
 .footer-social-icons img {
@@ -78,13 +82,14 @@
     height: 32px;
 }
 
+/* Footer Bottom Styles */
 .footer-bottom {
     text-align: center;
     margin-top: 20px;
+    width: 100%;
 }
 
 .footer-copyright {
     font-size: 1rem;
-    color: #cccccc;
-    /* Light gray for contrast */
+    color: #cccccc; /* Light gray for contrast */
 }
