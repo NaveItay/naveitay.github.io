@@ -1,5 +1,3 @@
-// main.js
-
 // Function to load HTML content
 function loadHTML(url, elementId) {
     fetch(url)
@@ -77,6 +75,7 @@ function initNavigation() {
     }
 }
 
+// Scroll to section if URL contains a hash
 document.addEventListener('DOMContentLoaded', () => {
     const hash = window.location.hash;
 
@@ -92,5 +91,41 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             }, 0);
         }
+    }
+});
+
+// Function to handle form submission and clear form fields
+document.addEventListener('DOMContentLoaded', function () {
+    const form = document.querySelector('form[name="contact-form"]');
+
+    if (form) {
+        form.addEventListener('submit', function (event) {
+            event.preventDefault();  // Prevent the default form submission
+
+            // Get form data
+            const formData = new FormData(form);
+
+            // Perform form submission via AJAX (optional)
+            fetch(form.action, {
+                method: form.method,
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+                .then(response => {
+                    if (response.ok) {
+                        alert('Message sent successfully!');
+                        form.reset();  // Clear form fields
+                    } else {
+                        alert('There was a problem sending your message.');
+                    }
+                })
+                .catch(error => {
+                    alert('Error: Could not send the message.');
+                });
+        });
+    } else {
+        console.error('Contact form not found.');
     }
 });
