@@ -21,71 +21,20 @@
 /* Footer Columns Styles */
 .footer-columns {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    /* Center the slogan */
     width: 100%;
     margin-bottom: 20px;
 }
 
 .footer-left {
-    flex: 2;
-    /* Slogan occupies more space */
-    text-align: left;
-    padding-right: 20px;
+    text-align: center;
+    /* Center text */
 }
 
 .footer-slogan {
     font-size: 1.5rem;
     color: #ffffff;
-}
-
-.footer-right {
-    flex: 1;
-    /* Contact details occupy less space */
-    text-align: right;
-}
-
-.footer-contact-links {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-}
-
-.footer-email-link {
-    font-size: 1.2rem;
-    color: #ffffff;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-}
-
-.footer-email-link:hover {
-    color: #ffcc00;
-    /* Yellow color on hover */
-}
-
-.contact-icon,
-.social-icon {
-    width: 24px;
-    height: 24px;
-    margin-right: 10px;
-    filter: brightness(0) invert(1);
-    /* Make icons white */
-    transition: filter 0.3s ease;
-}
-
-.footer-social-icons {
-    margin-top: 10px;
-}
-
-.footer-social-icons a {
-    color: #ffffff;
-    transition: transform 0.3s ease;
-}
-
-.footer-social-icons a:hover {
-    transform: scale(1.2);
-    /* Add scaling effect on hover for interaction */
 }
 
 /* Divider Line */
