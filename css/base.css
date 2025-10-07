@@ -116,25 +116,44 @@ p {
     }
 }
 
-.a11y-toolbar button {
+/* כפתורי סרגל נגישות + האייקון */
+.a11y-toolbar button,
+.a11y-toolbar .a11y-icon {
     appearance: none;
     border: 1px solid rgba(0, 0, 0, .2);
     border-radius: 8px;
     padding: 8px 10px;
+    /* אותו מרווח כמו קודם */
     font: inherit;
-    cursor: pointer;
     background: transparent;
+    display: inline-flex;
+    /* ממרכז את התוכן אנכית ואופקית */
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
 }
 
+/* סמן עכבר רק על כפתורים (לא על האייקון) */
+.a11y-toolbar button {
+    cursor: pointer;
+}
+
+.a11y-toolbar .a11y-icon {
+    cursor: default;
+}
+
+/* פוקוס נגיש */
 .a11y-toolbar button:focus-visible {
     outline: 3px solid #0b6bff;
     outline-offset: 2px;
 }
 
+/* מצב לחוץ (toggle) */
 .a11y-toolbar button[aria-pressed="true"] {
     border-color: #0b6bff;
     box-shadow: 0 0 0 3px rgba(11, 107, 255, .15);
 }
+
 
 /* 5) Larger text mode (scales the root font size responsibly) */
 body.text-lg {
