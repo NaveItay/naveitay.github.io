@@ -652,3 +652,64 @@
         font-size: 0.95rem;
     }
 }
+
+/* === OUR SYSTEMS – Uniform image fit across cards === */
+
+/* דסקטופ/טאבלט: גובה עקבי לכרטיס, תמונה ממלאת ונחתכת בעדינות */
+#our-systems .systems-card .media {
+    /* אם קיים משתנה --media-h אצלך, נשתמש בו; אחרת יש ערך גיבוי */
+    height: var(--media-h, 320px);
+    border-radius: 14px;
+    overflow: hidden;
+    background: #0b0b0b;
+    /* מסתיר קצוות שקופים של PNG */
+}
+
+#our-systems .systems-card .media img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    /* מילוי מלא + חיתוך עדין */
+    object-position: var(--focus, 50% 50%);
+    /* אפשר לשלוט נקודת עניין פר‑תמונה */
+}
+
+/* יישור גבהים כאשר לכותרות יש 1–2 שורות */
+#our-systems .systems-card figcaption {
+    min-height: 2.2rem;
+    /* להתאמה – מונע קפיצות בגבהים */
+    text-wrap: balance;
+}
+
+/* מובייל: שלוש תמונות, יחס קבוע, גלילה אופקית נקייה */
+@media (max-width: 680px) {
+    #our-systems .systems-stage {
+        display: flex;
+        gap: 12px;
+        padding: 8px 8px 12px;
+        overflow-x: auto;
+        overscroll-behavior-x: contain;
+        -webkit-overflow-scrolling: touch;
+        scroll-snap-type: x proximity;
+    }
+
+    #our-systems .systems-card {
+        position: relative;
+        transform: none !important;
+        opacity: 1 !important;
+        flex: 0 0 max(220px, calc((100% - 24px) / 3));
+        /* 3 ייכנסו כשאפשר, אחרת סווייפ */
+        width: auto;
+        scroll-snap-align: start;
+    }
+
+    #our-systems .systems-card .media {
+        height: auto;
+        /* במובייל שומרים יחס קבוע */
+        aspect-ratio: 16 / 9;
+        /* אותו יחס לכל התמונות */
+        border-radius: 12px;
+        box-shadow: 0 12px 32px rgba(0, 0, 0, .18);
+    }
+}
