@@ -30,6 +30,61 @@
     <link rel="stylesheet" href="/css/content.css">
     <link rel="stylesheet" href="/css/homepage-video-styles.css">
     <link rel="stylesheet" href="/css/responsive.css">
+
+    <!-- === Anti horizontal-scroll patch (safe, high-specificity) === -->
+    <style>
+        /* מניעת גלילה אופקית גלובלית + טיפול בדפדפנים ניידים */
+        html,
+        body {
+            max-width: 100%;
+            overflow-x: hidden;
+            /* fallback לכל הדפדפנים */
+        }
+
+        @supports (overflow-x: clip) {
+
+            html,
+            body {
+                overflow-x: clip;
+            }
+
+            /* מודרני: לא מייצר שכבת גלילה נסתרת */
+        }
+
+        /* ווידאו ברוחב הדף בלי לגרום ל-100vw + scrollbar */
+        .video-section {
+            overflow: hidden;
+        }
+
+        .video-section video {
+            display: block;
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* קרוסלת OUR SYSTEMS – מונע מתוכן משוקרן לחרוג מהדף */
+        .systems-carousel {
+            overflow: hidden;
+        }
+
+        /* האב חותך גלישה החוצה */
+        .systems-stage {
+            overflow: visible;
+        }
+
+        /* מאפשר לרמזי השקופיות להישאר גלויים בתוך הקרוסלה */
+
+        /* הגנה כללית מתמונות/אלמנטים שיכולים "לדחוף" את הפריסה */
+        img,
+        svg,
+        canvas,
+        iframe {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+    <!-- === end patch === -->
 </head>
 
 <body>
@@ -56,7 +111,6 @@
         <section class="video-section">
             <video src="/videos/EATS-SYSTEMS-HD.mp4" playsinline muted autoplay loop aria-hidden="true"></video>
         </section>
-
 
         <!-- About Us Section -->
         <section id="about" class="about-section">
@@ -160,12 +214,12 @@
 
                         <!-- Slide 3 -->
                         <figure class="systems-card" data-index="2" data-pos="1" role="group"
-                            aria-roledescription="slide" aria-label="BYERE BOX — Build your escape room easily!">
+                            aria-roledescription="slide" aria-label="BYERE BOX - Build Your Escape Room Easily!">
                             <div class="media">
                                 <img src="/images/systems/BYERE_BOX.png"
-                                    alt="BYERE BOX — Build your escape room easily!" loading="lazy">
+                                    alt="BYERE BOX - Build your escape room easily!" loading="lazy">
                             </div>
-                            <figcaption dir="auto">BYERE BOX — Build your escape room easily!</figcaption>
+                            <figcaption dir="auto">G.E.B — Build your escaperoom</figcaption>
                         </figure>
                     </div>
 
@@ -174,8 +228,7 @@
                         <button class="pip is-active" role="tab" aria-selected="true"
                             aria-label="Go to UHF Technology"></button>
                         <button class="pip" role="tab" aria-label="Go to WIFIGATE"></button>
-                        <button class="pip" role="tab"
-                            aria-label="Go to BYERE BOX — Build your escape room easily!"></button>
+                        <button class="pip" role="tab" aria-label="BYERE BOX - Build Your Escape Room Easily!"></button>
                     </div>
                 </div>
             </div>

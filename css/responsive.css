@@ -7,6 +7,21 @@
     display: none;
 }
 
+/* מניעת גלילה אופקית כללית – גיבוי גם בקובץ זה */
+html,
+body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+@supports (overflow-x: clip) {
+
+    html,
+    body {
+        overflow-x: clip;
+    }
+}
+
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
 
@@ -22,7 +37,6 @@
     /* Decrease the size of the h1 inside the logo */
     .logo h1 {
         font-size: clamp(20px, 5vw, 32px);
-        /* Adjusts font size between 20px and 32px based on viewport width */
     }
 
     /* Display hamburger and hide desktop nav */
@@ -41,6 +55,8 @@
         z-index: 999;
         padding: 0 10px;
         box-sizing: border-box;
+        overflow-x: hidden;
+        /* שלא "יברח" לרוחב במסכים קטנים */
     }
 
     /* Show the nav-links when nav-active class is added */
@@ -50,6 +66,8 @@
         align-items: center;
         justify-content: center;
         overflow-y: auto;
+        overflow-x: hidden;
+        /* בטוח */
     }
 
     /* Position the hamburger icon on the right */
@@ -132,7 +150,6 @@
         width: 100%;
         height: auto;
         max-width: 300px;
-        /* Adjust max-width for better mobile view */
         margin-bottom: 15px;
     }
 
@@ -174,19 +191,21 @@
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        align-items: flex-start; /* Align to the top */
-        flex-wrap: nowrap; /* Prevent wrapping */
+        align-items: flex-start;
+        flex-wrap: nowrap;
+        overflow-x: hidden;
+        /* שלא יגלול לרוחב אם התוכן רחב */
     }
 
     .founder {
-        width: 45%; /* Ensure each founder takes up 45% of the width */
+        width: 45%;
         text-align: center;
     }
 
     .founder img {
         width: 100%;
         height: auto;
-        max-width: 150px; /* Ensure images scale well */
+        max-width: 150px;
         margin-bottom: 10px;
     }
 
@@ -196,7 +215,6 @@
         margin: 5px 0;
     }
 
-    /* Add some padding to make sure there's enough space between elements */
     .founders-section .container {
         padding: 15px;
     }
@@ -245,16 +263,16 @@
         grid-template-columns: repeat(2, 1fr);
         /* 2 columns layout */
         gap: 20px;
-        /* Add some space between the cards */
+        /* space between cards */
         justify-items: center;
-        /* Center each card */
+        /* center each card */
+        overflow-x: hidden;
+        /* בטיחות */
     }
 
     .specialty-card {
         width: 100%;
-        /* Ensure the cards adjust to fit within the grid */
         max-width: 250px;
-        /* Limit the max width for mobile view */
         margin-bottom: 20px;
     }
 }
