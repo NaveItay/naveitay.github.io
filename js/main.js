@@ -130,20 +130,20 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
-// === OUR SYSTEMS – centered carousel with auto-play ===
+// === OUR SYSTEMS – centered carousel with reduced-motion support ===
 document.addEventListener('DOMContentLoaded', function () {
   const root = document.querySelector('#our-systems .systems-carousel');
   if (!root) return;
 
   const stage = root.querySelector('.systems-stage');
   const cards = Array.from(stage.querySelectorAll('.systems-card'));
-  const pips = Array.from(root.querySelectorAll('.pip'));
+  const pips  = Array.from(root.querySelectorAll('.pip'));
 
   const intervalMs = parseInt(root.dataset.interval, 10) || 5000;
-  let current = 1; // מתחילים מהשקופית האמצעית (WIFIGATE)
+  let current = 1; // start with middle
   let timer = null;
 
-  // A11y ids for tabs/controls
+  // A11y ids
   cards.forEach((card, i) => {
     const id = `system-slide-${i + 1}`;
     card.id = id;
@@ -152,7 +152,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function layout() {
     const n = cards.length;
-    const left = (current - 1 + n) % n;
+    const left  = (current - 1 + n) % n;
     const right = (current + 1) % n;
 
     cards.forEach((card, i) => {
@@ -165,60 +165,128 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     pips.forEach((pip, i) => {
-      pip.classList.toggle('is-active', i === current);
-      pip.setAttribute('aria-selected', i === current ? 'true' : 'false');
+      const on = i === current;
+      pip.classList.toggle('is-active', on);
+      pip.setAttribute('aria-selected', on ? 'true' : 'false');
     });
   }
 
-  function next() {
-    current = (current + 1) % cards.length;
-    layout();
-  }
-  function prev() {
-    current = (current - 1 + cards.length) % cards.length;
-    layout();
-  }
+  function next(){ current = (current + 1) % cards.length; layout(); }
+  function prev(){ current = (current - 1 + cards.length) % cards.length; layout(); }
 
-  function start() {
-    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  function start(){
     stop();
+    if (window.A11Y?.reduce) return;
     timer = setInterval(next, intervalMs);
   }
-  function stop() {
-    if (timer) clearInterval(timer);
-    timer = null;
-  }
+  function stop(){ if (timer) clearInterval(timer); timer = null; }
 
   // Init
-  layout();
-  start();
+  layout(); start();
 
   // Interactions
-  // Pause on hover, resume on leave
   root.addEventListener('mouseenter', stop);
   root.addEventListener('mouseleave', start);
 
-  // Click dots
-  pips.forEach((pip, i) => {
-    pip.addEventListener('click', () => {
-      current = i;
-      layout();
-      start();
-    });
-  });
+  pips.forEach((pip, i) => pip.addEventListener('click', () => {
+    current = i; layout(); start();
+  }));
 
-  // Keyboard navigation when focused inside the carousel
   root.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowRight') { next(); start(); }
-    if (e.key === 'ArrowLeft') { prev(); start(); }
+    if (e.key === 'ArrowLeft')  { prev(); start(); }
   });
 
-  // Advance on click/tap anywhere on the stage
   stage.addEventListener('click', () => { next(); start(); });
 
-  // Pause when off-screen to save CPU/battery
   const io = new IntersectionObserver((entries) => {
     entries.forEach(entry => entry.isIntersecting ? start() : stop());
   }, { threshold: 0.5 });
   io.observe(root);
+
+  // React to global motion toggle
+  window.addEventListener('a11y:motion-changed', (e) => {
+    e.detail.reduce ? stop() : start();
+  });
+});
+
+// === Accessibility module & toolbar ===
+document.addEventListener('DOMContentLoaded', function(){
+  const A11Y = {
+    get reduce() {
+      const saved = localStorage.getItem('a11y.reduce');
+      if (saved !== null) return saved === '1';
+      return window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    },
+    setReduce(on){
+      localStorage.setItem('a11y.reduce', on ? '1' : '0');
+      document.body.classList.toggle('reduce-motion', on);
+      window.dispatchEvent(new CustomEvent('a11y:motion-changed', { detail: { reduce: on }}));
+      announce(`Animations ${on ? 'paused' : 'resumed'}.`);
+    },
+    get contrast(){ return localStorage.getItem('a11y.contrast') === '1'; },
+    setContrast(on){
+      localStorage.setItem('a11y.contrast', on ? '1' : '0');
+      document.body.classList.toggle('contrast-high', on);
+      announce(`High contrast ${on ? 'on' : 'off'}.`);
+    },
+    get textLg(){ return localStorage.getItem('a11y.textLg') === '1'; },
+    setTextLg(on){
+      localStorage.setItem('a11y.textLg', on ? '1' : '0');
+      document.body.classList.toggle('text-lg', on);
+      announce(`Text size ${on ? 'increased' : 'normal'}.`);
+    }
+  };
+  window.A11Y = A11Y;
+
+  // Apply saved state on load
+  document.body.classList.toggle('reduce-motion', A11Y.reduce);
+  document.body.classList.toggle('contrast-high', A11Y.contrast);
+  document.body.classList.toggle('text-lg', A11Y.textLg);
+
+  // Toolbar wiring
+  const btnContrast = document.getElementById('btn-contrast');
+  const btnMotion   = document.getElementById('btn-motion');
+  const btnFont     = document.getElementById('btn-font');
+  const setPressed  = (el, on) => el && el.setAttribute('aria-pressed', on ? 'true' : 'false');
+
+  setPressed(btnContrast, A11Y.contrast);
+  setPressed(btnMotion,   A11Y.reduce);
+  setPressed(btnFont,     A11Y.textLg);
+
+  btnContrast?.addEventListener('click', () => {
+    const on = !A11Y.contrast; A11Y.setContrast(on); setPressed(btnContrast, on);
+  });
+  btnMotion?.addEventListener('click', () => {
+    const on = !A11Y.reduce;   A11Y.setReduce(on);   setPressed(btnMotion, on);
+    syncMotionWithMedia();
+  });
+  btnFont?.addEventListener('click', () => {
+    const on = !A11Y.textLg;   A11Y.setTextLg(on);   setPressed(btnFont, on);
+  });
+
+  // Announcements for SR
+  function announce(text){
+    const live = document.getElementById('a11y-status');
+    if (!live) return;
+    live.textContent = '';
+    setTimeout(() => (live.textContent = text), 30);
+  }
+
+  // Skip link moves focus to main
+  const main = document.getElementById('main-content');
+  document.querySelector('.skip-link')?.addEventListener('click', () => {
+    setTimeout(() => main?.focus(), 0);
+  });
+
+  // Pause or play background video according to motion preference
+  function syncMotionWithMedia(){
+    const shouldReduce = A11Y.reduce;
+    document.querySelectorAll('.video-section video').forEach(v => {
+      if (shouldReduce) { v.pause(); }
+      else { v.play().catch(() => {}); }
+    });
+  }
+  syncMotionWithMedia();
+  window.addEventListener('a11y:motion-changed', syncMotionWithMedia);
 });

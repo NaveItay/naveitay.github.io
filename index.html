@@ -36,188 +36,217 @@
     <!-- Placeholder for Header -->
     <div id="header-placeholder"></div>
 
-    <!-- Video Section -->
-    <section class="video-section">
-        <video src="/videos/EATS-SYSTEMS-HD.mp4" playsinline muted autoplay loop></video>
-    </section>
+    <!-- Skip to main content -->
+    <a class="skip-link" href="#main-content">Skip to main content</a>
 
-    <!-- About Us Section -->
-    <section id="about" class="about-section">
-        <div class="container">
-            <h2>About Us</h2>
-            <p>
-                EATS SYSTEMS is a leading engineering company specializing in developing embedded systems from concept
-                to mass production. We deliver comprehensive, tailor-made solutions that meet the unique requirements of
-                our clients.
-            </p>
-            <p>
-                Our expertise in both software and hardware design enables us to transform ideas into cutting-edge
-                products that stand out in today's competitive market.
-            </p>
-            <div class="read-more-container">
-                <a href="/about/" class="read-more">Read More</a>
-            </div>
-        </div>
-    </section>
+    <!-- Accessibility toolbar -->
+    <div class="a11y-toolbar" role="region" aria-label="Accessibility controls">
+        <button id="btn-contrast" type="button" aria-pressed="false" title="High contrast">High&nbsp;contrast</button>
+        <button id="btn-font" type="button" aria-pressed="false" title="Larger text">A+</button>
+        <button id="btn-motion" type="button" aria-pressed="false" title="Reduce motion">Reduce&nbsp;motion</button>
+    </div>
 
-    <!-- Our Specialties Section -->
-    <section id="specialties" class="specialties-section">
-        <div class="container">
-            <h2>Our Specialties</h2>
-            <div class="specialties-grid">
-                <!-- Specialty 1 -->
-                <div class="specialty-card">
-                    <img src="/images/specialties/embedded-engineering.png" alt="Embedded Engineering">
-                    <h3>Embedded Engineering</h3>
-                    <p>We develop advanced embedded systems tailored to your needs.</p>
-                </div>
-                <!-- Specialty 2 -->
-                <div class="specialty-card">
-                    <img src="/images/specialties/electrical-engineering.png" alt="Electrical Engineering">
-                    <h3>Electrical Engineering</h3>
-                    <p>Our expertise in electrical design ensures optimal performance.</p>
-                </div>
-                <!-- Specialty 3 -->
-                <div class="specialty-card">
-                    <img src="/images/specialties/pcb-design.png" alt="PCB Design">
-                    <h3>PCB Design</h3>
-                    <p>We create efficient PCB layouts for complex electronic systems.</p>
-                </div>
-                <!-- Specialty 4 -->
-                <div class="specialty-card">
-                    <img src="/images/specialties/low-power-systems.png" alt="Low Power Systems">
-                    <h3>Low Power Systems</h3>
-                    <p>Specializing in energy-efficient designs for extended battery life.</p>
+    <!-- Live region for screen readers -->
+    <div id="a11y-status" class="sr-only" role="status" aria-live="polite"></div>
+
+    <!-- עטיפת כל אזור התוכן הראשי -->
+    <main id="main-content" tabindex="-1">
+
+        <section class="video-section">
+            <video src="/videos/EATS-SYSTEMS-HD.mp4" playsinline muted autoplay loop aria-hidden="true"></video>
+        </section>
+
+
+        <!-- About Us Section -->
+        <section id="about" class="about-section">
+            <div class="container">
+                <h2>About Us</h2>
+                <p>
+                    EATS SYSTEMS is a leading engineering company specializing in developing embedded systems from
+                    concept
+                    to mass production. We deliver comprehensive, tailor-made solutions that meet the unique
+                    requirements of
+                    our clients.
+                </p>
+                <p>
+                    Our expertise in both software and hardware design enables us to transform ideas into cutting-edge
+                    products that stand out in today's competitive market.
+                </p>
+                <div class="read-more-container">
+                    <a href="/about/" class="read-more">Read more about EATS SYSTEMS</a>
                 </div>
             </div>
-            <!-- Add Read More Button -->
-            <div class="read-more-container">
-                <a href="/specialties/" class="read-more">Read More</a>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- From Idea to Product Section -->
-    <section id="idea" class="idea-section">
-        <div class="container">
-            <h2>From Idea to Product</h2>
-            <p>
-                At EATS SYSTEMS, we guide you through every step of the product development process, from initial
-                concept to mass production. Our multidisciplinary team ensures that your vision becomes a reality,
-                providing expertise in design, prototyping, testing, and manufacturing.
-            </p>
-            <!-- Add Read More Button -->
-            <div class="read-more-container">
-                <a href="/idea-to-product/" class="read-more">Read More</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- OUR SYSTEMS Section -->
-    <section id="our-systems" class="systems-section">
-        <div class="container">
-            <h2>OUR SYSTEMS</h2>
-
-            <div class="systems-carousel" data-interval="5000" aria-label="Our systems">
-                <div class="systems-stage" aria-roledescription="carousel">
-                    <!-- Slide 1 -->
-                    <figure class="systems-card" data-index="0" data-pos="-1" role="group" aria-roledescription="slide"
-                        aria-label="UHF Technology">
-                        <div class="media">
-                            <img src="/images/systems/uhf-technology.jpg" alt="UHF Technology system" loading="lazy">
-                        </div>
-                        <figcaption dir="auto">UHF Technology</figcaption>
-                    </figure>
-
-                    <!-- Slide 2 (starts centered) -->
-                    <figure class="systems-card" data-index="1" data-pos="0" role="group" aria-roledescription="slide"
-                        aria-label="WIFIGATE">
-                        <div class="media">
-                            <img src="/images/systems/wifigate.png" alt="WIFIGATE system" loading="lazy">
-                        </div>
-                        <figcaption dir="auto">WIFIGATE</figcaption>
-                    </figure>
-
-                    <!-- Slide 3 -->
-                    <figure class="systems-card" data-index="2" data-pos="1" role="group" aria-roledescription="slide"
-                        aria-label="G.E.B — Build your escaperoom">
-                        <div class="media">
-                            <img src="/images/systems/geb.jpg" alt="G.E.B — Build your escaperoom" loading="lazy">
-                        </div>
-                        <figcaption dir="auto">G.E.B — Build your escaperoom</figcaption>
-                    </figure>
+        <!-- Our Specialties Section -->
+        <section id="specialties" class="specialties-section">
+            <div class="container">
+                <h2>Our Specialties</h2>
+                <div class="specialties-grid">
+                    <!-- Specialty 1 -->
+                    <div class="specialty-card">
+                        <img src="/images/specialties/embedded-engineering.png" alt="Embedded Engineering">
+                        <h3>Embedded Engineering</h3>
+                        <p>We develop advanced embedded systems tailored to your needs.</p>
+                    </div>
+                    <!-- Specialty 2 -->
+                    <div class="specialty-card">
+                        <img src="/images/specialties/electrical-engineering.png" alt="Electrical Engineering">
+                        <h3>Electrical Engineering</h3>
+                        <p>Our expertise in electrical design ensures optimal performance.</p>
+                    </div>
+                    <!-- Specialty 3 -->
+                    <div class="specialty-card">
+                        <img src="/images/specialties/pcb-design.png" alt="PCB Design">
+                        <h3>PCB Design</h3>
+                        <p>We create efficient PCB layouts for complex electronic systems.</p>
+                    </div>
+                    <!-- Specialty 4 -->
+                    <div class="specialty-card">
+                        <img src="/images/specialties/low-power-systems.png" alt="Low Power Systems">
+                        <h3>Low Power Systems</h3>
+                        <p>Specializing in energy-efficient designs for extended battery life.</p>
+                    </div>
                 </div>
-
-                <!-- Small dots (clickable) -->
-                <div class="systems-pips" role="tablist" aria-label="Slide navigation">
-                    <button class="pip is-active" role="tab" aria-selected="true"
-                        aria-label="Go to UHF Technology"></button>
-                    <button class="pip" role="tab" aria-label="Go to WIFIGATE"></button>
-                    <button class="pip" role="tab" aria-label="Go to G.E.B — Build your escaperoom"></button>
+                <!-- Add Read More Button -->
+                <div class="read-more-container">
+                    <a href="/specialties/" class="read-more">Explore all specialties</a>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Contact Us Section -->
-    <section id="contact" class="contact-section">
-        <div class="container">
-            <h2>Contact Us</h2>
-            <p>If you have any questions or inquiries, feel free to get in touch with us. We're here to help you with
-                your engineering and technology needs.</p>
-
-            <!-- Note Section (outside of contact grid) -->
-            <div class="note-container">
-                <div class="contact-note">
-                    <p><strong>Note:</strong> EATS SYSTEMS is not open to any new services yet.</p>
+        <!-- From Idea to Product Section -->
+        <section id="idea" class="idea-section">
+            <div class="container">
+                <h2>From Idea to Product</h2>
+                <p>
+                    At EATS SYSTEMS, we guide you through every step of the product development process, from initial
+                    concept to mass production. Our multidisciplinary team ensures that your vision becomes a reality,
+                    providing expertise in design, prototyping, testing, and manufacturing.
+                </p>
+                <!-- Add Read More Button -->
+                <div class="read-more-container">
+                    <a href="/idea-to-product/" class="read-more">See the idea-to-product process</a>
                 </div>
             </div>
+        </section>
 
-            <div class="contact-grid">
-                <!-- Contact Form Section -->
-                <div class="contact-form">
-                    <form name="contact-form" action="https://formspree.io/f/xwkdjvry" method="POST">
-                        <label for="name">Name:</label>
-                        <input type="text" id="name" name="name" required>
+        <!-- OUR SYSTEMS Section -->
+        <section id="our-systems" class="systems-section">
+            <div class="container">
+                <h2>OUR SYSTEMS</h2>
 
-                        <label for="email">Email:</label>
-                        <input type="email" id="email" name="email" required>
+                <div class="systems-carousel" data-interval="5000" aria-label="Our systems">
+                    <div class="systems-stage" aria-roledescription="carousel">
+                        <!-- Slide 1 -->
+                        <figure class="systems-card" data-index="0" data-pos="-1" role="group"
+                            aria-roledescription="slide" aria-label="UHF Technology">
+                            <div class="media">
+                                <img src="/images/systems/uhf-technology.jpg" alt="UHF Technology system"
+                                    loading="lazy">
+                            </div>
+                            <figcaption dir="auto">UHF Technology</figcaption>
+                        </figure>
 
-                        <label for="message">Message:</label>
-                        <textarea id="message" name="message" rows="4" required></textarea>
+                        <!-- Slide 2 (starts centered) -->
+                        <figure class="systems-card" data-index="1" data-pos="0" role="group"
+                            aria-roledescription="slide" aria-label="WIFIGATE">
+                            <div class="media">
+                                <img src="/images/systems/wifigate.png" alt="WIFIGATE system" loading="lazy">
+                            </div>
+                            <figcaption dir="auto">WIFIGATE</figcaption>
+                        </figure>
 
-                        <!-- Centered Send Button -->
-                        <div class="button-container">
-                            <button type="submit">Send Message</button>
-                        </div>
-                    </form>
+                        <!-- Slide 3 -->
+                        <figure class="systems-card" data-index="2" data-pos="1" role="group"
+                            aria-roledescription="slide" aria-label="G.E.B — Build your escaperoom">
+                            <div class="media">
+                                <img src="/images/systems/geb.jpg" alt="G.E.B — Build your escaperoom" loading="lazy">
+                            </div>
+                            <figcaption dir="auto">G.E.B — Build your escaperoom</figcaption>
+                        </figure>
+                    </div>
+
+                    <!-- Small dots (clickable) -->
+                    <div class="systems-pips" role="tablist" aria-label="Slide navigation">
+                        <button class="pip is-active" role="tab" aria-selected="true"
+                            aria-label="Go to UHF Technology"></button>
+                        <button class="pip" role="tab" aria-label="Go to WIFIGATE"></button>
+                        <button class="pip" role="tab" aria-label="Go to G.E.B — Build your escaperoom"></button>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Footer Section -->
-    <footer class="footer-section">
-        <div class="container">
-            <!-- Footer Content Split into Two Columns -->
-            <div class="footer-columns">
-                <!-- Left Column (Slogan) -->
-                <div class="footer-left">
-                    <p class="footer-slogan" style="margin-left: 0;">
-                        Let's turn your ideas into reality. Get in touch with us!
+        <!-- Contact Us Section -->
+        <section id="contact" class="contact-section">
+            <div class="container">
+                <h2>Contact Us</h2>
+                <p>If you have any questions or inquiries, feel free to get in touch with us. We're here to help you
+                    with
+                    your engineering and technology needs.</p>
+
+                <!-- Note Section (outside of contact grid) -->
+                <div class="note-container">
+                    <div class="contact-note">
+                        <p><strong>Note:</strong> EATS SYSTEMS is not open to any new services yet.</p>
+                    </div>
+                </div>
+
+                <div class="contact-grid">
+                    <!-- Contact Form Section -->
+                    <div class="contact-form">
+                        <form name="contact-form" action="https://formspree.io/f/xwkdjvry" method="POST" novalidate>
+                            <p id="contact-help" class="sr-only">All fields are required.</p>
+
+                            <label for="name">Name:</label>
+                            <input type="text" id="name" name="name" autocomplete="name" required
+                                aria-describedby="contact-help">
+
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" name="email" autocomplete="email" inputmode="email" required
+                                aria-describedby="contact-help">
+
+                            <label for="message">Message:</label>
+                            <textarea id="message" name="message" rows="4" required
+                                aria-describedby="contact-help"></textarea>
+
+                            <div aria-live="polite" id="form-status" class="sr-only"></div>
+
+                            <div class="button-container">
+                                <button type="submit">Send Message</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer Section -->
+        <footer class="footer-section">
+            <div class="container">
+                <!-- Footer Content Split into Two Columns -->
+                <div class="footer-columns">
+                    <!-- Left Column (Slogan) -->
+                    <div class="footer-left">
+                        <p class="footer-slogan" style="margin-left: 0;">
+                            Let's turn your ideas into reality. Get in touch with us!
+                        </p>
+                    </div>
+                </div>
+                <!-- Divider Line -->
+                <hr class="footer-divider">
+                <!-- Footer Bottom -->
+                <div class="footer-bottom">
+                    <p class="footer-copyright">
+                        &copy; 2024 EATS-SYSTEMS. All rights reserved.
                     </p>
                 </div>
             </div>
-            <!-- Divider Line -->
-            <hr class="footer-divider">
-            <!-- Footer Bottom -->
-            <div class="footer-bottom">
-                <p class="footer-copyright">
-                    &copy; 2024 EATS-SYSTEMS. All rights reserved.
-                </p>
-            </div>
-        </div>
-    </footer>
+        </footer>
+
+    </main>
+
 
     <!-- Include JavaScript file -->
     <script src="/js/main.js"></script>
