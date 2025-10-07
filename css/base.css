@@ -173,3 +173,18 @@ body.contrast-high .systems-card .media {
         scroll-behavior: auto;
     }
 }
+
+/* Wheelchair icon style */
+.a11y-toolbar .a11y-icon {
+    font-size: 22px;
+    line-height: 1;
+    padding-inline: 2px;
+    color: #333;
+    user-select: none;
+    pointer-events: none;
+    /* שיהיה דקורטיבי בלבד */
+}
+
+body.contrast-high .a11y-toolbar .a11y-icon {
+    color: #000;
+}
