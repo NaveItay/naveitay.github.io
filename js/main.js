@@ -130,9 +130,9 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
-// === OUR SYSTEMS – centered carousel with reduced-motion support ===
+// === OUR SYSTEMS – desktop center carousel + mobile horizontal belt ===
 document.addEventListener('DOMContentLoaded', function () {
-  const root = document.querySelector('#our-systems .systems-carousel');
+  const root  = document.querySelector('#our-systems .systems-carousel');
   if (!root) return;
 
   const stage = root.querySelector('.systems-stage');
@@ -140,29 +140,34 @@ document.addEventListener('DOMContentLoaded', function () {
   const pips  = Array.from(root.querySelectorAll('.pip'));
 
   const intervalMs = parseInt(root.dataset.interval, 10) || 5000;
-  let current = 1; // start with middle
-  let timer = null;
+  let current = 1;     // להתחיל מהשקופית האמצעית (לשימור ההתנהגות)
+  let timer   = null;
 
-  // A11y ids
-  cards.forEach((card, i) => {
-    const id = `system-slide-${i + 1}`;
-    card.id = id;
-    if (pips[i]) pips[i].setAttribute('aria-controls', id);
-  });
+  const isMobileLayout = () => getComputedStyle(stage).display === 'flex';
 
+  // עדכון מצב פריסה + נקודות
   function layout() {
     const n = cards.length;
     const left  = (current - 1 + n) % n;
     const right = (current + 1) % n;
 
-    cards.forEach((card, i) => {
-      let pos = 'off';
-      if (i === current) pos = '0';
-      else if (i === left) pos = '-1';
-      else if (i === right) pos = '1';
-      card.dataset.pos = pos;
-      card.setAttribute('aria-hidden', pos !== '0');
-    });
+    if (!isMobileLayout()) {
+      // מצב דסקטופ – 3D
+      cards.forEach((card, i) => {
+        let pos = 'off';
+        if (i === current) pos = '0';
+        else if (i === left)  pos = '-1';
+        else if (i === right) pos = '1';
+        card.dataset.pos = pos;
+        card.setAttribute('aria-hidden', pos !== '0');
+      });
+    } else {
+      // מובייל – כולם גלויים, בלי ARIA hide
+      cards.forEach(card => {
+        card.dataset.pos = '';
+        card.removeAttribute('aria-hidden');
+      });
+    }
 
     pips.forEach((pip, i) => {
       const on = i === current;
@@ -171,26 +176,51 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  function next(){ current = (current + 1) % cards.length; layout(); }
-  function prev(){ current = (current - 1 + cards.length) % cards.length; layout(); }
+  // גלילה רכה לכרטיס המבוקש במובייל
+  function scrollToCard(i) {
+    const card = cards[i];
+    if (!card) return;
+    const left = card.offsetLeft; // יחסי לתוכן ה-stage
+    stage.scrollTo({ left, behavior: 'smooth' });
+  }
 
-  function start(){
+  function next() {
+    current = (current + 1) % cards.length;
+    if (isMobileLayout()) scrollToCard(current);
+    layout();
+  }
+
+  function prev() {
+    current = (current - 1 + cards.length) % cards.length;
+    if (isMobileLayout()) scrollToCard(current);
+    layout();
+  }
+
+  function start() {
     stop();
-    if (window.A11Y?.reduce) return;
+    if (window.A11Y?.reduce) return; // כיבוד Reduce motion
     timer = setInterval(next, intervalMs);
   }
-  function stop(){ if (timer) clearInterval(timer); timer = null; }
+  function stop() {
+    if (timer) clearInterval(timer);
+    timer = null;
+  }
 
   // Init
-  layout(); start();
+  layout();
+  start();
 
-  // Interactions
+  // אינטראקציות
   root.addEventListener('mouseenter', stop);
   root.addEventListener('mouseleave', start);
 
-  pips.forEach((pip, i) => pip.addEventListener('click', () => {
-    current = i; layout(); start();
-  }));
+  pips.forEach((pip, i) => {
+    pip.addEventListener('click', () => {
+      current = i;
+      isMobileLayout() ? scrollToCard(i) : layout();
+      start(); // לחדש טיימר
+    });
+  });
 
   root.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowRight') { next(); start(); }
@@ -199,15 +229,32 @@ document.addEventListener('DOMContentLoaded', function () {
 
   stage.addEventListener('click', () => { next(); start(); });
 
+  // סנכרון אינדקס בזמן גלילה ידנית במובייל
+  let raf;
+  stage.addEventListener('scroll', () => {
+    if (!isMobileLayout()) return;
+    if (raf) cancelAnimationFrame(raf);
+    raf = requestAnimationFrame(() => {
+      const mid = stage.scrollLeft + stage.clientWidth / 2;
+      let best = 0, bestDist = Infinity;
+      cards.forEach((c, i) => {
+        const cx = c.offsetLeft + c.offsetWidth / 2;
+        const d  = Math.abs(cx - mid);
+        if (d < bestDist) { bestDist = d; best = i; }
+      });
+      if (best !== current) { current = best; layout(); }
+    });
+  }, { passive: true });
+
+  // השהיית אוטופליי כשלא בפריים
   const io = new IntersectionObserver((entries) => {
     entries.forEach(entry => entry.isIntersecting ? start() : stop());
   }, { threshold: 0.5 });
   io.observe(root);
 
-  // React to global motion toggle
-  window.addEventListener('a11y:motion-changed', (e) => {
-    e.detail.reduce ? stop() : start();
-  });
+  // כיבוד מתג motion מהסרגל + שינויי פריסה (ריסייז)
+  window.addEventListener('a11y:motion-changed', (e) => { e.detail.reduce ? stop() : start(); });
+  window.addEventListener('resize', layout);
 });
 
 // === Accessibility module & toolbar ===

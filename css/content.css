@@ -575,3 +575,71 @@
         transition: none;
     }
 }
+
+/* === OUR SYSTEMS – Shrink on desktop === */
+.systems-stage {
+    /* מרחק השקופיות הצדדיות ממרכז */
+    --spread: clamp(100px, 16vw, 280px);
+    /* גובה המדיה */
+    --media-h: clamp(160px, 34vw, 380px);
+    /* קטן יותר מגרסה קודמת */
+}
+
+.systems-card {
+    /* רוחב מעט קטן יותר */
+    width: clamp(220px, 46vw, 680px);
+}
+
+/* === MOBILE (<=680px): שלוש תמונות + גלילה אופקית === */
+@media (max-width: 680px) {
+
+    /* הופכים את ה-stage לשורת גלילה (Scroll-Snap) */
+    .systems-stage {
+        --media-h: auto;
+        /* לא נחוץ במובייל */
+        perspective: none;
+        /* בלי תלת־מימד */
+        height: auto;
+        /* גובה לפי התוכן */
+        display: flex;
+        align-items: stretch;
+        gap: 12px;
+        padding: 8px 8px 12px;
+        overflow-x: auto;
+        overscroll-behavior-x: contain;
+        -webkit-overflow-scrolling: touch;
+        scroll-snap-type: x proximity;
+        /* snap רך ונעים */
+        touch-action: pan-x pinch-zoom;
+        /* סווייפ טבעי */
+    }
+
+    /* הכרטיסים הופכים לפריטים בפְלקס, כולם גלויים,
+     מינימום 220px – ואם יש מקום, 3 ייכנסו בדיוק בשורה */
+    .systems-card {
+        position: relative;
+        top: 0;
+        left: 0;
+        transform: none !important;
+        opacity: 1 !important;
+        z-index: auto !important;
+        margin: 0;
+        flex: 0 0 max(220px, calc((100% - 24px) / 3));
+        /* min 220px; אחרת 3 בעמודה */
+        width: auto;
+        scroll-snap-align: start;
+    }
+
+    .systems-card .media {
+        height: auto;
+        aspect-ratio: 16 / 9;
+        /* יחס קבוע ונקי */
+        border-radius: 12px;
+        box-shadow: 0 12px 32px rgba(0, 0, 0, .18);
+    }
+
+    /* תיאור קצר יותר מתחת לתמונה אם צריך */
+    .systems-card figcaption {
+        font-size: 0.95rem;
+    }
+}
