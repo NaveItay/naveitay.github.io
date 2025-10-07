@@ -655,24 +655,29 @@
 
 /* === OUR SYSTEMS – Uniform image fit across cards === */
 
-/* דסקטופ/טאבלט: גובה עקבי לכרטיס, תמונה ממלאת ונחתכת בעדינות */
+/* דסקטופ/טאבלט: גובה עקבי לכרטיס, תמונה scale-down ברקע לבן */
 #our-systems .systems-card .media {
-    /* אם קיים משתנה --media-h אצלך, נשתמש בו; אחרת יש ערך גיבוי */
     height: var(--media-h, 320px);
+    /* ערך ברירת־מחדל אם --media-h לא מוגדר */
     border-radius: 14px;
     overflow: hidden;
-    background: #0b0b0b;
-    /* מסתיר קצוות שקופים של PNG */
+    background: #fff;
+    /* רקע לבן */
+    display: flex;
+    /* מרכז את התמונה גם כשהיא קטנה */
+    justify-content: center;
+    align-items: center;
 }
 
 #our-systems .systems-card .media img {
-    width: 100%;
-    height: 100%;
-    display: block;
-    object-fit: cover;
-    /* מילוי מלא + חיתוך עדין */
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    /* שומר על היחס המקורי */
+    height: auto;
+    object-fit: scale-down;
+    /* מצטמצם אם גדול מהמיכל */
     object-position: var(--focus, 50% 50%);
-    /* אפשר לשלוט נקודת עניין פר‑תמונה */
 }
 
 /* יישור גבהים כאשר לכותרות יש 1–2 שורות */
