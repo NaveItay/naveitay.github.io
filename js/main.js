@@ -129,3 +129,96 @@ document.addEventListener('DOMContentLoaded', function () {
         console.error('Contact form not found.');
     }
 });
+
+// === OUR SYSTEMS – centered carousel with auto-play ===
+document.addEventListener('DOMContentLoaded', function () {
+  const root = document.querySelector('#our-systems .systems-carousel');
+  if (!root) return;
+
+  const stage = root.querySelector('.systems-stage');
+  const cards = Array.from(stage.querySelectorAll('.systems-card'));
+  const pips = Array.from(root.querySelectorAll('.pip'));
+
+  const intervalMs = parseInt(root.dataset.interval, 10) || 5000;
+  let current = 1; // מתחילים מהשקופית האמצעית (WIFIGATE)
+  let timer = null;
+
+  // A11y ids for tabs/controls
+  cards.forEach((card, i) => {
+    const id = `system-slide-${i + 1}`;
+    card.id = id;
+    if (pips[i]) pips[i].setAttribute('aria-controls', id);
+  });
+
+  function layout() {
+    const n = cards.length;
+    const left = (current - 1 + n) % n;
+    const right = (current + 1) % n;
+
+    cards.forEach((card, i) => {
+      let pos = 'off';
+      if (i === current) pos = '0';
+      else if (i === left) pos = '-1';
+      else if (i === right) pos = '1';
+      card.dataset.pos = pos;
+      card.setAttribute('aria-hidden', pos !== '0');
+    });
+
+    pips.forEach((pip, i) => {
+      pip.classList.toggle('is-active', i === current);
+      pip.setAttribute('aria-selected', i === current ? 'true' : 'false');
+    });
+  }
+
+  function next() {
+    current = (current + 1) % cards.length;
+    layout();
+  }
+  function prev() {
+    current = (current - 1 + cards.length) % cards.length;
+    layout();
+  }
+
+  function start() {
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    stop();
+    timer = setInterval(next, intervalMs);
+  }
+  function stop() {
+    if (timer) clearInterval(timer);
+    timer = null;
+  }
+
+  // Init
+  layout();
+  start();
+
+  // Interactions
+  // Pause on hover, resume on leave
+  root.addEventListener('mouseenter', stop);
+  root.addEventListener('mouseleave', start);
+
+  // Click dots
+  pips.forEach((pip, i) => {
+    pip.addEventListener('click', () => {
+      current = i;
+      layout();
+      start();
+    });
+  });
+
+  // Keyboard navigation when focused inside the carousel
+  root.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight') { next(); start(); }
+    if (e.key === 'ArrowLeft') { prev(); start(); }
+  });
+
+  // Advance on click/tap anywhere on the stage
+  stage.addEventListener('click', () => { next(); start(); });
+
+  // Pause when off-screen to save CPU/battery
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => entry.isIntersecting ? start() : stop());
+  }, { threshold: 0.5 });
+  io.observe(root);
+});
