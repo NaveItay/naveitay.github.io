@@ -37,7 +37,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    /* כדי שהכרטיסים יתמתחו ויהיו באותו גובה */
+    /* make cards stretch to equal height */
 }
 
 .specialty-card:hover {
@@ -215,9 +215,9 @@
     border: 1px solid #dddddd;
     border-radius: 10px;
     width: 100%;
-    /* Make each process step container full width */
+    /* full width per card container */
     max-width: 350px;
-    /* Set a maximum width for the container */
+    /* max width per card container */
     padding: 20px;
     text-align: center;
     box-sizing: border-box;
@@ -226,11 +226,11 @@
 
 .process-step img {
     width: 100%;
-    /* Make sure the image adjusts to the container width */
+    /* adjust to container width */
     height: auto;
-    /* Maintain aspect ratio */
+    /* keep aspect ratio */
     max-width: 300px;
-    /* Set a maximum width for the image */
+    /* max width for the image */
     object-fit: contain;
     margin-bottom: 20px;
 }
@@ -247,7 +247,7 @@
     line-height: 1.6;
 }
 
-/* Idea to Product Section Styles */
+/* Idea Section Styles */
 .idea-section {
     padding: 60px 20px;
     background-color: #ffffff;
@@ -257,7 +257,7 @@
     max-width: 1200px;
     margin: 0 auto;
     text-align: center;
-    /* This ensures that the text is centered */
+    /* center text */
 }
 
 .idea-section p {
@@ -266,10 +266,10 @@
     line-height: 1.8;
     margin-bottom: 20px;
     text-align: center;
-    /* Add this line to center-align the text within the container */
+    /* center-align text within the container */
 }
 
-/* Contact Us Section Styles */
+/* Contact Section Styles */
 .contact-section {
     padding: 60px 20px;
     background-color: #f9f9f9;
@@ -310,12 +310,11 @@
     margin: 0;
 }
 
-/* Contact Us Section Styles */
+/* Contact Section Styles (duplicate block with alignment tweaks) */
 .contact-section {
     padding: 60px 20px;
     background-color: #f9f9f9;
     text-align: left;
-    /* Center the text */
 }
 
 .contact-section .container {
@@ -345,12 +344,12 @@
     margin-left: 5%;
 }
 
-/* Note Section */
+/* Note Box */
 .note-container {
     display: flex;
     justify-content: center;
     margin-bottom: 40px;
-    /* Add space between the note and form */
+    /* spacing between note and form */
 }
 
 .contact-note {
@@ -368,7 +367,7 @@
     margin: 0;
 }
 
-/* Contact Grid Layout */
+/* Contact Grid Layout (center form) */
 .contact-grid {
     display: flex;
     justify-content: center;
@@ -429,7 +428,7 @@
     background-color: #555555;
 }
 
-/* === OUR SYSTEMS – modern centered carousel (updated for 70 % image width) === */
+/* === OUR SYSTEMS – modern centered carousel (updated for 70% image width) === */
 .systems-section {
     padding: clamp(48px, 6vw, 96px) 0;
 }
@@ -447,13 +446,13 @@
 }
 
 .systems-stage {
-    /* Spread = המרחק בין מרכז לשקופיות הצד */
+    /* Spread distance from center to side slides */
     --spread: clamp(140px, 24vw, 360px);
-    /* גובה המדיה (התמונה) */
+    /* Media height (image) */
     --media-h: clamp(220px, 48vw, 520px);
     position: relative;
     width: 100%;
-    /* מוסיפים מקום גם לכיתוב שמתחת לתמונה */
+    /* Add space for caption below the image */
     height: calc(var(--media-h) + 3.25rem);
     perspective: 1200px;
 }
@@ -473,26 +472,26 @@
     will-change: transform, opacity;
 }
 
-/*— media wrapper now flex-boxes its content —*/
+/* media wrapper uses flex to center its content */
 .systems-card .media {
     height: var(--media-h);
     border-radius: 18px;
     overflow: hidden;
     box-shadow: 0 18px 60px rgba(0, 0, 0, 0.22);
 
-    /* מרכז את התמונה בתוך המעטפת */
+    /* center the image inside the wrapper */
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-/*— image scaled to 70 % of the wrapper —*/
+/* image scaled to 70% of the wrapper */
 .systems-card img {
     width: 70%;
     height: auto;
-    /* שומר יחס גובה תקין */
+    /* keep aspect ratio */
     object-fit: contain;
-    /* לא חותך את התמונה */
+    /* no cropping */
     display: block;
 }
 
@@ -587,29 +586,29 @@
 
 /* === OUR SYSTEMS – Shrink on desktop === */
 .systems-stage {
-    /* מרחק השקופיות הצדדיות ממרכז */
+    /* distance from center to side slides */
     --spread: clamp(100px, 16vw, 280px);
-    /* גובה המדיה */
+    /* media height */
     --media-h: clamp(160px, 34vw, 380px);
-    /* קטן יותר מגרסה קודמת */
+    /* smaller than previous */
 }
 
 .systems-card {
-    /* רוחב מעט קטן יותר */
+    /* slightly smaller width */
     width: clamp(220px, 46vw, 680px);
 }
 
-/* === MOBILE (<=680px): שלוש תמונות + גלילה אופקית === */
+/* === MOBILE (<=680px): three images + horizontal scroll === */
 @media (max-width: 680px) {
 
-    /* הופכים את ה-stage לשורת גלילה (Scroll-Snap) */
+    /* turn stage into a horizontal scroll belt (Scroll-Snap) */
     .systems-stage {
         --media-h: auto;
-        /* לא נחוץ במובייל */
+        /* not needed on mobile */
         perspective: none;
-        /* בלי תלת־מימד */
+        /* no 3D */
         height: auto;
-        /* גובה לפי התוכן */
+        /* height based on content */
         display: flex;
         align-items: stretch;
         gap: 12px;
@@ -618,13 +617,12 @@
         overscroll-behavior-x: contain;
         -webkit-overflow-scrolling: touch;
         scroll-snap-type: x proximity;
-        /* snap רך ונעים */
+        /* gentle snap */
         touch-action: pan-x pinch-zoom;
-        /* סווייפ טבעי */
+        /* natural swipe */
     }
 
-    /* הכרטיסים הופכים לפריטים בפְלקס, כולם גלויים,
-     מינימום 220px – ואם יש מקום, 3 ייכנסו בדיוק בשורה */
+    /* make all cards visible as flex items; min 220px; otherwise 3 per row */
     .systems-card {
         position: relative;
         top: 0;
@@ -634,7 +632,6 @@
         z-index: auto !important;
         margin: 0;
         flex: 0 0 max(220px, calc((100% - 24px) / 3));
-        /* min 220px; אחרת 3 בעמודה */
         width: auto;
         scroll-snap-align: start;
     }
@@ -642,12 +639,12 @@
     .systems-card .media {
         height: auto;
         aspect-ratio: 16 / 9;
-        /* יחס קבוע ונקי */
+        /* fixed clean aspect ratio */
         border-radius: 12px;
         box-shadow: 0 12px 32px rgba(0, 0, 0, .18);
     }
 
-    /* תיאור קצר יותר מתחת לתמונה אם צריך */
+    /* slightly smaller caption on mobile */
     .systems-card figcaption {
         font-size: 0.95rem;
     }
@@ -655,28 +652,28 @@
 
 /* === OUR SYSTEMS – Uniform image fit across cards === */
 
-/* קרוסלת OUR SYSTEMS – אל תסתיר את הנקודות */
+/* OUR SYSTEMS carousel – do not clip the dots */
 #our-systems .systems-carousel {
     overflow: visible;
-    /* היה hidden ב-patch */
+    /* was hidden in an earlier patch */
 }
 
 #our-systems .systems-pips {
     margin-top: 16px;
     padding-bottom: 4px;
-    /* מרווח קטן מלמטה */
+    /* small bottom padding */
 }
 
-/* דסקטופ/טאבלט: גובה עקבי לכרטיס, תמונה scale-down ברקע לבן */
+/* Desktop/Tablet: consistent card height, image scale-down on white background */
 #our-systems .systems-card .media {
     height: var(--media-h, 320px);
-    /* ערך ברירת־מחדל אם --media-h לא מוגדר */
+    /* default value if --media-h is not set */
     border-radius: 14px;
     overflow: hidden;
     background: #fff;
-    /* רקע לבן */
+    /* white background */
     display: flex;
-    /* מרכז את התמונה גם כשהיא קטנה */
+    /* center image even when it is smaller */
     justify-content: center;
     align-items: center;
 }
@@ -685,21 +682,21 @@
     max-width: 100%;
     max-height: 100%;
     width: auto;
-    /* שומר על היחס המקורי */
+    /* keep original aspect ratio */
     height: auto;
     object-fit: scale-down;
-    /* מצטמצם אם גדול מהמיכל */
+    /* scales down if larger than wrapper */
     object-position: var(--focus, 50% 50%);
 }
 
-/* יישור גבהים כאשר לכותרות יש 1–2 שורות */
+/* Equalize caption height to avoid layout jumps */
 #our-systems .systems-card figcaption {
     min-height: 2.2rem;
-    /* להתאמה – מונע קפיצות בגבהים */
+    /* prevents caption height jumps */
     text-wrap: balance;
 }
 
-/* מובייל: שלוש תמונות, יחס קבוע, גלילה אופקית נקייה */
+/* Mobile: three images, fixed aspect ratio, clean horizontal scroll */
 @media (max-width: 680px) {
     #our-systems .systems-stage {
         display: flex;
@@ -716,16 +713,16 @@
         transform: none !important;
         opacity: 1 !important;
         flex: 0 0 max(220px, calc((100% - 24px) / 3));
-        /* 3 ייכנסו כשאפשר, אחרת סווייפ */
+        /* 3 when possible, otherwise swipe */
         width: auto;
         scroll-snap-align: start;
     }
 
     #our-systems .systems-card .media {
         height: auto;
-        /* במובייל שומרים יחס קבוע */
+        /* keep a fixed ratio on mobile */
         aspect-ratio: 16 / 9;
-        /* אותו יחס לכל התמונות */
+        /* same ratio for all images */
         border-radius: 12px;
         box-shadow: 0 12px 32px rgba(0, 0, 0, .18);
     }
