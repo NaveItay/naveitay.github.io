@@ -429,7 +429,7 @@
     background-color: #555555;
 }
 
-/* === OUR SYSTEMS – modern centered carousel === */
+/* === OUR SYSTEMS – modern centered carousel (updated for 70 % image width) === */
 .systems-section {
     padding: clamp(48px, 6vw, 96px) 0;
 }
@@ -473,17 +473,26 @@
     will-change: transform, opacity;
 }
 
+/*— media wrapper now flex-boxes its content —*/
 .systems-card .media {
     height: var(--media-h);
     border-radius: 18px;
     overflow: hidden;
     box-shadow: 0 18px 60px rgba(0, 0, 0, 0.22);
+
+    /* מרכז את התמונה בתוך המעטפת */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
+/*— image scaled to 70 % of the wrapper —*/
 .systems-card img {
-    width: 100%;
-    height: 100%;
-    object-fit: fill;
+    width: 70%;
+    height: auto;
+    /* שומר יחס גובה תקין */
+    object-fit: contain;
+    /* לא חותך את התמונה */
     display: block;
 }
 
