@@ -25,7 +25,7 @@ p {
     margin-bottom: 20px;
 }
 
-/* Read More Button Styles */
+/* Read More Button */
 .read-more {
     display: inline-block;
     margin-top: 20px;
@@ -81,7 +81,7 @@ p {
     outline-offset: 2px;
 }
 
-/* 3) Visually hidden (for SR-only text) */
+/* 3) Visually hidden utility (for screen-reader-only text) */
 .sr-only {
     position: absolute !important;
     width: 1px;
@@ -116,24 +116,24 @@ p {
     }
 }
 
-/* כפתורי סרגל נגישות + האייקון */
+/* Toolbar buttons and icon */
 .a11y-toolbar button,
 .a11y-toolbar .a11y-icon {
     appearance: none;
     border: 1px solid rgba(0, 0, 0, .2);
     border-radius: 8px;
     padding: 8px 10px;
-    /* אותו מרווח כמו קודם */
+    /* consistent padding with buttons */
     font: inherit;
     background: transparent;
     display: inline-flex;
-    /* ממרכז את התוכן אנכית ואופקית */
+    /* center content vertically and horizontally */
     align-items: center;
     justify-content: center;
     line-height: 1;
 }
 
-/* סמן עכבר רק על כפתורים (לא על האייקון) */
+/* Pointer only on interactive buttons (not the decorative icon) */
 .a11y-toolbar button {
     cursor: pointer;
 }
@@ -142,18 +142,17 @@ p {
     cursor: default;
 }
 
-/* פוקוס נגיש */
+/* Accessible focus for toolbar buttons */
 .a11y-toolbar button:focus-visible {
     outline: 3px solid #0b6bff;
     outline-offset: 2px;
 }
 
-/* מצב לחוץ (toggle) */
+/* Toggle (pressed) state */
 .a11y-toolbar button[aria-pressed="true"] {
     border-color: #0b6bff;
     box-shadow: 0 0 0 3px rgba(11, 107, 255, .15);
 }
-
 
 /* 5) Larger text mode (scales the root font size responsibly) */
 body.text-lg {
@@ -161,6 +160,7 @@ body.text-lg {
 }
 
 /* ~18px */
+
 @media (min-width: 1200px) {
     body.text-lg {
         font-size: 118.75%;
@@ -169,7 +169,7 @@ body.text-lg {
 
 /* ~19px */
 
-/* 6) High-contrast, minimally invasive adjustments */
+/* 6) High-contrast tweaks (minimally invasive) */
 body.contrast-high a,
 body.contrast-high .read-more {
     text-decoration: underline;
@@ -186,14 +186,14 @@ body.contrast-high .systems-card .media {
     box-shadow: none;
 }
 
-/* 7) Respect user's reduced motion preference (JS ידאג לעצור אנימציות) */
+/* 7) Respect user's reduced motion preference */
 @media (prefers-reduced-motion: reduce) {
     html:focus-within {
         scroll-behavior: auto;
     }
 }
 
-/* Wheelchair icon style */
+/* Wheelchair icon style (decorative) */
 .a11y-toolbar .a11y-icon {
     font-size: 22px;
     line-height: 1;
@@ -201,7 +201,7 @@ body.contrast-high .systems-card .media {
     color: #333;
     user-select: none;
     pointer-events: none;
-    /* שיהיה דקורטיבי בלבד */
+    /* decorative only */
 }
 
 body.contrast-high .a11y-toolbar .a11y-icon {

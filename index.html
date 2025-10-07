@@ -1,11 +1,10 @@
 <!-- index.html -->
-<!-- Limit message letters -->
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <!-- Meta tags for responsive design -->
+    <!-- Responsive meta -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Page title -->
     <title>EATS - Engineering and Technology Solutions</title>
@@ -14,7 +13,7 @@
     <meta name="description"
         content="EATS SYSTEMS specializes in developing embedded systems from concept to mass production. Discover our specialties in embedded engineering, electrical engineering, PCB design, and more.">
 
-    <!-- Favicon Links -->
+    <!-- Favicons -->
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -22,7 +21,7 @@
     <link rel="manifest" href="/site.webmanifest">
     <meta name="theme-color" content="#ffffff">
 
-    <!-- Link to external CSS files -->
+    <!-- External CSS -->
     <link rel="stylesheet" href="/css/fonts.css">
     <link rel="stylesheet" href="/css/base.css">
     <link rel="stylesheet" href="/css/header.css">
@@ -33,12 +32,12 @@
 
     <!-- === Anti horizontal-scroll patch (safe, high-specificity) === -->
     <style>
-        /* מניעת גלילה אופקית גלובלית + טיפול בדפדפנים ניידים */
+        /* Prevent global horizontal scrolling (+ mobile-friendly) */
         html,
         body {
             max-width: 100%;
             overflow-x: hidden;
-            /* fallback לכל הדפדפנים */
+            /* fallback for all browsers */
         }
 
         @supports (overflow-x: clip) {
@@ -48,10 +47,10 @@
                 overflow-x: clip;
             }
 
-            /* מודרני: לא מייצר שכבת גלילה נסתרת */
+            /* modern: avoids creating a hidden scroll layer */
         }
 
-        /* ווידאו ברוחב הדף בלי לגרום ל-100vw + scrollbar */
+        /* Make video fill width without causing 100vw + scrollbar issues */
         .video-section {
             overflow: hidden;
         }
@@ -63,19 +62,17 @@
             height: auto;
         }
 
-        /* קרוסלת OUR SYSTEMS – מונע מתוכן משוקרן לחרוג מהדף */
+        /* OUR SYSTEMS carousel – keep content visually contained */
         .systems-carousel {
             overflow: hidden;
         }
 
-        /* האב חותך גלישה החוצה */
+        /* Stage can let side hints stay visible within the carousel */
         .systems-stage {
             overflow: visible;
         }
 
-        /* מאפשר לרמזי השקופיות להישאר גלויים בתוך הקרוסלה */
-
-        /* הגנה כללית מתמונות/אלמנטים שיכולים "לדחוף" את הפריסה */
+        /* Generic safety: prevent media from pushing layout width */
         img,
         svg,
         canvas,
@@ -105,7 +102,7 @@
     <!-- Live region for screen readers -->
     <div id="a11y-status" class="sr-only" role="status" aria-live="polite"></div>
 
-    <!-- עטיפת כל אזור התוכן הראשי -->
+    <!-- Wrapper for all main content -->
     <main id="main-content" tabindex="-1">
 
         <section class="video-section">
@@ -128,7 +125,7 @@
                     products that stand out in today's competitive market.
                 </p>
                 <div class="read-more-container">
-                    <a href="/about/" class="read-more">Read more</a>
+                    <a href="pages/about/" class="read-more">Read more</a>
                 </div>
             </div>
         </section>
@@ -163,9 +160,9 @@
                         <p>Specializing in energy-efficient designs for extended battery life.</p>
                     </div>
                 </div>
-                <!-- Add Read More Button -->
+                <!-- Read More Button -->
                 <div class="read-more-container">
-                    <a href="/specialties/" class="read-more">Read more</a>
+                    <a href="pages/specialties/" class="read-more">Read more</a>
                 </div>
             </div>
         </section>
@@ -179,9 +176,9 @@
                     concept to mass production. Our multidisciplinary team ensures that your vision becomes a reality,
                     providing expertise in design, prototyping, testing, and manufacturing.
                 </p>
-                <!-- Add Read More Button -->
+                <!-- Read More Button -->
                 <div class="read-more-container">
-                    <a href="/idea-to-product/" class="read-more">Read more</a>
+                    <a href="pages/idea-to-product/" class="read-more">Read more</a>
                 </div>
             </div>
         </section>
@@ -242,7 +239,7 @@
                     with
                     your engineering and technology needs.</p>
 
-                <!-- Note Section (outside of contact grid) -->
+                <!-- Note Section (separate from the contact grid) -->
                 <div class="note-container">
                     <div class="contact-note">
                         <p><strong>Note:</strong> EATS SYSTEMS is not open to any new services yet.</p>
@@ -250,7 +247,7 @@
                 </div>
 
                 <div class="contact-grid">
-                    <!-- Contact Form Section -->
+                    <!-- Contact Form -->
                     <div class="contact-form">
                         <form name="contact-form" action="https://formspree.io/f/xwkdjvry" method="POST" novalidate>
                             <p id="contact-help" class="sr-only">All fields are required.</p>
@@ -281,7 +278,7 @@
         <!-- Footer Section -->
         <footer class="footer-section">
             <div class="container">
-                <!-- Footer Content Split into Two Columns -->
+                <!-- Footer Content -->
                 <div class="footer-columns">
                     <!-- Left Column (Slogan) -->
                     <div class="footer-left">
@@ -290,7 +287,7 @@
                         </p>
                     </div>
                 </div>
-                <!-- Divider Line -->
+                <!-- Divider -->
                 <hr class="footer-divider">
                 <!-- Footer Bottom -->
                 <div class="footer-bottom">
@@ -299,11 +296,11 @@
                     </p>
                 </div>
             </div>
-            <br> <br>
+            <br><br>
         </footer>
     </main>
 
-    <!-- Include JavaScript file -->
+    <!-- Main JavaScript -->
     <script src="/js/main.js"></script>
 
 </body>

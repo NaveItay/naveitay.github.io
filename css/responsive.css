@@ -7,7 +7,7 @@
     display: none;
 }
 
-/* מניעת גלילה אופקית כללית – גיבוי גם בקובץ זה */
+/* Prevent global horizontal scrolling (backup here as well) */
 html,
 body {
     max-width: 100%;
@@ -19,6 +19,7 @@ body {
     html,
     body {
         overflow-x: clip;
+        /* modern: avoids creating a hidden scroll layer */
     }
 }
 
@@ -39,7 +40,7 @@ body {
         font-size: clamp(20px, 5vw, 32px);
     }
 
-    /* Display hamburger and hide desktop nav */
+    /* Show hamburger and hide desktop nav */
     .hamburger {
         display: flex;
     }
@@ -56,7 +57,7 @@ body {
         padding: 0 10px;
         box-sizing: border-box;
         overflow-x: hidden;
-        /* שלא "יברח" לרוחב במסכים קטנים */
+        /* ensure no horizontal bleed on small screens */
     }
 
     /* Show the nav-links when nav-active class is added */
@@ -67,7 +68,7 @@ body {
         justify-content: center;
         overflow-y: auto;
         overflow-x: hidden;
-        /* בטוח */
+        /* safe */
     }
 
     /* Position the hamburger icon on the right */
@@ -102,7 +103,7 @@ body {
         color: #ffcc00;
     }
 
-    /* Hide scrollbar when menu is open */
+    /* Hide page scroll when mobile menu is open */
     body.menu-open {
         overflow: hidden;
     }
@@ -133,7 +134,7 @@ body {
         font-size: 1rem;
     }
 
-    /* Our Specialties Section Responsive Styles */
+    /* Specialties Content Section Responsive Styles */
     .specialties-content-section .container {
         padding: 20px 10px;
     }
@@ -194,7 +195,7 @@ body {
         align-items: flex-start;
         flex-wrap: nowrap;
         overflow-x: hidden;
-        /* שלא יגלול לרוחב אם התוכן רחב */
+        /* prevent horizontal scroll if content is wide */
     }
 
     .founder {
@@ -219,7 +220,7 @@ body {
         padding: 15px;
     }
 
-    /* Adjust team member styles if used */
+    /* Team member responsive styles (if used) */
     .team-member {
         width: 100%;
         margin: 20px 0;
@@ -229,7 +230,7 @@ body {
         width: 100%;
     }
 
-    /* Responsive Styles for Idea to Product Section */
+    /* Idea to Product: stack steps vertically on mobile */
     .process-steps {
         flex-direction: column;
         align-items: center;
@@ -239,7 +240,7 @@ body {
         width: 100%;
     }
 
-    /* Contact Us Section Responsive Styles */
+    /* Contact Section Responsive Styles */
     .contact-section {
         padding: 40px 15px;
     }
@@ -258,16 +259,17 @@ body {
         padding: 10px 20px;
     }
 
+    /* Specialties grid: 2-column layout on mobile */
     .specialties-grid {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         /* 2 columns layout */
         gap: 20px;
-        /* space between cards */
+        /* spacing between cards */
         justify-items: center;
         /* center each card */
         overflow-x: hidden;
-        /* בטיחות */
+        /* safety */
     }
 
     .specialty-card {
