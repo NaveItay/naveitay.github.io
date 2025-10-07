@@ -655,6 +655,18 @@
 
 /* === OUR SYSTEMS – Uniform image fit across cards === */
 
+/* קרוסלת OUR SYSTEMS – אל תסתיר את הנקודות */
+#our-systems .systems-carousel {
+    overflow: visible;
+    /* היה hidden ב-patch */
+}
+
+#our-systems .systems-pips {
+    margin-top: 16px;
+    padding-bottom: 4px;
+    /* מרווח קטן מלמטה */
+}
+
 /* דסקטופ/טאבלט: גובה עקבי לכרטיס, תמונה scale-down ברקע לבן */
 #our-systems .systems-card .media {
     height: var(--media-h, 320px);
