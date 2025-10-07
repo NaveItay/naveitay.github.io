@@ -207,3 +207,63 @@ body.contrast-high .systems-card .media {
 body.contrast-high .a11y-toolbar .a11y-icon {
     color: #000;
 }
+
+/* === Mobile-friendly accessibility toolbar enhancements === */
+@media (max-width: 680px) {
+    .a11y-toolbar {
+        /* Centered pill above OS home indicator */
+        right: auto;
+        left: 50%;
+        bottom: max(12px, env(safe-area-inset-bottom));
+        transform: translateX(-50%);
+        gap: 6px;
+        padding: 6px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.92);
+        backdrop-filter: blur(8px);
+        box-shadow: 0 8px 28px rgba(0, 0, 0, .18);
+        z-index: 10000;
+        /* above carousels/footers */
+    }
+
+    /* Larger tap targets (WCAG ~44x44) */
+    .a11y-toolbar button,
+    .a11y-toolbar .a11y-icon {
+        min-width: 44px;
+        min-height: 44px;
+        padding: 0 10px;
+        border-radius: 10px;
+        font-size: 15px;
+        line-height: 1;
+    }
+
+    /* Wheelchair icon sizing on mobile */
+    .a11y-toolbar .a11y-icon {
+        font-size: 20px;
+        padding-inline: 0;
+    }
+
+    /* Stronger focus outline on mobile */
+    .a11y-toolbar button:focus-visible {
+        outline-width: 3px;
+    }
+
+    /* Dark mode variant on mobile */
+    @media (prefers-color-scheme: dark) {
+        .a11y-toolbar {
+            background: rgba(18, 18, 18, 0.9);
+            border-color: rgba(255, 255, 255, .15);
+        }
+
+        .a11y-toolbar button,
+        .a11y-toolbar .a11y-icon {
+            border-color: rgba(255, 255, 255, .22);
+            color: #f2f2f2;
+        }
+    }
+}
+
+/* Ensure toolbar sits on top if other components use high z-index */
+.a11y-toolbar {
+    z-index: 10000;
+}
