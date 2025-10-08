@@ -249,7 +249,9 @@
                 <div class="contact-grid">
                     <!-- Contact Form -->
                     <div class="contact-form">
-                        <form name="contact-form" action="https://formspree.io/f/xwkdjvry" method="POST" novalidate>
+                        <form name="contact-form" action="https://formsubmit.co/support@eats-systems.com" method="POST"
+                            novalidate>
+                            <!-- required fields -->
                             <p id="contact-help" class="sr-only">All fields are required.</p>
 
                             <label for="name">Name:</label>
@@ -264,8 +266,17 @@
                             <textarea id="message" name="message" rows="4" required
                                 aria-describedby="contact-help"></textarea>
 
-                            <div aria-live="polite" id="form-status" class="sr-only"></div>
+                            <!-- FormSubmit options -->
+                            <input type="hidden" name="_subject" value="New message from EATS-SYSTEMS.com contact form">
+                            <input type="hidden" name="_template" value="table">
+                            <input type="hidden" name="_captcha" value="false">
+                            <!-- After-submit thanks page (optional): -->
+                            <!-- <input type="hidden" name="_next" value="https://eats-systems.com/thanks.html"> -->
 
+                            <!-- honeypot (spam trap) -->
+                            <input type="text" name="_honey" style="display:none">
+
+                            <div aria-live="polite" id="form-status" class="sr-only"></div>
                             <div class="button-container">
                                 <button type="submit">Send Message</button>
                             </div>
