@@ -111,8 +111,7 @@ p {
 
 @media (prefers-color-scheme: dark) {
     .a11y-toolbar {
-        background: rgba(24, 24, 24, .85);
-        border-color: rgba(255, 255, 255, .18);
+        border-color: rgb(179 179 179);
     }
 }
 
