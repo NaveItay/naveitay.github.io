@@ -266,3 +266,69 @@ body.contrast-high .a11y-toolbar .a11y-icon {
 .a11y-toolbar {
     z-index: 10000;
 }
+
+/* === A11Y OVERRIDES === */
+
+/* 1) High-contrast should NOT affect any buttons/CTAs */
+.contrast-high :where(button,
+    .btn,
+    .button,
+    .button-container button,
+    [type="button"],
+    [type="submit"],
+    [role="button"],
+    a.read-more) {
+    /* keep original theme styles */
+    filter: none !important;
+    mix-blend-mode: normal !important;
+    color: inherit !important;
+    background: inherit !important;
+    border-color: inherit !important;
+    box-shadow: inherit !important;
+}
+
+/* Guard against blanket "everything in contrast-high becomes black/white" rules */
+.contrast-high :where(button,
+    .btn,
+    .button,
+    .button-container button,
+    [type="button"],
+    [type="submit"],
+    [role="button"],
+    a.read-more) * {
+    color: inherit !important;
+    background: transparent !important;
+}
+
+/* 2) A+ should be clearly bigger (without wrecking layout) */
+.text-lg {
+    /* scale the whole document’s typographic base */
+    font-size: 118%;
+    /* was small; bump to ~18–19px if base is 16px */
+    line-height: 1.6;
+}
+
+/* Boost common text elements further for readability */
+.text-lg :where(p, li, label, input, textarea, .footer-slogan) {
+    font-size: 1.1em;
+    /* relative to the bumped base */
+}
+
+/* Headings scale with sensible steps */
+.text-lg h1 {
+    font-size: clamp(2rem, 1.6rem + 1.5vw, 3rem);
+}
+
+.text-lg h2 {
+    font-size: clamp(1.6rem, 1.3rem + 1vw, 2.25rem);
+}
+
+.text-lg h3 {
+    font-size: clamp(1.3rem, 1.1rem + 0.7vw, 1.75rem);
+}
+
+/* Don’t enlarge buttons via A+ unless you want to (keeps layout stable) */
+.text-lg :where(button, .btn, .button, .button-container button, [type="submit"], a.read-more) {
+    font-size: inherit;
+    /* no extra bump for buttons */
+}
