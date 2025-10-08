@@ -337,3 +337,16 @@ document.addEventListener('DOMContentLoaded', function(){
   syncMotionWithMedia();
   window.addEventListener('a11y:motion-changed', syncMotionWithMedia);
 });
+
+// Render support@eats-systems.com without exposing a plain mailto to scrapers
+(function () {
+  var u = "support";
+  var d = "eats-systems.com";
+  var e = u + "@" + d;
+  var a = document.createElement("a");
+  a.href = "mailto:" + e;
+  a.textContent = e;
+  a.rel = "nofollow";
+  var slot = document.getElementById("support-email");
+  if (slot) slot.replaceChildren(a);
+})();

@@ -1,4 +1,4 @@
-<!-- index.htmel -->
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -106,7 +106,9 @@
     <main id="main-content" tabindex="-1">
 
         <section class="video-section">
-            <video src="/videos/EATS-SYSTEMS-HD.mp4" playsinline muted autoplay loop aria-hidden="true"></video>
+            <video src="/videos/EATS-SYSTEMS-HD.mp4" playsinline muted autoplay loop aria-hidden="true"
+                poster="/images/homepage/og-cover.png"></video>
+            <noscript><img src="/images/homepage/og-cover.png" alt="EATS SYSTEMS hero image"></noscript>
         </section>
 
         <!-- About Us Section -->
@@ -239,6 +241,9 @@
                     with
                     your engineering and technology needs.</p>
 
+                <!-- NEW: show support email -->
+                <p>Email: <a href="mailto:support@eats-systems.com">support@eats-systems.com</a></p>
+
                 <!-- Note Section (separate from the contact grid) -->
                 <div class="note-container">
                     <div class="contact-note">
@@ -247,11 +252,9 @@
                 </div>
 
                 <div class="contact-grid">
-                    <!-- Contact Form -->
+                    <!-- Contact Form (Formspree stays the same) -->
                     <div class="contact-form">
-                        <form name="contact-form" action="https://formsubmit.co/support@eats-systems.com" method="POST"
-                            novalidate>
-                            <!-- required fields -->
+                        <form name="contact-form" action="https://formspree.io/f/xwkdjvry" method="POST" novalidate>
                             <p id="contact-help" class="sr-only">All fields are required.</p>
 
                             <label for="name">Name:</label>
@@ -266,17 +269,11 @@
                             <textarea id="message" name="message" rows="4" required
                                 aria-describedby="contact-help"></textarea>
 
-                            <!-- FormSubmit options -->
+                            <!-- Optional: nicer subject line in your inbox -->
                             <input type="hidden" name="_subject" value="New message from EATS-SYSTEMS.com contact form">
-                            <input type="hidden" name="_template" value="table">
-                            <input type="hidden" name="_captcha" value="false">
-                            <!-- After-submit thanks page (optional): -->
-                            <!-- <input type="hidden" name="_next" value="https://eats-systems.com/thanks.html"> -->
-
-                            <!-- honeypot (spam trap) -->
-                            <input type="text" name="_honey" style="display:none">
 
                             <div aria-live="polite" id="form-status" class="sr-only"></div>
+
                             <div class="button-container">
                                 <button type="submit">Send Message</button>
                             </div>
@@ -313,6 +310,37 @@
 
     <!-- Main JavaScript -->
     <script src="/js/main.js"></script>
+
+    <!-- SEO overrides (must come BEFORE seo.js) -->
+    <script>
+        window.EATS_SEO = {
+            // Branding
+            siteName: "EATS SYSTEMS — Embedded & Electronics Engineering",
+            orgName: "EATS SYSTEMS",
+
+            // URLs (use absolute for crawlers)
+            url: "https://eats-systems.com",
+            logo: "https://eats-systems.com/images/logo.png",
+            cover: "https://eats-systems.com/images/og-cover.jpg",
+
+            // Page meta
+            title: "EATS - Engineering and Technology Solutions",
+            description: "EATS SYSTEMS specializes in developing embedded systems from concept to mass production.",
+            lang: document.documentElement.lang || "en",
+            languages: ["en", "he"],
+
+            // Public profiles (add more when ready)
+            sameAs: ["https://github.com/NaveItay"],
+
+            // Twitter cards (optional)
+            enableTwitter: true,
+            twitterCard: "summary_large_image",
+            twitterHandle: "" // e.g., "@eats_systems"
+        };
+    </script>
+
+    <!-- SEO bootstrap -->
+    <script src="/js/seo.js" defer></script>
 
 </body>
 
