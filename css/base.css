@@ -153,13 +153,13 @@ p {
     box-shadow: 0 0 0 3px rgba(11, 107, 255, .15);
 }
 
-/* 5) Larger text mode (scales the root font size responsibly) */
+/* 5) Larger text mode (legacy note)
+   (Kept for reference; actual scaling is consolidated under body.text-lg below) */
 body.text-lg {
     font-size: 112.5%;
 }
 
 /* ~18px */
-
 @media (min-width: 1200px) {
     body.text-lg {
         font-size: 118.75%;
@@ -216,10 +216,12 @@ body.highlight-links a {
 }
 
 /* Prevent CTA buttons such as read-more from inheriting link highlights */
-body.highlight-links a.read-more {
-    outline: none;
-    text-decoration: none;
-    color: inherit;
+body.highlight-links a.read-more,
+body.highlight-links a.read-more:hover,
+body.highlight-links a.read-more:focus-visible {
+    outline: none !important;
+    text-decoration: none !important;
+    color: inherit !important;
 }
 
 /* === Mobile-friendly accessibility toolbar enhancements === */
@@ -285,13 +287,8 @@ body.highlight-links a.read-more {
 /* === A11Y OVERRIDES === */
 
 /* 1) High-contrast should NOT affect any buttons/CTAs */
-.contrast-high :where(button,
-    .btn,
-    .button,
-    .button-container button,
-    [type="button"],
-    [type="submit"],
-    [role="button"],
+.contrast-high :where(button, .btn, .button, .button-container button,
+    [type="button"], [type="submit"], [role="button"],
     a.read-more) {
     /* keep original theme styles */
     filter: none !important;
@@ -303,66 +300,49 @@ body.highlight-links a.read-more {
 }
 
 /* Guard against blanket "everything in contrast-high becomes black/white" rules */
-.contrast-high :where(button,
-    .btn,
-    .button,
-    .button-container button,
-    [type="button"],
-    [type="submit"],
-    [role="button"],
+.contrast-high :where(button, .btn, .button, .button-container button,
+    [type="button"], [type="submit"], [role="button"],
     a.read-more) * {
     color: inherit !important;
     background: transparent !important;
 }
 
-/* 2) A+ should be clearly bigger (without wrecking layout) */
-.text-lg {
-    /* scale the whole document’s typographic base */
-    font-size: 118%;
-    /* was small; bump to ~18–19px if base is 16px */
-    line-height: 1.6;
-}
-
-/* Boost common text elements further for readability */
-.text-lg :where(p, li, label, input, textarea, .footer-slogan) {
-    font-size: 1.1em;
-    /* relative to the bumped base */
-}
-
-/* Headings scale with sensible steps */
-.text-lg h1 {
-    font-size: clamp(2rem, 1.6rem + 1.5vw, 3rem);
-}
-
-.text-lg h2 {
-    font-size: clamp(1.6rem, 1.3rem + 1vw, 2.25rem);
-}
-
-.text-lg h3 {
-    font-size: clamp(1.3rem, 1.1rem + 0.7vw, 1.75rem);
-}
-
-/* Don’t enlarge buttons via A+ unless you want to (keeps layout stable) */
-.text-lg :where(button, .btn, .button, .button-container button, [type="submit"], a.read-more) {
-    font-size: inherit;
-    /* no extra bump for buttons */
-}
-
-/* === Global A+ text enlargement === */
+/* === Global A+ text enlargement (consolidated) === */
 body.text-lg {
     /* Upsize the root text for everything that uses rem/em */
     font-size: 112.5%;
-    /* ~18px if your base is 16px */
+    /* ~18px if base is 16px */
     /* Mobile/Chromium Safari assist to enlarge text */
     -webkit-text-size-adjust: 115%;
     text-size-adjust: 115%;
+    line-height: 1.6;
 }
 
 /* Also nudge typical leaf text that may have fixed px sizes */
 body.text-lg :where(p, li, a, span, label, input, textarea, select, button,
     small, figcaption, blockquote, code, pre,
-    th, td, caption, dt, dd) {
+    th, td, caption, dt, dd,
+    .footer-slogan) {
     font-size: calc(1em * 1.12);
+}
+
+/* Headings scale with sensible steps */
+body.text-lg h1 {
+    font-size: clamp(2rem, 1.6rem + 1.5vw, 3rem);
+}
+
+body.text-lg h2 {
+    font-size: clamp(1.6rem, 1.3rem + 1vw, 2.25rem);
+}
+
+body.text-lg h3 {
+    font-size: clamp(1.3rem, 1.1rem + 0.7vw, 1.75rem);
+}
+
+/* Don’t enlarge buttons via A+ unless you want to (keeps layout stable) */
+body.text-lg :where(button, .btn, .button, .button-container button, [type="submit"], a.read-more) {
+    font-size: inherit;
+    /* no extra bump for buttons */
 }
 
 /* Keep the accessibility toolbar readable but not over-inflated */
