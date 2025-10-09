@@ -214,6 +214,7 @@ body.highlight-links a {
     outline: 2px dashed #0b6bff;
     color: #0b6bff;
 }
+
 /* Prevent CTA buttons such as read-more from inheriting link highlights */
 body.highlight-links a.read-more {
     outline: none;
@@ -345,4 +346,27 @@ body.highlight-links a.read-more {
 .text-lg :where(button, .btn, .button, .button-container button, [type="submit"], a.read-more) {
     font-size: inherit;
     /* no extra bump for buttons */
+}
+
+/* === Global A+ text enlargement === */
+body.text-lg {
+    /* Upsize the root text for everything that uses rem/em */
+    font-size: 112.5%;
+    /* ~18px if your base is 16px */
+    /* Mobile/Chromium Safari assist to enlarge text */
+    -webkit-text-size-adjust: 115%;
+    text-size-adjust: 115%;
+}
+
+/* Also nudge typical leaf text that may have fixed px sizes */
+body.text-lg :where(p, li, a, span, label, input, textarea, select, button,
+    small, figcaption, blockquote, code, pre,
+    th, td, caption, dt, dd) {
+    font-size: calc(1em * 1.12);
+}
+
+/* Keep the accessibility toolbar readable but not over-inflated */
+body.text-lg .a11y-toolbar {
+    font-size: 1rem;
+    /* lock it to the enlarged base so it doesn’t double scale */
 }
