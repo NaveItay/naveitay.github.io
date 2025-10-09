@@ -62,6 +62,7 @@
 }
 
 @media (max-width: 680px) {
+
     /* Stack image on top of text on narrow screens */
     .system-item {
         flex-direction: column;
@@ -73,6 +74,7 @@
         margin: 0 0 16px;
     }
 }
+
 /* content.css */
 
 /* About Us Section Styles */
@@ -801,4 +803,13 @@
         border-radius: 12px;
         box-shadow: 0 12px 32px rgba(0, 0, 0, .18);
     }
+}
+
+/* Our Systems intro */
+.systems-content-section .section-intro {
+    max-width: 920px;
+    margin: 0 auto 24px;
+    color: #555;
+    line-height: 1.7;
+    text-align: center;
 }
