@@ -1,3 +1,78 @@
+/* ===================== */
+/* Our Systems Content Section Styles */
+
+/* The detailed systems page uses a similar layout to the specialties page but is scoped under
+   `.systems-content-section` to avoid conflicts. Each system item displays an image alongside
+   descriptive text and scales responsively on larger screens. */
+.systems-content-section {
+    padding: 60px 20px;
+    background-color: #ffffff;
+}
+
+.systems-content-section .container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.system-details {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.system-item {
+    display: flex;
+    background-color: #f9f9f9;
+    border: 1px solid #dddddd;
+    border-radius: 10px;
+    padding: 20px;
+    align-items: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.system-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.system-item img {
+    width: 30%;
+    height: auto;
+    border-radius: 10px;
+    margin-right: 20px;
+}
+
+.system-text {
+    flex: 1;
+}
+
+.system-text h3 {
+    font-size: 1.8rem;
+    margin: 0 0 15px;
+    color: #333333;
+}
+
+.system-text p {
+    font-size: 1rem;
+    color: #555555;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+@media (max-width: 680px) {
+    /* Stack image on top of text on narrow screens */
+    .system-item {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .system-item img {
+        width: 100%;
+        margin: 0 0 16px;
+    }
+}
 /* content.css */
 
 /* About Us Section Styles */
