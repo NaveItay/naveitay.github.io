@@ -283,6 +283,21 @@ document.addEventListener('DOMContentLoaded', function(){
       document.body.classList.toggle('text-lg', on);
       announce(`Text size ${on ? 'increased' : 'normal'}.`);
     }
+    ,
+    // New feature: highlight links for better discoverability
+    get links(){ return localStorage.getItem('a11y.links') === '1'; },
+    setLinks(on){
+      localStorage.setItem('a11y.links', on ? '1' : '0');
+      document.body.classList.toggle('highlight-links', on);
+      announce(`Link highlighting ${on ? 'enabled' : 'disabled'}.`);
+    },
+    // Reset all accessibility settings to defaults
+    resetAll(){
+      this.setContrast(false);
+      this.setReduce(false);
+      this.setTextLg(false);
+      this.setLinks(false);
+    }
   };
   window.A11Y = A11Y;
 
@@ -290,16 +305,21 @@ document.addEventListener('DOMContentLoaded', function(){
   document.body.classList.toggle('reduce-motion', A11Y.reduce);
   document.body.classList.toggle('contrast-high', A11Y.contrast);
   document.body.classList.toggle('text-lg', A11Y.textLg);
+  document.body.classList.toggle('highlight-links', A11Y.links);
 
   // Toolbar wiring
   const btnContrast = document.getElementById('btn-contrast');
   const btnMotion   = document.getElementById('btn-motion');
   const btnFont     = document.getElementById('btn-font');
+  const btnLinks    = document.getElementById('btn-links');
+  const btnReset    = document.getElementById('btn-reset');
   const setPressed  = (el, on) => el && el.setAttribute('aria-pressed', on ? 'true' : 'false');
 
   setPressed(btnContrast, A11Y.contrast);
   setPressed(btnMotion,   A11Y.reduce);
   setPressed(btnFont,     A11Y.textLg);
+  setPressed(btnLinks,    A11Y.links);
+  setPressed(btnReset,    false);
 
   btnContrast?.addEventListener('click', () => {
     const on = !A11Y.contrast; A11Y.setContrast(on); setPressed(btnContrast, on);
@@ -310,6 +330,19 @@ document.addEventListener('DOMContentLoaded', function(){
   });
   btnFont?.addEventListener('click', () => {
     const on = !A11Y.textLg;   A11Y.setTextLg(on);   setPressed(btnFont, on);
+  });
+  // Toggle link highlighting
+  btnLinks?.addEventListener('click', () => {
+    const on = !A11Y.links;   A11Y.setLinks(on);   setPressed(btnLinks, on);
+  });
+  // Reset all accessibility settings
+  btnReset?.addEventListener('click', () => {
+    A11Y.resetAll();
+    setPressed(btnContrast, false);
+    setPressed(btnMotion,   false);
+    setPressed(btnFont,     false);
+    setPressed(btnLinks,    false);
+    setPressed(btnReset,    false);
   });
 
   // Announcements for SR

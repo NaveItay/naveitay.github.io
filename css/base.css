@@ -207,6 +207,20 @@ body.contrast-high .a11y-toolbar .a11y-icon {
     color: #000;
 }
 
+/* === Highlight links mode === */
+/* When enabled, all links are underlined and colored for better visibility. */
+body.highlight-links a {
+    text-decoration: underline;
+    outline: 2px dashed #0b6bff;
+    color: #0b6bff;
+}
+/* Prevent CTA buttons such as read-more from inheriting link highlights */
+body.highlight-links a.read-more {
+    outline: none;
+    text-decoration: none;
+    color: inherit;
+}
+
 /* === Mobile-friendly accessibility toolbar enhancements === */
 @media (max-width: 680px) {
     .a11y-toolbar {
