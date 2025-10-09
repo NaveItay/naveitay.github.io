@@ -35,6 +35,86 @@
             font-size: 1.05rem;
         }
 
+        /* --- Connectivity Icons strip --- */
+        .wfg-icons {
+            background: #fff;
+            padding: 8px 20px 28px;
+        }
+
+        .wfg-icons .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .icon-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: clamp(12px, 2vw, 24px);
+            align-items: stretch;
+        }
+
+        @media (max-width: 820px) {
+            .icon-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        .icon-card {
+            border: 1px solid rgba(0, 0, 0, .06);
+            border-radius: 14px;
+            background: #f9fafb;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, .05);
+            padding: 16px 14px;
+            text-align: center;
+            transition: transform .2s ease, box-shadow .2s ease;
+        }
+
+        .icon-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, .09);
+        }
+
+        .icon-wrap {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 64px;
+            height: 64px;
+            margin-bottom: 10px;
+        }
+
+        .icon-wrap svg {
+            width: 64px;
+            height: 64px;
+        }
+
+        .icon-label {
+            font-weight: 600;
+            letter-spacing: .2px;
+            color: #111827;
+        }
+
+        .icon-sub {
+            margin-top: 2px;
+            color: #6b7280;
+            font-size: .9rem;
+        }
+
+        .icon-card:focus-within {
+            outline: 3px solid #0b6bff;
+            outline-offset: 3px;
+        }
+
+        /* theme color for strokes/fills */
+        .icon-stroke {
+            stroke: #1976d2;
+        }
+
+        .icon-fill {
+            fill: #1976d2;
+        }
+
+        /* --- Plans --- */
         .wfg-plans {
             --card-radius: 18px;
             --card-shadow: 0 12px 35px rgba(0, 0, 0, .08);
@@ -201,6 +281,71 @@
             <p class="sub">Three flexible plans to fit your connectivity and scale needs.</p>
         </section>
 
+        <!-- Connectivity Icons -->
+        <section class="wfg-icons" aria-label="Supported connectivity options">
+            <div class="container">
+                <div class="icon-grid">
+                    <!-- BLE -->
+                    <article class="icon-card" tabindex="0" aria-label="Bluetooth Low Energy">
+                        <div class="icon-wrap" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" class="icon-stroke" stroke-width="1.8"
+                                stroke-linecap="round" stroke-linejoin="round" role="img">
+                                <path d="M7 7l10 10-5 5V2l5 5L7 17" />
+                            </svg>
+                        </div>
+                        <div class="icon-label">BLE</div>
+                        <div class="icon-sub">Bluetooth Low Energy</div>
+                    </article>
+
+                    <!-- Wi-Fi -->
+                    <article class="icon-card" tabindex="0" aria-label="Wi-Fi">
+                        <div class="icon-wrap" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" class="icon-stroke" stroke-width="1.8"
+                                stroke-linecap="round" stroke-linejoin="round" role="img">
+                                <path d="M2 8.5a16 16 0 0 1 20 0" />
+                                <path d="M5 12a11 11 0 0 1 14 0" />
+                                <path d="M8.5 15.2a6 6 0 0 1 7 0" />
+                                <circle cx="12" cy="19" r="1.5" class="icon-fill" />
+                            </svg>
+                        </div>
+                        <div class="icon-label">Wi-Fi</div>
+                        <div class="icon-sub">Local network</div>
+                    </article>
+
+                    <!-- 433 MHz RF (Receiver only) -->
+                    <article class="icon-card" tabindex="0" aria-label="433 megahertz RF receiver">
+                        <div class="icon-wrap" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" class="icon-stroke" stroke-width="1.8"
+                                stroke-linecap="round" stroke-linejoin="round" role="img">
+                                <path d="M12 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+                                <path d="M9.5 9.5a3.5 3.5 0 0 1 5 0" />
+                                <path d="M7 7a7 7 0 0 1 10 0" />
+                                <path d="M4.5 4.5a10.5 10.5 0 0 1 15 0" />
+                            </svg>
+                        </div>
+                        <div class="icon-label">433&nbsp;MHz RF</div>
+                        <div class="icon-sub">Receiver only</div>
+                    </article>
+
+                    <!-- Cellular -->
+                    <article class="icon-card" tabindex="0" aria-label="Cellular network">
+                        <div class="icon-wrap" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" class="icon-stroke" stroke-width="1.8"
+                                stroke-linecap="round" stroke-linejoin="round" role="img">
+                                <path d="M4 20v-3" />
+                                <path d="M8 20v-6" />
+                                <path d="M12 20v-9" />
+                                <path d="M16 20v-12" />
+                                <path d="M20 20v-15" />
+                            </svg>
+                        </div>
+                        <div class="icon-label">Cellular</div>
+                        <div class="icon-sub">Wide-area access</div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
         <!-- Plans -->
         <section class="wfg-plans">
             <div class="container">
@@ -213,13 +358,12 @@
                             <span class="plan-badge" aria-label="Up to twenty thousand users">Up to 20,000 users</span>
                         </div>
                         <p class="plan-desc">
-                            Open the gate with the WIFIGATE app <strong>near the gate</strong> (up to <strong>10
-                                meters</strong>)
-                            and use the included RF remote. No Firebase connectivity in this plan.
+                            Open the gate with the WIFIGATE app near the gate. No cloud connectivity in this plan.
                         </p>
                         <ul class="plan-list">
-                            <li>App-based opening in proximity (≤ 10 m)</li>
-                            <li>RF remote control included</li>
+                            <li>WIFIGATE app range: <strong>up to 10 meters</strong></li>
+                            <li>433&nbsp;MHz RF receiver: <strong>up to 100 meters</strong> (RF remote not included)
+                            </li>
                             <li>No monthly fee</li>
                             <li>Up to 20,000 users</li>
                         </ul>
@@ -237,13 +381,14 @@
                             <span class="plan-badge" aria-label="Up to twenty thousand users">Up to 20,000 users</span>
                         </div>
                         <p class="plan-desc">
-                            Connect via Wi-Fi and open from anywhere in the world using Firebase, plus RF remote
-                            control.
+                            Connect via Wi-Fi and open the gate from anywhere in the world.
                         </p>
                         <ul class="plan-list">
                             <li>Wi-Fi connectivity</li>
-                            <li>Open from anywhere via Firebase</li>
-                            <li>RF remote control</li>
+                            <li>Remote access: <strong>open gate from anywhere in the world</strong></li>
+                            <li>WIFIGATE app range: <strong>up to 10 meters</strong></li>
+                            <li>433&nbsp;MHz RF receiver: <strong>up to 100 meters</strong> (RF remote not included)
+                            </li>
                             <li>Up to 20,000 users</li>
                         </ul>
                         <div class="plan-cta">
@@ -260,13 +405,15 @@
                             <span class="plan-badge" aria-label="Up to twenty thousand users">Up to 20,000 users</span>
                         </div>
                         <p class="plan-desc">
-                            All-in-One: Cellular, Wi-Fi, Bluetooth, and RF remote in parallel. Open from anywhere via
-                            Firebase.
+                            All-in-One: Cellular, Wi-Fi, Bluetooth, and 433&nbsp;MHz RF in parallel. Open the gate from
+                            anywhere in the world.
                         </p>
                         <ul class="plan-list">
-                            <li>Cellular + Wi-Fi + Bluetooth + RF (simultaneous)</li>
-                            <li>Open from anywhere via Firebase</li>
-                            <li>All connection options in one device</li>
+                            <li>Cellular + Wi-Fi + Bluetooth + 433&nbsp;MHz RF (simultaneous)</li>
+                            <li>Remote access: <strong>open gate from anywhere in the world</strong></li>
+                            <li>WIFIGATE app range: <strong>up to 10 meters</strong></li>
+                            <li>433&nbsp;MHz RF receiver: <strong>up to 100 meters</strong> (RF remote not included)
+                            </li>
                             <li>Up to 20,000 users</li>
                         </ul>
                         <div class="plan-cta">
@@ -295,7 +442,7 @@
             <hr class="footer-divider">
             <!-- Footer Bottom -->
             <div class="footer-bottom">
-                <p class="footeropyright">
+                <p class="footer-copyright">
                     &copy; 2022 EATS-SYSTEMS. All rights reserved.
                 </p>
             </div>
