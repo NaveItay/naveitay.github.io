@@ -35,85 +35,6 @@
             font-size: 1.05rem;
         }
 
-        /* --- Connectivity Icons strip --- */
-        .wfg-icons {
-            background: #fff;
-            padding: 8px 20px 28px;
-        }
-
-        .wfg-icons .container {
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        .icon-grid {
-            display: grid;
-            grid-template-columns: repeat(4, minmax(0, 1fr));
-            gap: clamp(12px, 2vw, 24px);
-            align-items: stretch;
-        }
-
-        @media (max-width: 820px) {
-            .icon-grid {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-            }
-        }
-
-        .icon-card {
-            border: 1px solid rgba(0, 0, 0, .06);
-            border-radius: 14px;
-            background: #f9fafb;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, .05);
-            padding: 16px 14px;
-            text-align: center;
-            transition: transform .2s ease, box-shadow .2s ease;
-        }
-
-        .icon-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 28px rgba(0, 0, 0, .09);
-        }
-
-        .icon-wrap {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 64px;
-            height: 64px;
-            margin-bottom: 10px;
-        }
-
-        .icon-wrap svg {
-            width: 64px;
-            height: 64px;
-        }
-
-        .icon-label {
-            font-weight: 600;
-            letter-spacing: .2px;
-            color: #111827;
-        }
-
-        .icon-sub {
-            margin-top: 2px;
-            color: #6b7280;
-            font-size: .9rem;
-        }
-
-        .icon-card:focus-within {
-            outline: 3px solid #0b6bff;
-            outline-offset: 3px;
-        }
-
-        /* theme color for strokes/fills */
-        .icon-stroke {
-            stroke: #1976d2;
-        }
-
-        .icon-fill {
-            fill: #1976d2;
-        }
-
         /* --- Plans --- */
         .wfg-plans {
             --card-radius: 18px;
@@ -149,7 +70,7 @@
             padding: clamp(18px, 2.2vw, 28px);
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 14px;
             transition: transform .25s ease, box-shadow .25s ease;
         }
 
@@ -162,14 +83,14 @@
             font-weight: 600;
             color: #1976d2;
             letter-spacing: .3px;
-            margin-bottom: 4px;
+            margin-bottom: 2px;
         }
 
         .plan-title {
             display: flex;
             align-items: baseline;
             gap: 10px;
-            margin: 0 0 4px;
+            margin: 0 0 2px;
             flex-wrap: wrap;
         }
 
@@ -191,16 +112,69 @@
         .plan-desc {
             color: #444;
             line-height: 1.65;
-            margin: 6px 0 8px;
+            margin: 4px 0 0;
         }
 
         .plan-list {
-            margin: 8px 0 12px;
+            margin: 4px 0 8px;
             padding-left: 18px;
         }
 
         .plan-list li {
             margin: 6px 0;
+        }
+
+        /* --- Icon row INSIDE each plan --- */
+        .plan-icons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-top: 4px;
+        }
+
+        /* Some plans have 2–3 icons; auto-fit keeps them neat */
+        .plan-icons:is(.icons-2, .icons-3) {
+            grid-template-columns: repeat(auto-fit, minmax(84px, 1fr));
+        }
+
+        .plan-icon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            padding: 10px;
+            border: 1px solid rgba(0, 0, 0, .06);
+            border-radius: 12px;
+            background: #f9fafb;
+        }
+
+        .plan-icon .icon-wrap {
+            width: 44px;
+            height: 44px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .plan-icon svg {
+            width: 44px;
+            height: 44px;
+            stroke: #1976d2;
+        }
+
+        .plan-icon .icon-label {
+            font-size: .9rem;
+            font-weight: 600;
+            color: #111827;
+            line-height: 1.1;
+            text-align: center;
+        }
+
+        .plan-icon .icon-sub {
+            font-size: .8rem;
+            color: #6b7280;
+            text-align: center;
+            line-height: 1.15;
         }
 
         .plan-cta {
@@ -281,71 +255,6 @@
             <p class="sub">Three flexible plans to fit your connectivity and scale needs.</p>
         </section>
 
-        <!-- Connectivity Icons -->
-        <section class="wfg-icons" aria-label="Supported connectivity options">
-            <div class="container">
-                <div class="icon-grid">
-                    <!-- BLE -->
-                    <article class="icon-card" tabindex="0" aria-label="Bluetooth Low Energy">
-                        <div class="icon-wrap" aria-hidden="true">
-                            <svg viewBox="0 0 24 24" fill="none" class="icon-stroke" stroke-width="1.8"
-                                stroke-linecap="round" stroke-linejoin="round" role="img">
-                                <path d="M7 7l10 10-5 5V2l5 5L7 17" />
-                            </svg>
-                        </div>
-                        <div class="icon-label">BLE</div>
-                        <div class="icon-sub">Bluetooth Low Energy</div>
-                    </article>
-
-                    <!-- Wi-Fi -->
-                    <article class="icon-card" tabindex="0" aria-label="Wi-Fi">
-                        <div class="icon-wrap" aria-hidden="true">
-                            <svg viewBox="0 0 24 24" fill="none" class="icon-stroke" stroke-width="1.8"
-                                stroke-linecap="round" stroke-linejoin="round" role="img">
-                                <path d="M2 8.5a16 16 0 0 1 20 0" />
-                                <path d="M5 12a11 11 0 0 1 14 0" />
-                                <path d="M8.5 15.2a6 6 0 0 1 7 0" />
-                                <circle cx="12" cy="19" r="1.5" class="icon-fill" />
-                            </svg>
-                        </div>
-                        <div class="icon-label">Wi-Fi</div>
-                        <div class="icon-sub">Local network</div>
-                    </article>
-
-                    <!-- 433 MHz RF (Receiver only) -->
-                    <article class="icon-card" tabindex="0" aria-label="433 megahertz RF receiver">
-                        <div class="icon-wrap" aria-hidden="true">
-                            <svg viewBox="0 0 24 24" fill="none" class="icon-stroke" stroke-width="1.8"
-                                stroke-linecap="round" stroke-linejoin="round" role="img">
-                                <path d="M12 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
-                                <path d="M9.5 9.5a3.5 3.5 0 0 1 5 0" />
-                                <path d="M7 7a7 7 0 0 1 10 0" />
-                                <path d="M4.5 4.5a10.5 10.5 0 0 1 15 0" />
-                            </svg>
-                        </div>
-                        <div class="icon-label">433&nbsp;MHz RF</div>
-                        <div class="icon-sub">Receiver only</div>
-                    </article>
-
-                    <!-- Cellular -->
-                    <article class="icon-card" tabindex="0" aria-label="Cellular network">
-                        <div class="icon-wrap" aria-hidden="true">
-                            <svg viewBox="0 0 24 24" fill="none" class="icon-stroke" stroke-width="1.8"
-                                stroke-linecap="round" stroke-linejoin="round" role="img">
-                                <path d="M4 20v-3" />
-                                <path d="M8 20v-6" />
-                                <path d="M12 20v-9" />
-                                <path d="M16 20v-12" />
-                                <path d="M20 20v-15" />
-                            </svg>
-                        </div>
-                        <div class="icon-label">Cellular</div>
-                        <div class="icon-sub">Wide-area access</div>
-                    </article>
-                </div>
-            </div>
-        </section>
-
         <!-- Plans -->
         <section class="wfg-plans">
             <div class="container">
@@ -354,9 +263,39 @@
                     <article class="plan-card" role="listitem">
                         <div class="plan-kicker">Plan 1</div>
                         <div class="plan-title">
-                            <h2>Free — No Monthly Fee</h2>
+                            <h2>No Monthly Fee</h2>
                             <span class="plan-badge" aria-label="Up to twenty thousand users">Up to 20,000 users</span>
                         </div>
+
+                        <!-- Icons inside the plan -->
+                        <div class="plan-icons icons-2" aria-label="Connectivity in this plan">
+                            <!-- BLE -->
+                            <div class="plan-icon" tabindex="0" title="Bluetooth Low Energy">
+                                <div class="icon-wrap" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <path d="M7 7l10 10-5 5V2l5 5L7 17" />
+                                    </svg>
+                                </div>
+                                <div class="icon-label">BLE</div>
+                                <div class="icon-sub">App nearby</div>
+                            </div>
+                            <!-- 433 MHz RF (receiver) -->
+                            <div class="plan-icon" tabindex="0" title="433 MHz RF (receiver)">
+                                <div class="icon-wrap" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <path d="M12 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+                                        <path d="M9.5 9.5a3.5 3.5 0 0 1 5 0" />
+                                        <path d="M7 7a7 7 0 0 1 10 0" />
+                                        <path d="M4.5 4.5a10.5 10.5 0 0 1 15 0" />
+                                    </svg>
+                                </div>
+                                <div class="icon-label">433&nbsp;MHz RF</div>
+                                <div class="icon-sub">Receiver</div>
+                            </div>
+                        </div>
+
                         <p class="plan-desc">
                             Open the gate with the WIFIGATE app near the gate. No cloud connectivity in this plan.
                         </p>
@@ -365,7 +304,6 @@
                             <li>433&nbsp;MHz RF receiver: <strong>up to 100 meters</strong> (RF remote not included)
                             </li>
                             <li>No monthly fee</li>
-                            <li>Up to 20,000 users</li>
                         </ul>
                         <div class="plan-cta">
                             <a href="../#contact" class="btn-primary">Contact Sales</a>
@@ -380,6 +318,50 @@
                             <h2>₪5 / month</h2>
                             <span class="plan-badge" aria-label="Up to twenty thousand users">Up to 20,000 users</span>
                         </div>
+
+                        <!-- Icons inside the plan -->
+                        <div class="plan-icons icons-3" aria-label="Connectivity in this plan">
+                            <!-- BLE -->
+                            <div class="plan-icon" tabindex="0" title="Bluetooth Low Energy">
+                                <div class="icon-wrap" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <path d="M7 7l10 10-5 5V2l5 5L7 17" />
+                                    </svg>
+                                </div>
+                                <div class="icon-label">BLE</div>
+                                <div class="icon-sub">App nearby</div>
+                            </div>
+                            <!-- Wi-Fi -->
+                            <div class="plan-icon" tabindex="0" title="Wi-Fi">
+                                <div class="icon-wrap" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <path d="M2 8.5a16 16 0 0 1 20 0" />
+                                        <path d="M5 12a11 11 0 0 1 14 0" />
+                                        <path d="M8.5 15.2a6 6 0 0 1 7 0" />
+                                        <circle cx="12" cy="19" r="1.5" />
+                                    </svg>
+                                </div>
+                                <div class="icon-label">Wi-Fi</div>
+                                <div class="icon-sub">Remote access</div>
+                            </div>
+                            <!-- 433 MHz RF (receiver) -->
+                            <div class="plan-icon" tabindex="0" title="433 MHz RF (receiver)">
+                                <div class="icon-wrap" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <path d="M12 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+                                        <path d="M9.5 9.5a3.5 3.5 0 0 1 5 0" />
+                                        <path d="M7 7a7 7 0 0 1 10 0" />
+                                        <path d="M4.5 4.5a10.5 10.5 0 0 1 15 0" />
+                                    </svg>
+                                </div>
+                                <div class="icon-label">433&nbsp;MHz RF</div>
+                                <div class="icon-sub">Receiver</div>
+                            </div>
+                        </div>
+
                         <p class="plan-desc">
                             Connect via Wi-Fi and open the gate from anywhere in the world.
                         </p>
@@ -389,7 +371,6 @@
                             <li>WIFIGATE app range: <strong>up to 10 meters</strong></li>
                             <li>433&nbsp;MHz RF receiver: <strong>up to 100 meters</strong> (RF remote not included)
                             </li>
-                            <li>Up to 20,000 users</li>
                         </ul>
                         <div class="plan-cta">
                             <a href="../#contact" class="btn-primary">Contact Sales</a>
@@ -404,6 +385,65 @@
                             <h2>₪12 / month</h2>
                             <span class="plan-badge" aria-label="Up to twenty thousand users">Up to 20,000 users</span>
                         </div>
+
+                        <!-- Icons inside the plan -->
+                        <div class="plan-icons" aria-label="Connectivity in this plan">
+                            <!-- BLE -->
+                            <div class="plan-icon" tabindex="0" title="Bluetooth Low Energy">
+                                <div class="icon-wrap" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <path d="M7 7l10 10-5 5V2l5 5L7 17" />
+                                    </svg>
+                                </div>
+                                <div class="icon-label">BLE</div>
+                                <div class="icon-sub">App nearby</div>
+                            </div>
+                            <!-- Wi-Fi -->
+                            <div class="plan-icon" tabindex="0" title="Wi-Fi">
+                                <div class="icon-wrap" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <path d="M2 8.5a16 16 0 0 1 20 0" />
+                                        <path d="M5 12a11 11 0 0 1 14 0" />
+                                        <path d="M8.5 15.2a6 6 0 0 1 7 0" />
+                                        <circle cx="12" cy="19" r="1.5" />
+                                    </svg>
+                                </div>
+                                <div class="icon-label">Wi-Fi</div>
+                                <div class="icon-sub">Remote access</div>
+                            </div>
+                            <!-- 433 MHz RF (receiver) -->
+                            <div class="plan-icon" tabindex="0" title="433 MHz RF (receiver)">
+                                <div class="icon-wrap" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <path d="M12 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+                                        <path d="M9.5 9.5a3.5 3.5 0 0 1 5 0" />
+                                        <path d="M7 7a7 7 0 0 1 10 0" />
+                                        <path d="M4.5 4.5a10.5 10.5 0 0 1 15 0" />
+                                    </svg>
+                                </div>
+                                <div class="icon-label">433&nbsp;MHz RF</div>
+                                <div class="icon-sub">Receiver</div>
+                            </div>
+                            <!-- Cellular -->
+                            <div class="plan-icon" tabindex="0" title="Cellular">
+                                <div class="icon-wrap" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <path d="M4 20v-3" />
+                                        <path d="M8 20v-6" />
+                                        <path d="M12 20v-9" />
+                                        <path d="M16 20v-12" />
+                                        <path d="M20 20v-15" />
+                                    </svg>
+                                </div>
+                                <div class="icon-label">Cellular</div>
+                                <div class="icon-sub">Remote access</div>
+                            </div>
+                        </div>
+
                         <p class="plan-desc">
                             All-in-One: Cellular, Wi-Fi, Bluetooth, and 433&nbsp;MHz RF in parallel. Open the gate from
                             anywhere in the world.
@@ -414,7 +454,6 @@
                             <li>WIFIGATE app range: <strong>up to 10 meters</strong></li>
                             <li>433&nbsp;MHz RF receiver: <strong>up to 100 meters</strong> (RF remote not included)
                             </li>
-                            <li>Up to 20,000 users</li>
                         </ul>
                         <div class="plan-cta">
                             <a href="../#contact" class="btn-primary">Contact Sales</a>
