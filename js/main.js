@@ -1,19 +1,19 @@
 // Function to load HTML content
 function loadHTML(url, elementId) {
-    fetch(url)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`Failed to fetch ${url}: ${response.status} ${response.statusText}`);
-            }
-            return response.text();
-        })
-        .then(data => {
-            document.getElementById(elementId).innerHTML = data;
+  fetch(url)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`Failed to fetch ${url}: ${response.status} ${response.statusText}`);
+      }
+      return response.text();
+    })
+    .then(data => {
+      document.getElementById(elementId).innerHTML = data;
 
-            // After the header is loaded, initialize the navigation menu
-            initNavigation();
-        })
-        .catch(error => console.error('Error loading the HTML file:', error));
+      // After the header is loaded, initialize the navigation menu
+      initNavigation();
+    })
+    .catch(error => console.error('Error loading the HTML file:', error));
 }
 
 // Load the header
@@ -21,134 +21,132 @@ loadHTML('/header.html', 'header-placeholder');
 
 // Function to initialize the navigation menu
 function initNavigation() {
-    const hamburger = document.querySelector('.hamburger');
-    const navLinks = document.querySelector('.nav-links');
+  const hamburger = document.querySelector('.hamburger');
+  const navLinks = document.querySelector('.nav-links');
 
-    if (hamburger && navLinks) {
-        hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('nav-active');
-            hamburger.classList.toggle('toggle');
-            document.body.classList.toggle('menu-open');
-            const expanded = hamburger.getAttribute('aria-expanded') === 'true';
-            hamburger.setAttribute('aria-expanded', !expanded);
-        });
+  if (hamburger && navLinks) {
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('nav-active');
+      hamburger.classList.toggle('toggle');
+      document.body.classList.toggle('menu-open');
+      const expanded = hamburger.getAttribute('aria-expanded') === 'true';
+      hamburger.setAttribute('aria-expanded', !expanded);
+    });
 
-        const navLinkItems = document.querySelectorAll('.nav-links a');
+    const navLinkItems = document.querySelectorAll('.nav-links a');
 
-        navLinkItems.forEach(link => {
-            link.addEventListener('click', e => {
-                const href = link.getAttribute('href');
+    navLinkItems.forEach(link => {
+      link.addEventListener('click', e => {
+        const href = link.getAttribute('href');
 
-                if (href.startsWith('/#')) {
-                    e.preventDefault();
-                    const targetId = href.substring(2);
-                    const targetSection = document.getElementById(targetId);
+        if (href.startsWith('/#')) {
+          e.preventDefault();
+          const targetId = href.substring(2);
+          const targetSection = document.getElementById(targetId);
 
-                    if (targetSection) {
-                        targetSection.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    } else {
-                        // If the target section is not found, navigate to the homepage with the hash
-                        window.location.href = href;
-                    }
-
-                    if (navLinks.classList.contains('nav-active')) {
-                        navLinks.classList.remove('nav-active');
-                        hamburger.classList.remove('toggle');
-                        document.body.classList.remove('menu-open');
-                        hamburger.setAttribute('aria-expanded', false);
-                    }
-                } else {
-                    if (navLinks.classList.contains('nav-active')) {
-                        navLinks.classList.remove('nav-active');
-                        hamburger.classList.remove('toggle');
-                        document.body.classList.remove('menu-open');
-                        hamburger.setAttribute('aria-expanded', false);
-                    }
-                }
+          if (targetSection) {
+            targetSection.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
             });
-        });
-    } else {
-        console.error('Navigation elements not found. Header may not have loaded correctly.');
-    }
+          } else {
+            // If the target section is not found, navigate to the homepage with the hash
+            window.location.href = href;
+          }
+
+          if (navLinks.classList.contains('nav-active')) {
+            navLinks.classList.remove('nav-active');
+            hamburger.classList.remove('toggle');
+            document.body.classList.remove('menu-open');
+            hamburger.setAttribute('aria-expanded', false);
+          }
+        } else {
+          if (navLinks.classList.contains('nav-active')) {
+            navLinks.classList.remove('nav-active');
+            hamburger.classList.remove('toggle');
+            document.body.classList.remove('menu-open');
+            hamburger.setAttribute('aria-expanded', false);
+          }
+        }
+      });
+    });
+  } else {
+    console.error('Navigation elements not found. Header may not have loaded correctly.');
+  }
 }
 
 // Scroll to section if URL contains a hash
 document.addEventListener('DOMContentLoaded', () => {
-    const hash = window.location.hash;
+  const hash = window.location.hash;
 
-    if (hash) {
-        const targetId = hash.substring(1);
-        const targetSection = document.getElementById(targetId);
+  if (hash) {
+    const targetId = hash.substring(1);
+    const targetSection = document.getElementById(targetId);
 
-        if (targetSection) {
-            setTimeout(() => {
-                targetSection.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }, 0);
-        }
+    if (targetSection) {
+      setTimeout(() => {
+        targetSection.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }, 0);
     }
+  }
 });
 
 // Function to handle form submission and clear form fields
 document.addEventListener('DOMContentLoaded', function () {
-    const form = document.querySelector('form[name="contact-form"]');
+  // Bind only if the contact form exists on this page (avoid noisy console errors)
+  const form = document.querySelector('form[name="contact-form"]');
+  if (!form) return;
 
-    if (form) {
-        form.addEventListener('submit', function (event) {
-            event.preventDefault();  // Prevent the default form submission
+  form.addEventListener('submit', function (event) {
+    event.preventDefault(); // Prevent the default form submission
 
-            // Get form data
-            const formData = new FormData(form);
+    // Get form data
+    const formData = new FormData(form);
 
-            // Perform form submission via AJAX (optional)
-            fetch(form.action, {
-                method: form.method,
-                body: formData,
-                headers: {
-                    'Accept': 'application/json'
-                }
-            })
-                .then(response => {
-                    if (response.ok) {
-                        alert('Message sent successfully!');
-                        form.reset();  // Clear form fields
-                    } else {
-                        alert('There was a problem sending your message.');
-                    }
-                })
-                .catch(error => {
-                    alert('Error: Could not send the message.');
-                });
-        });
-    } else {
-        console.error('Contact form not found.');
-    }
+    // Perform form submission via AJAX (optional)
+    fetch(form.action, {
+      method: form.method,
+      body: formData,
+      headers: {
+        'Accept': 'application/json'
+      }
+    })
+      .then(response => {
+        if (response.ok) {
+          alert('Message sent successfully!');
+          form.reset(); // Clear form fields
+        } else {
+          alert('There was a problem sending your message.');
+        }
+      })
+      .catch(() => {
+        alert('Error: Could not send the message.');
+      });
+  });
 });
 
 // === OUR SYSTEMS – desktop center carousel + mobile horizontal belt ===
 document.addEventListener('DOMContentLoaded', function () {
-  const root  = document.querySelector('#our-systems .systems-carousel');
+  const root = document.querySelector('#our-systems .systems-carousel');
   if (!root) return;
 
   const stage = root.querySelector('.systems-stage');
   const cards = Array.from(stage.querySelectorAll('.systems-card'));
-  const pips  = Array.from(root.querySelectorAll('.pip'));
+  const pips = Array.from(root.querySelectorAll('.pip'));
 
   const intervalMs = parseInt(root.dataset.interval, 10) || 5000;
-  let current = 1;     // להתחיל מהשקופית האמצעית (לשימור ההתנהגות)
-  let timer   = null;
+  let current = 1; // להתחיל מהשקופית האמצעית (לשימור ההתנהגות)
+  let timer = null;
 
   const isMobileLayout = () => getComputedStyle(stage).display === 'flex';
 
   // עדכון מצב פריסה + נקודות
   function layout() {
     const n = cards.length;
-    const left  = (current - 1 + n) % n;
+    const left = (current - 1 + n) % n;
     const right = (current + 1) % n;
 
     if (!isMobileLayout()) {
@@ -156,7 +154,7 @@ document.addEventListener('DOMContentLoaded', function () {
       cards.forEach((card, i) => {
         let pos = 'off';
         if (i === current) pos = '0';
-        else if (i === left)  pos = '-1';
+        else if (i === left) pos = '-1';
         else if (i === right) pos = '1';
         card.dataset.pos = pos;
         card.setAttribute('aria-hidden', pos !== '0');
@@ -224,7 +222,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   root.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowRight') { next(); start(); }
-    if (e.key === 'ArrowLeft')  { prev(); start(); }
+    if (e.key === 'ArrowLeft') { prev(); start(); }
   });
 
   stage.addEventListener('click', () => { next(); start(); });
@@ -239,7 +237,7 @@ document.addEventListener('DOMContentLoaded', function () {
       let best = 0, bestDist = Infinity;
       cards.forEach((c, i) => {
         const cx = c.offsetLeft + c.offsetWidth / 2;
-        const d  = Math.abs(cx - mid);
+        const d = Math.abs(cx - mid);
         if (d < bestDist) { bestDist = d; best = i; }
       });
       if (best !== current) { current = best; layout(); }
@@ -258,41 +256,40 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 // === Accessibility module & toolbar ===
-document.addEventListener('DOMContentLoaded', function(){
+document.addEventListener('DOMContentLoaded', function () {
   const A11Y = {
     get reduce() {
       const saved = localStorage.getItem('a11y.reduce');
       if (saved !== null) return saved === '1';
       return window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     },
-    setReduce(on){
+    setReduce(on) {
       localStorage.setItem('a11y.reduce', on ? '1' : '0');
       document.body.classList.toggle('reduce-motion', on);
-      window.dispatchEvent(new CustomEvent('a11y:motion-changed', { detail: { reduce: on }}));
+      window.dispatchEvent(new CustomEvent('a11y:motion-changed', { detail: { reduce: on } }));
       announce(`Animations ${on ? 'paused' : 'resumed'}.`);
     },
-    get contrast(){ return localStorage.getItem('a11y.contrast') === '1'; },
-    setContrast(on){
+    get contrast() { return localStorage.getItem('a11y.contrast') === '1'; },
+    setContrast(on) {
       localStorage.setItem('a11y.contrast', on ? '1' : '0');
       document.body.classList.toggle('contrast-high', on);
       announce(`High contrast ${on ? 'on' : 'off'}.`);
     },
-    get textLg(){ return localStorage.getItem('a11y.textLg') === '1'; },
-    setTextLg(on){
+    get textLg() { return localStorage.getItem('a11y.textLg') === '1'; },
+    setTextLg(on) {
       localStorage.setItem('a11y.textLg', on ? '1' : '0');
       document.body.classList.toggle('text-lg', on);
       announce(`Text size ${on ? 'increased' : 'normal'}.`);
-    }
-    ,
+    },
     // New feature: highlight links for better discoverability
-    get links(){ return localStorage.getItem('a11y.links') === '1'; },
-    setLinks(on){
+    get links() { return localStorage.getItem('a11y.links') === '1'; },
+    setLinks(on) {
       localStorage.setItem('a11y.links', on ? '1' : '0');
       document.body.classList.toggle('highlight-links', on);
       announce(`Link highlighting ${on ? 'enabled' : 'disabled'}.`);
     },
     // Reset all accessibility settings to defaults
-    resetAll(){
+    resetAll() {
       this.setContrast(false);
       this.setReduce(false);
       this.setTextLg(false);
@@ -309,62 +306,62 @@ document.addEventListener('DOMContentLoaded', function(){
 
   // Toolbar wiring
   const btnContrast = document.getElementById('btn-contrast');
-  const btnMotion   = document.getElementById('btn-motion');
-  const btnFont     = document.getElementById('btn-font');
-  const btnLinks    = document.getElementById('btn-links');
-  const btnReset    = document.getElementById('btn-reset');
-  const setPressed  = (el, on) => el && el.setAttribute('aria-pressed', on ? 'true' : 'false');
+  const btnMotion = document.getElementById('btn-motion');
+  const btnFont = document.getElementById('btn-font');
+  const btnLinks = document.getElementById('btn-links');
+  const btnReset = document.getElementById('btn-reset');
+  const setPressed = (el, on) => el && el.setAttribute('aria-pressed', on ? 'true' : 'false');
 
   setPressed(btnContrast, A11Y.contrast);
-  setPressed(btnMotion,   A11Y.reduce);
-  setPressed(btnFont,     A11Y.textLg);
-  setPressed(btnLinks,    A11Y.links);
-  setPressed(btnReset,    false);
+  setPressed(btnMotion, A11Y.reduce);
+  setPressed(btnFont, A11Y.textLg);
+  setPressed(btnLinks, A11Y.links);
+  setPressed(btnReset, false);
 
   btnContrast?.addEventListener('click', () => {
     const on = !A11Y.contrast; A11Y.setContrast(on); setPressed(btnContrast, on);
   });
   btnMotion?.addEventListener('click', () => {
-    const on = !A11Y.reduce;   A11Y.setReduce(on);   setPressed(btnMotion, on);
+    const on = !A11Y.reduce; A11Y.setReduce(on); setPressed(btnMotion, on);
     syncMotionWithMedia();
   });
   btnFont?.addEventListener('click', () => {
-    const on = !A11Y.textLg;   A11Y.setTextLg(on);   setPressed(btnFont, on);
+    const on = !A11Y.textLg; A11Y.setTextLg(on); setPressed(btnFont, on);
   });
   // Toggle link highlighting
   btnLinks?.addEventListener('click', () => {
-    const on = !A11Y.links;   A11Y.setLinks(on);   setPressed(btnLinks, on);
+    const on = !A11Y.links; A11Y.setLinks(on); setPressed(btnLinks, on);
   });
   // Reset all accessibility settings
   btnReset?.addEventListener('click', () => {
     A11Y.resetAll();
     setPressed(btnContrast, false);
-    setPressed(btnMotion,   false);
-    setPressed(btnFont,     false);
-    setPressed(btnLinks,    false);
-    setPressed(btnReset,    false);
+    setPressed(btnMotion, false);
+    setPressed(btnFont, false);
+    setPressed(btnLinks, false);
+    setPressed(btnReset, false);
   });
 
   // Announcements for SR
-  function announce(text){
+  function announce(text) {
     const live = document.getElementById('a11y-status');
     if (!live) return;
     live.textContent = '';
     setTimeout(() => (live.textContent = text), 30);
   }
 
-  // Skip link moves focus to main
-  const main = document.getElementById('main-content');
+  // Skip link moves focus to main (support both #main and #main-content)
+  const main = document.getElementById('main') || document.getElementById('main-content');
   document.querySelector('.skip-link')?.addEventListener('click', () => {
     setTimeout(() => main?.focus(), 0);
   });
 
   // Pause or play background video according to motion preference
-  function syncMotionWithMedia(){
+  function syncMotionWithMedia() {
     const shouldReduce = A11Y.reduce;
     document.querySelectorAll('.video-section video').forEach(v => {
       if (shouldReduce) { v.pause(); }
-      else { v.play().catch(() => {}); }
+      else { v.play().catch(() => { }); }
     });
   }
   syncMotionWithMedia();
