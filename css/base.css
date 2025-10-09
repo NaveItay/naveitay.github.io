@@ -339,7 +339,7 @@ body.text-lg h3 {
     font-size: clamp(1.3rem, 1.1rem + 0.7vw, 1.75rem);
 }
 
-/* Don’t enlarge buttons via A+ unless you want to (keeps layout stable) */
+/* Don't enlarge buttons via A+ unless you want to (keeps layout stable) */
 body.text-lg :where(button, .btn, .button, .button-container button, [type="submit"], a.read-more) {
     font-size: inherit;
     /* no extra bump for buttons */
@@ -348,5 +348,5 @@ body.text-lg :where(button, .btn, .button, .button-container button, [type="subm
 /* Keep the accessibility toolbar readable but not over-inflated */
 body.text-lg .a11y-toolbar {
     font-size: 1rem;
-    /* lock it to the enlarged base so it doesn’t double scale */
+    /* lock it to the enlarged base so it doesn't double scale */
 }
