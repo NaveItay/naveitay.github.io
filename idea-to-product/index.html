@@ -22,7 +22,6 @@
     <meta name="theme-color" content="#ffffff">
 
     <!-- Link to external CSS files -->
-    <!-- Link to external CSS files -->
     <link rel="stylesheet" href="/css/fonts.css">
     <link rel="stylesheet" href="/css/base.css">
     <link rel="stylesheet" href="/css/header.css">
@@ -35,6 +34,15 @@
 <body>
     <!-- Placeholder for Header -->
     <div id="header-placeholder"></div>
+
+    <!-- Accessibility toolbar -->
+    <div class="a11y-toolbar" role="region" aria-label="Accessibility controls">
+        <span class="a11y-icon" aria-hidden="true">♿</span>
+        <button id="btn-font" type="button" aria-pressed="false" title="Larger text">A+</button>
+        <button id="btn-motion" type="button" aria-pressed="false" title="Reduce motion">Reduce&nbsp;motion</button>
+        <button id="btn-links" type="button" aria-pressed="false" title="Highlight links">Highlight&nbsp;links</button>
+        <button id="btn-reset" type="button" aria-pressed="false" title="Reset accessibility settings">Reset</button>
+    </div>
 
     <!-- Main Content Section -->
     <section class="idea-to-product-section">
