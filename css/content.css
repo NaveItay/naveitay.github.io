@@ -839,3 +839,20 @@ body.links-highlight #btn-reset {
     text-decoration: none !important;
     filter: none !important;
 }
+
+/* Opt-out read-more CTAs from any link-highlighting mode */
+body.links-highlight a.read-more,
+body.highlight-links a.read-more,
+body.links-highlight a.read-more:hover,
+body.highlight-links a.read-more:hover,
+body.links-highlight a.read-more:focus-visible,
+body.highlight-links a.read-more:focus-visible {
+    outline: none !important;
+    text-decoration: none !important;
+    filter: none !important;
+    box-shadow: none !important;
+
+    /* keep the button’s original theme from base.css */
+    background: inherit !important;
+    color: inherit !important;
+}
