@@ -169,6 +169,8 @@
             color: #444;
             line-height: 1.65;
             margin: 4px 0 0;
+            font-size: .95rem;
+            /* smaller description text */
         }
 
         .plan-note {
@@ -231,13 +233,11 @@
             font-weight: 600;
             color: #111827;
             line-height: 1.1;
-            text-align: center;
         }
 
         .plan-icon .icon-sub {
             font-size: .8rem;
             color: #6b7280;
-            text-align: center;
             line-height: 1.15;
         }
 
@@ -293,7 +293,7 @@
             outline-offset: 3px;
         }
 
-        /* הדגשה עדינה לביטויים חשובים */
+        /* Subtle highlight (kept for other uses) */
         .hl {
             background: #fff3bf;
             padding: 0 .2em;
@@ -301,7 +301,6 @@
             box-decoration-break: clone;
         }
 
-        /* CSV link next to badge */
         .plan-badge-row {
             display: flex;
             align-items: center;
@@ -309,37 +308,9 @@
             flex-wrap: wrap;
         }
 
-        .csv-sample-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 6px 8px;
-            border-radius: 999px;
-            background: #f3f7ff;
-            border: 1px solid #e0e8ff;
-            color: #0b3ea8;
-            font-weight: 600;
-            font-size: 0.9rem;
-            text-decoration: none;
-        }
-
-        .csv-sample-link svg {
-            width: 16px;
-            height: 16px;
-            flex: 0 0 16px;
-            display: block;
-            stroke: currentColor;
-            fill: none;
-        }
-
         @media (max-width: 480px) {
             .plan-badge-row {
                 gap: 6px;
-            }
-
-            .csv-sample-link {
-                font-size: .85rem;
-                padding: 6px;
             }
         }
     </style>
@@ -381,13 +352,13 @@
                             <div class="plan-badge-row">
                                 <span class="plan-badge" aria-label="Up to twenty thousand users">Up to 20,000
                                     users</span>
-                                <span>Import/Export CSV file</span>
+                                <span class="plan-badge" aria-label="Import and export CSV files">Import/Export CSV
+                                    file</span>
                             </div>
                         </div>
 
                         <!-- Icons inside the plan -->
                         <div class="plan-icons icons-2" aria-label="Connectivity in this plan">
-                            <!-- BLE -->
                             <div class="plan-icon" tabindex="0" title="Bluetooth Low Energy">
                                 <div class="icon-wrap" aria-hidden="true">
                                     <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"
@@ -398,7 +369,6 @@
                                 <div class="icon-label">BLE</div>
                                 <div class="icon-sub">App nearby</div>
                             </div>
-                            <!-- 433 MHz RF (receiver) -->
                             <div class="plan-icon" tabindex="0" title="433 MHz RF (receiver)">
                                 <div class="icon-wrap" aria-hidden="true">
                                     <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"
@@ -417,13 +387,13 @@
                         <p class="plan-desc">
                             Open the gate with the WIFIGATE app near the gate.
                         </p>
-                        <p class="plan-note" role="note">Note: This plan has no cloud connectivity.</p>
+                        <p class="plan-note" role="note">This plan has no cloud connectivity.</p>
                         <ul class="plan-list">
+                            <li>Input voltage: <strong>12-24 VDC</strong></li>
                             <li>WIFIGATE app range: <strong>up to 10 meters</strong></li>
                             <li>433 MHz RF receiver: <strong>up to 100 meters</strong></li>
                             <li><strong>Digital RF learning code</strong> with a single button press</li>
                             <li>Highly secure user data — suitable for <strong>sensitive locations</strong></li>
-                            <li>Input voltage: <strong>12–24 VDC</strong></li>
                             <li><strong>Programmable</strong> relay pulse width</li>
                         </ul>
                         <div class="plan-cta">
@@ -440,13 +410,12 @@
                             <div class="plan-badge-row">
                                 <span class="plan-badge" aria-label="Up to twenty thousand users">Up to 20,000
                                     users</span>
-                                <span>Import/Export CSV file</span>
+                                <span class="plan-badge" aria-label="Import and export CSV files">Import/Export CSV
+                                    file</span>
                             </div>
                         </div>
 
-                        <!-- Icons inside the plan -->
                         <div class="plan-icons icons-3" aria-label="Connectivity in this plan">
-                            <!-- BLE -->
                             <div class="plan-icon" tabindex="0" title="Bluetooth Low Energy">
                                 <div class="icon-wrap" aria-hidden="true">
                                     <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"
@@ -457,7 +426,6 @@
                                 <div class="icon-label">BLE</div>
                                 <div class="icon-sub">App nearby</div>
                             </div>
-                            <!-- WiFi -->
                             <div class="plan-icon" tabindex="0" title="WiFi">
                                 <div class="icon-wrap" aria-hidden="true">
                                     <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"
@@ -471,7 +439,6 @@
                                 <div class="icon-label">WiFi</div>
                                 <div class="icon-sub">Remote access</div>
                             </div>
-                            <!-- 433 MHz RF (receiver) -->
                             <div class="plan-icon" tabindex="0" title="433 MHz RF (receiver)">
                                 <div class="icon-wrap" aria-hidden="true">
                                     <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"
@@ -491,11 +458,11 @@
                             Connect via WiFi and open the gate worldwide.
                         </p>
                         <ul class="plan-list">
+                            <li>Input voltage: <strong>12-24 VDC</strong></li>
                             <li>WIFIGATE app range: <strong>Worldwide access</strong></li>
                             <li>433 MHz RF receiver: <strong>up to 100 meters</strong></li>
                             <li><strong>Digital RF learning code</strong> with a single button press</li>
                             <li>Highly secure user data — suitable for <strong>sensitive locations</strong></li>
-                            <li>Input voltage: <strong>12–24 VDC</strong></li>
                             <li><strong>Programmable</strong> relay pulse width</li>
                         </ul>
                         <div class="plan-cta">
@@ -512,13 +479,12 @@
                             <div class="plan-badge-row">
                                 <span class="plan-badge" aria-label="Up to twenty thousand users">Up to 20,000
                                     users</span>
-                                <span>Import/Export CSV file</span>
+                                <span class="plan-badge" aria-label="Import and export CSV files">Import/Export CSV
+                                    file</span>
                             </div>
                         </div>
 
-                        <!-- Icons inside the plan -->
                         <div class="plan-icons" aria-label="Connectivity in this plan">
-                            <!-- BLE -->
                             <div class="plan-icon" tabindex="0" title="Bluetooth Low Energy">
                                 <div class="icon-wrap" aria-hidden="true">
                                     <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"
@@ -529,7 +495,6 @@
                                 <div class="icon-label">BLE</div>
                                 <div class="icon-sub">App nearby</div>
                             </div>
-                            <!-- WiFi -->
                             <div class="plan-icon" tabindex="0" title="WiFi">
                                 <div class="icon-wrap" aria-hidden="true">
                                     <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"
@@ -543,7 +508,6 @@
                                 <div class="icon-label">WiFi</div>
                                 <div class="icon-sub">Remote access</div>
                             </div>
-                            <!-- 433 MHz RF (receiver) -->
                             <div class="plan-icon" tabindex="0" title="433 MHz RF (receiver)">
                                 <div class="icon-wrap" aria-hidden="true">
                                     <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"
@@ -557,7 +521,6 @@
                                 <div class="icon-label">433&nbsp;MHz RF</div>
                                 <div class="icon-sub">Receiver</div>
                             </div>
-                            <!-- Cellular (4G) -->
                             <div class="plan-icon" tabindex="0" title="Cellular (4G)">
                                 <div class="icon-wrap" aria-hidden="true">
                                     <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"
@@ -578,11 +541,11 @@
                             All-in-One: 4G, WiFi, Bluetooth, and 433&nbsp;MHz RF in parallel. Open the gate worldwide.
                         </p>
                         <ul class="plan-list">
+                            <li>Input voltage: <strong>12-24 VDC</strong></li>
                             <li>WIFIGATE app range: <strong>Worldwide access</strong></li>
                             <li>433 MHz RF receiver: <strong>up to 100 meters</strong></li>
                             <li><strong>Digital RF learning code</strong> with a single button press</li>
                             <li>Highly secure user data — suitable for <strong>sensitive locations</strong></li>
-                            <li>Input voltage: <strong>12–24 VDC</strong></li>
                             <li><strong>Programmable</strong> relay pulse width</li>
                         </ul>
                         <div class="plan-cta">
@@ -594,24 +557,21 @@
             </div>
         </section>
 
-        <!-- Sample Excel / CSV (3000 users) - minimal, image-only with captions -->
+        <!-- Sample CSV / PDF (3000 users) -->
         <section class="sample-file" aria-label="Sample files">
             <div class="container">
                 <div class="file-grid">
-                    <!-- CSV sample -->
-                    <div class="file-card">
-                        <a href="/downloads/WIFIGATE_3000_random_users_example.csv" download>
-                            <img src="/images/wifigate/csv.png" alt="CSV sample file - 3000 random users example">
-                        </a>
-                        <div class="file-caption">3000 random users example</div>
-                    </div>
-
-                    <!-- PDF datasheet -->
                     <div class="file-card">
                         <a href="/downloads/WIFIGATE_rev_v1.0_datasheet.pdf" download>
                             <img src="/images/wifigate/pdf.png" alt="WIFIGATE rev v1.0 datasheet">
                         </a>
                         <div class="file-caption">WIFIGATE rev v1.0 datasheet</div>
+                    </div>
+                    <div class="file-card">
+                        <a href="/downloads/WIFIGATE_3000_random_users_example.csv" download>
+                            <img src="/images/wifigate/csv.png" alt="CSV sample file - 3000 random users example">
+                        </a>
+                        <div class="file-caption">3000 random users example</div>
                     </div>
                 </div>
             </div>
@@ -619,7 +579,6 @@
 
     </main>
 
-    <!-- Footer Section -->
     <footer class="footer-section">
         <div class="container">
             <div class="footer-columns">
@@ -639,7 +598,6 @@
         <br><br>
     </footer>
 
-    <!-- Main JS (root-level) -->
     <script src="/js/main.js"></script>
 </body>
 

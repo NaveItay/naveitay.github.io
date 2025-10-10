@@ -505,7 +505,7 @@
     background-color: #555555;
 }
 
-/* === OUR SYSTEMS – modern centered carousel (updated for 70% image width) === */
+/* === OUR SYSTEMS - modern centered carousel (updated for 70% image width) === */
 .systems-section {
     padding: clamp(48px, 6vw, 96px) 0;
 }
@@ -661,7 +661,7 @@
     }
 }
 
-/* === OUR SYSTEMS – Shrink on desktop === */
+/* === OUR SYSTEMS - Shrink on desktop === */
 .systems-stage {
     /* distance from center to side slides */
     --spread: clamp(100px, 16vw, 280px);
@@ -727,9 +727,9 @@
     }
 }
 
-/* === OUR SYSTEMS – Uniform image fit across cards === */
+/* === OUR SYSTEMS - Uniform image fit across cards === */
 
-/* OUR SYSTEMS carousel – do not clip the dots */
+/* OUR SYSTEMS carousel - do not clip the dots */
 #our-systems .systems-carousel {
     overflow: visible;
     /* was hidden in an earlier patch */

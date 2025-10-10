@@ -128,7 +128,7 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
-// === OUR SYSTEMS – desktop center carousel + mobile horizontal belt ===
+// === OUR SYSTEMS - desktop center carousel + mobile horizontal belt ===
 document.addEventListener('DOMContentLoaded', function () {
   const root = document.querySelector('#our-systems .systems-carousel');
   if (!root) return;
@@ -150,7 +150,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const right = (current + 1) % n;
 
     if (!isMobileLayout()) {
-      // מצב דסקטופ – 3D
+      // מצב דסקטופ - 3D
       cards.forEach((card, i) => {
         let pos = 'off';
         if (i === current) pos = '0';
@@ -160,7 +160,7 @@ document.addEventListener('DOMContentLoaded', function () {
         card.setAttribute('aria-hidden', pos !== '0');
       });
     } else {
-      // מובייל – כולם גלויים, בלי ARIA hide
+      // מובייל - כולם גלויים, בלי ARIA hide
       cards.forEach(card => {
         card.dataset.pos = '';
         card.removeAttribute('aria-hidden');
