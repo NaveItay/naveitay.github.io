@@ -27,49 +27,50 @@
             margin: 0 auto;
         }
 
-        .sample-file-card {
+        /* Minimal gallery for CSV/PDF tiles */
+        .file-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: clamp(12px, 2vw, 20px);
+        }
+
+        @media (max-width: 720px) {
+            .file-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .file-card {
             border: 1px solid rgba(0, 0, 0, .08);
             border-radius: 14px;
-            padding: clamp(16px, 2vw, 22px);
+            padding: 12px;
             box-shadow: 0 10px 24px rgba(0, 0, 0, .06);
-        }
-
-        .sample-file h2 {
-            margin: 0 0 8px;
-            font-size: clamp(1.35rem, 1rem + .9vw, 1.8rem);
-        }
-
-        .sample-file p {
-            margin: 6px 0 14px;
-            color: #444;
-        }
-
-        .sample-file .file-actions {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-
-        .sample-file .btn-outline {
-            display: inline-block;
-            padding: 10px 16px;
-            border-radius: 10px;
-            border: 1px solid #1976d2;
             background: #fff;
-            color: #1976d2;
+            text-align: center;
+        }
+
+        .file-card a {
+            display: block;
             text-decoration: none;
+        }
+
+        .file-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 10px;
+            transition: transform .2s ease, box-shadow .2s ease;
+        }
+
+        .file-card img:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, .10);
+        }
+
+        .file-caption {
+            margin-top: 10px;
             font-weight: 600;
-            transition: background .2s ease, transform .2s ease;
-        }
-
-        .sample-file .btn-outline:hover {
-            background: #eef6ff;
-            transform: translateY(-1px);
-        }
-
-        .sample-file .note {
-            font-size: .9rem;
-            color: #475569;
+            color: #111827;
         }
 
         .wfg-hero {
@@ -527,32 +528,25 @@
             </div>
         </section>
 
-        <!-- Sample Excel / CSV (3000 users) -->
-        <section class="sample-file" aria-labelledby="sample-file-title">
+        <!-- Sample Excel / CSV (3000 users) - minimal, image-only with captions -->
+        <section class="sample-file" aria-label="Sample files">
             <div class="container">
-                <div class="sample-file-card">
-                    <h2 id="sample-file-title">Sample Excel (3,000 demo users)</h2>
-                    <p>
-                        Download a ready-made users sheet to see the exact column format our importer expects.
-                        Use it as a template for your own building.
-                    </p>
-                    <p class="note" role="note" aria-live="polite">
-                        This is an example file with <strong>random, non-realistic data for 3,000 users</strong>. It
-                        contains no real people.
-                    </p>
-                    <div class="file-actions" role="group" aria-label="Download sample users file">
-                        <a class="btn-outline" href="sandbox:/mnt/data/WIFIGATE_3000_random_users_example.xlsx"
-                            download>
-                            Download .xlsx (Excel)
+                <div class="file-grid">
+                    <!-- CSV sample -->
+                    <div class="file-card">
+                        <a href="/downloads/WIFIGATE_3000_random_users_example.csv" download>
+                            <img src="/images/wifigate/csv.png" alt="CSV sample file - 3000 random users example">
                         </a>
-                        <a class="btn-outline" href="sandbox:/mnt/data/WIFIGATE_3000_random_users_example.csv" download>
-                            Download .csv (UTF-8)
-                        </a>
-                        <a class="btn-ghost" href="../#contact">Need help?</a>
+                        <div class="file-caption">3000 random users example</div>
                     </div>
-                    <p class="note" role="note">
-                        Tip: CSV is UTF-8 encoded (with BOM) so Excel will display Hebrew/Unicode correctly.
-                    </p>
+
+                    <!-- PDF datasheet -->
+                    <div class="file-card">
+                        <a href="/downloads/WIFIGATE_rev_v1.0_datasheet.pdf" download>
+                            <img src="/images/wifigate/pdf.png" alt="WIFIGATE rev v1.0 datasheet">
+                        </a>
+                        <div class="file-caption">WIFIGATE rev v1.0 datasheet</div>
+                    </div>
                 </div>
             </div>
         </section>
