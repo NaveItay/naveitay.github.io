@@ -813,3 +813,29 @@
     line-height: 1.7;
     text-align: center;
 }
+
+/* הדגשה רק לקישורים רגילים */
+body.links-highlight a:not(.read-more):not([role="button"]):not(.btn):not(.button) {
+    outline: 2px solid #ffbf00;
+    background: #fff3bf;
+    text-decoration: underline;
+}
+
+/* ביטול השפעה על כפתורים אמיתיים ועל <a> שמעוצבות ככפתור */
+body.links-highlight button,
+body.links-highlight .btn,
+body.links-highlight .button,
+body.links-highlight .button-container button,
+body.links-highlight a.read-more,
+body.links-highlight a[role="button"],
+body.links-highlight #btn-links,
+body.links-highlight #btn-font,
+body.links-highlight #btn-motion,
+body.links-highlight #btn-reset {
+    outline: none !important;
+    box-shadow: none !important;
+    background: inherit !important;
+    color: inherit !important;
+    text-decoration: none !important;
+    filter: none !important;
+}
