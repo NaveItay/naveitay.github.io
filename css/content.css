@@ -856,3 +856,24 @@ body.highlight-links a.read-more:focus-visible {
     background: inherit !important;
     color: inherit !important;
 }
+
+/* --- Read More button style when highlight mode is ON --- */
+/* Works for both highlight modes you use: .highlight-links and .links-highlight */
+body.highlight-links a.read-more,
+body.links-highlight a.read-more {
+    background-color: #e96e4b !important;
+    color: #ffffff !important;
+    text-decoration: none !important;
+    outline: none !important;
+    /* optional: keep the existing hover transition from base.css */
+    transition: background-color 0.3s ease;
+}
+
+/* (optional) keep color consistent on hover/focus while highlighted */
+body.highlight-links a.read-more:hover,
+body.links-highlight a.read-more:hover,
+body.highlight-links a.read-more:focus-visible,
+body.links-highlight a.read-more:focus-visible {
+    background-color: #e96e4b !important;
+    color: #ffffff !important;
+}

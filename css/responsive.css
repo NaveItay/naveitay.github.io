@@ -1,13 +1,17 @@
-/* Hide mobile-specific links in desktop view */
-.desktop-only {
-    display: block;
-}
+/* =========================================================
+   responsive.css — EATS SYSTEMS
+   Layered, mobile-first breakpoints with safe overrides
+   Breakpoints:
+     ≤1200px  — large tablets / small desktops
+     ≤992px   — tablets / landscape phones
+     ≤768px   — common mobile
+     ≤480px   — small phones
+     ≤360px   — very small devices
+   ========================================================= */
 
-.mobile-only {
-    display: none;
-}
+/* ---------- Base helpers (work across sizes) ---------- */
 
-/* Prevent global horizontal scrolling (backup here as well) */
+/* Avoid horizontal scroll on any device */
 html,
 body {
     max-width: 100%;
@@ -19,14 +23,89 @@ body {
     html,
     body {
         overflow-x: clip;
-        /* modern: avoids creating a hidden scroll layer */
     }
 }
 
-/* Mobile Responsiveness */
+/* Desktop/mobile visibility helpers */
+.desktop-only {
+    display: block;
+}
+
+.mobile-only {
+    display: none;
+}
+
+/* Images & media never exceed container width */
+img,
+svg,
+canvas,
+iframe,
+video {
+    max-width: 100%;
+    height: auto;
+}
+
+/* ---------- ≤1200px ----------------------------------- */
+@media (max-width: 1200px) {
+
+    /* Container breathing room */
+    .container {
+        padding-inline: clamp(16px, 3vw, 32px);
+    }
+
+    /* Headings scale slightly down */
+    h2 {
+        font-size: clamp(2rem, 1.2rem + 1.2vw, 2.25rem);
+    }
+
+    /* Systems carousel: reduce side “peeks” */
+    .systems-stage {
+        gap: 18px;
+    }
+}
+
+/* ---------- ≤992px ------------------------------------ */
+@media (max-width: 992px) {
+
+    /* Header spacing */
+    .header-container {
+        padding: 20px 24px;
+    }
+
+    /* Specialties grid: move toward 2 columns */
+    .specialties-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(220px, 1fr));
+        gap: 20px;
+        justify-items: center;
+    }
+
+    .specialty-card {
+        max-width: 320px;
+    }
+
+    /* Systems card visuals */
+    .systems-card .media {
+        box-shadow: 0 6px 18px rgba(0, 0, 0, .08);
+        border-radius: 12px;
+    }
+
+    /* Video section spacing */
+    .video-section {
+        margin-bottom: 24px;
+    }
+
+    /* Contact form comfortable width */
+    .contact-form form {
+        max-width: 680px;
+        margin: 0 auto;
+    }
+}
+
+/* ---------- ≤768px (core mobile rules) ---------------- */
 @media (max-width: 768px) {
 
-    /* Hide desktop-specific links in mobile view */
+    /* Visibility helpers flip */
     .desktop-only {
         display: none;
     }
@@ -35,43 +114,7 @@ body {
         display: block;
     }
 
-    /* Decrease the size of the h1 inside the logo */
-    .logo h1 {
-        font-size: clamp(20px, 5vw, 32px);
-    }
-
-    /* Show hamburger and hide desktop nav */
-    .hamburger {
-        display: flex;
-    }
-
-    /* Hide the nav-links by default */
-    .nav-links {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background-color: #000000;
-        z-index: 999;
-        padding: 0 10px;
-        box-sizing: border-box;
-        overflow-x: hidden;
-        /* ensure no horizontal bleed on small screens */
-    }
-
-    /* Show the nav-links when nav-active class is added */
-    .nav-active {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        overflow-y: auto;
-        overflow-x: hidden;
-        /* safe */
-    }
-
-    /* Position the hamburger icon on the right */
+    /* Header / Nav */
     nav {
         flex: 1;
         display: flex;
@@ -79,36 +122,28 @@ body {
         position: relative;
     }
 
-    /* Adjust header container */
     .header-container {
         padding: 20px;
     }
 
-    /* Navigation Links Styles */
-    .nav-links li {
-        margin: 10px 0;
+    .logo h1 {
+        font-size: clamp(20px, 5vw, 32px);
     }
 
-    .nav-links li a {
-        font-size: clamp(12px, 4vw, 1rem);
-        color: white;
-        text-decoration: none;
-        text-transform: uppercase;
-        font-weight: bold;
-        transition: color 0.3s ease;
-        white-space: nowrap;
+    .hamburger {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        cursor: pointer;
     }
 
-    .nav-links li a:hover {
-        color: #ffcc00;
+    .hamburger .bar {
+        width: 24px;
+        height: 2px;
+        background: currentColor;
+        transition: transform .3s ease, opacity .3s ease;
     }
 
-    /* Hide page scroll when mobile menu is open */
-    body.menu-open {
-        overflow: hidden;
-    }
-
-    /* Animate Hamburger Icon */
     .hamburger.toggle .bar:nth-child(1) {
         transform: rotate(-45deg) translate(-5px, 6px);
     }
@@ -121,20 +156,102 @@ body {
         transform: rotate(45deg) translate(-5px, -6px);
     }
 
-    /* About Us Section Responsive Styles */
-    .about-section {
+    /* Mobile menu (closed by default) */
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #000;
+        z-index: 999;
+        padding: 0 10px;
+        box-sizing: border-box;
+        overflow-x: hidden;
+        /* safety on small screens */
+    }
+
+    /* When JS toggles .nav-active */
+    .nav-active {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .nav-links li {
+        margin: 10px 0;
+    }
+
+    .nav-links li a {
+        font-size: clamp(12px, 4vw, 1rem);
+        color: #fff;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-weight: bold;
+        transition: color .3s ease;
+        white-space: nowrap;
+    }
+
+    .nav-links li a:hover {
+        color: #ffcc00;
+    }
+
+    /* Prevent body scroll when menu open (main.js toggles .menu-open) */
+    body.menu-open {
+        overflow: hidden;
+    }
+
+    /* Sections spacing */
+    .about-section,
+    .specialties-section,
+    .idea-section,
+    .systems-section,
+    .contact-section {
         padding: 40px 15px;
     }
 
-    .about-section h2 {
+    .about-section h2,
+    .specialties-section h2,
+    .idea-section h2,
+    .systems-section h2,
+    .contact-section h2 {
         font-size: 2rem;
+        margin-bottom: 24px;
     }
 
-    .about-section p {
+    .about-section p,
+    .idea-section p {
         font-size: 1rem;
+        line-height: 1.6;
     }
 
-    /* Specialties Content Section Responsive Styles */
+    /* Specialties (grid & cards) */
+    .specialties-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        /* 2 columns on mobile */
+        gap: 20px;
+        justify-items: center;
+        overflow-x: hidden;
+        /* safety */
+    }
+
+    .specialty-card {
+        width: 100%;
+        max-width: 250px;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .specialty-card img {
+        width: 100%;
+        height: auto;
+    }
+
+    /* “Content” version of specialties (if used) */
     .specialties-content-section .container {
         padding: 20px 10px;
     }
@@ -176,18 +293,7 @@ body {
         justify-content: center;
     }
 
-    /* Adjust grid on mobile to a single column */
-    .specialties-grid {
-        grid-template-columns: 1fr;
-        gap: 10px;
-    }
-
-    /* Improve overall padding for mobile */
-    .specialties-content-section {
-        padding: 20px 15px;
-    }
-
-    /* Founders Section Responsive Styles */
+    /* Founders */
     .founders {
         display: flex;
         flex-direction: row;
@@ -195,7 +301,6 @@ body {
         align-items: flex-start;
         flex-wrap: nowrap;
         overflow-x: hidden;
-        /* prevent horizontal scroll if content is wide */
     }
 
     .founder {
@@ -220,35 +325,63 @@ body {
         padding: 15px;
     }
 
-    /* Team member responsive styles (if used) */
-    .team-member {
-        width: 100%;
-        margin: 20px 0;
-    }
-
-    .about-image {
-        width: 100%;
-    }
-
-    /* Idea to Product: stack steps vertically on mobile */
+    /* Process (Idea to Product) stacked */
     .process-steps {
+        display: flex;
         flex-direction: column;
         align-items: center;
+        gap: 18px;
     }
 
     .process-step {
         width: 100%;
     }
 
-    /* Contact Section Responsive Styles */
-    .contact-section {
-        padding: 40px 15px;
+    /* Systems carousel */
+    .systems-carousel {
+        overflow: hidden;
     }
 
-    .contact-section h2 {
-        font-size: 2rem;
+    .systems-stage {
+        display: flex;
+        align-items: stretch;
+        gap: 16px;
+        overflow: visible;
+        /* allow small side peeks */
+        scroll-snap-type: x mandatory;
+        /* if horizontal swipe is added */
     }
 
+    .systems-card {
+        min-width: clamp(240px, 70vw, 360px);
+        scroll-snap-align: center;
+    }
+
+    .systems-card .media {
+        border-radius: 12px;
+        box-shadow: 0 8px 22px rgba(0, 0, 0, .10);
+    }
+
+    .systems-pips {
+        display: flex;
+        gap: 8px;
+        justify-content: center;
+        margin-top: 12px;
+    }
+
+    .systems-pips .pip {
+        width: 8px;
+        height: 8px;
+        border-radius: 999px;
+        background: rgba(0, 0, 0, .2);
+        border: none;
+    }
+
+    .systems-pips .pip.is-active {
+        background: rgba(0, 0, 0, .6);
+    }
+
+    /* Contact form */
     .contact-form input,
     .contact-form textarea {
         font-size: 1rem;
@@ -259,22 +392,137 @@ body {
         padding: 10px 20px;
     }
 
-    /* Specialties grid: 2-column layout on mobile */
+    .contact-grid {
+        display: block;
+        /* single column on mobile */
+    }
+
+    /* Footer */
+    .footer-section .container {
+        padding-inline: 16px;
+    }
+
+    .footer-columns {
+        display: block;
+    }
+
+    .footer-left,
+    .footer-right {
+        margin-bottom: 16px;
+    }
+
+    /* Accessibility Toolbar — make ~80% width on mobile */
+    .a11y-toolbar {
+        right: auto;
+        left: 50%;
+        bottom: max(12px, env(safe-area-inset-bottom));
+        transform: translateX(-50%);
+        width: 80vw;
+        /* ~80% of the screen */
+        max-width: 80vw;
+        box-sizing: border-box;
+        gap: 8px;
+        padding: 10px 12px;
+        border-radius: 10px;
+        background: rgba(255, 255, 255, .92);
+        backdrop-filter: blur(8px);
+        box-shadow: 0 8px 28px rgba(0, 0, 0, .18);
+        z-index: 10000;
+        /* keep above footers/carousels */
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .a11y-toolbar button,
+    .a11y-toolbar .a11y-icon {
+        min-width: 44px;
+        min-height: 44px;
+        padding: 0 10px;
+        border-radius: 10px;
+        font-size: 15px;
+        line-height: 1;
+        flex: 0 0 auto;
+        /* wrap nicely without stretching */
+    }
+
+    /* Optional: distribute buttons evenly — uncomment to enable */
+    /* .a11y-toolbar button { flex: 1 1 90px; } */
+
+    /* Dark mode variant on mobile */
+    @media (prefers-color-scheme: dark) {
+        .a11y-toolbar {
+            background: rgba(18, 18, 18, .9);
+            border-color: rgba(255, 255, 255, .15);
+        }
+
+        .a11y-toolbar button,
+        .a11y-toolbar .a11y-icon {
+            border-color: rgba(255, 255, 255, .22);
+            color: #f2f2f2;
+        }
+    }
+}
+
+/* ---------- ≤480px ------------------------------------ */
+@media (max-width: 480px) {
+
+    /* Tighten paddings */
+    .header-container {
+        padding: 16px;
+    }
+
+    /* Headings & text scale */
+    h2 {
+        font-size: clamp(1.5rem, 4.5vw, 1.75rem);
+    }
+
+    p {
+        font-size: 1rem;
+    }
+
+    /* Specialties grid: 1 column on very small phones */
     .specialties-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        /* 2 columns layout */
-        gap: 20px;
-        /* spacing between cards */
-        justify-items: center;
-        /* center each card */
-        overflow-x: hidden;
-        /* safety */
+        grid-template-columns: 1fr;
+        gap: 16px;
     }
 
     .specialty-card {
-        width: 100%;
-        max-width: 250px;
-        margin-bottom: 20px;
+        max-width: 360px;
+        margin-inline: auto;
+    }
+
+    /* Systems card min size */
+    .systems-card {
+        min-width: clamp(240px, 86vw, 360px);
+    }
+
+    /* Footer spacing */
+    .footer-section .container {
+        padding-inline: 12px;
+    }
+}
+
+/* ---------- ≤360px ------------------------------------ */
+@media (max-width: 360px) {
+
+    /* Ultra-compact tweaks */
+    .logo h1 {
+        font-size: clamp(18px, 6vw, 24px);
+    }
+
+    .nav-links li a {
+        font-size: 12px;
+    }
+
+    .a11y-toolbar {
+        gap: 6px;
+        padding: 8px 10px;
+    }
+
+    .a11y-toolbar button,
+    .a11y-toolbar .a11y-icon {
+        min-width: 40px;
+        min-height: 40px;
+        font-size: 14px;
     }
 }
