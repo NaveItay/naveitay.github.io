@@ -119,7 +119,6 @@ p {
 .a11y-toolbar button,
 .a11y-toolbar .a11y-icon {
     appearance: none;
-    border: 1px solid rgba(0, 0, 0, .2);
     border-radius: 8px;
     padding: 8px 10px;
     /* consistent padding with buttons */
