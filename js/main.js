@@ -380,3 +380,30 @@ document.addEventListener('DOMContentLoaded', function () {
   var slot = document.getElementById("support-email");
   if (slot) slot.replaceChildren(a);
 })();
+
+// Footer section and other partials inclusion
+
+async function includePartials() {
+  const nodes = document.querySelectorAll('[data-include]');
+  for (const el of nodes) {
+    const url = el.getAttribute('data-include');
+    try {
+      const res = await fetch(url, { cache: 'no-store' }); // change to 'default' if you want caching
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const html = await res.text();
+      el.outerHTML = html;
+    } catch (err) {
+      console.error('Include failed:', url, err);
+    }
+  }
+
+  // Optional: let other scripts know includes finished
+  document.dispatchEvent(new CustomEvent('partials:loaded'));
+}
+
+// If main.js is loaded with `defer` or at the end of <body>, this is fine:
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', includePartials);
+} else {
+  includePartials();
+}

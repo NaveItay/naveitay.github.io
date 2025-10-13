@@ -1,17 +1,18 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <!-- Responsive meta -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Page title -->
+    <meta charset="UTF-8" />
+    <!-- Viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>EATS - Engineering and Technology Solutions</title>
 
-    <!-- Meta Description for SEO -->
+    <!-- SEO -->
     <meta name="description"
         content="EATS SYSTEMS specializes in developing embedded systems from concept to mass production. Discover our specialties in embedded engineering, electrical engineering, PCB design, and more.">
+    <link rel="canonical" href="https://eats-systems.com/">
+    <meta name="color-scheme" content="light dark">
 
     <!-- Favicons -->
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -21,7 +22,11 @@
     <link rel="manifest" href="/site.webmanifest">
     <meta name="theme-color" content="#ffffff">
 
-    <!-- External CSS -->
+    <!-- Resource hints (safe) -->
+    <link rel="dns-prefetch" href="https://formspree.io">
+    <link rel="preconnect" href="https://formspree.io" crossorigin>
+
+    <!-- CSS -->
     <link rel="stylesheet" href="/css/fonts.css">
     <link rel="stylesheet" href="/css/base.css">
     <link rel="stylesheet" href="/css/header.css">
@@ -30,14 +35,12 @@
     <link rel="stylesheet" href="/css/homepage-video-styles.css">
     <link rel="stylesheet" href="/css/responsive.css">
 
-    <!-- === Anti horizontal-scroll patch (safe, high-specificity) === -->
+    <!-- Anti horizontal scroll (scoped + safe) -->
     <style>
-        /* Prevent global horizontal scrolling (+ mobile-friendly) */
         html,
         body {
             max-width: 100%;
             overflow-x: hidden;
-            /* fallback for all browsers */
         }
 
         @supports (overflow-x: clip) {
@@ -46,11 +49,8 @@
             body {
                 overflow-x: clip;
             }
-
-            /* modern: avoids creating a hidden scroll layer */
         }
 
-        /* Make video fill width without causing 100vw + scrollbar issues */
         .video-section {
             overflow: hidden;
         }
@@ -62,17 +62,14 @@
             height: auto;
         }
 
-        /* OUR SYSTEMS carousel - keep content visually contained */
         .systems-carousel {
             overflow: hidden;
         }
 
-        /* Stage can let side hints stay visible within the carousel */
         .systems-stage {
             overflow: visible;
         }
 
-        /* Generic safety: prevent media from pushing layout width */
         img,
         svg,
         canvas,
@@ -81,17 +78,16 @@
             height: auto;
         }
     </style>
-    <!-- === end patch === -->
 </head>
 
 <body>
-    <!-- Placeholder for Header -->
+    <!-- Header (convert to partial whenever you have it) -->
     <div id="header-placeholder"></div>
 
     <!-- Skip to main content -->
     <a class="skip-link" href="#main-content">Skip to main content</a>
 
-    <!-- Accessibility toolbar -->
+    <!-- A11y toolbar -->
     <div class="a11y-toolbar" role="region" aria-label="Accessibility controls">
         <span class="a11y-icon" aria-hidden="true">♿</span>
         <button id="btn-font" type="button" aria-pressed="false" title="Larger text">A+</button>
@@ -100,19 +96,18 @@
         <button id="btn-reset" type="button" aria-pressed="false" title="Reset accessibility settings">Reset</button>
     </div>
 
-    <!-- Live region for screen readers -->
+    <!-- Live region -->
     <div id="a11y-status" class="sr-only" role="status" aria-live="polite"></div>
 
-    <!-- Wrapper for all main content -->
     <main id="main-content" tabindex="-1">
-
         <section class="video-section">
-            <video src="/videos/EATS-SYSTEMS-HD.mp4" playsinline muted autoplay loop aria-hidden="true"
-                poster="/images/homepage/og-cover.png"></video>
+            <video src="/videos/EATS-SYSTEMS-HD.mp4" poster="/images/homepage/og-cover.png" playsinline muted autoplay
+                loop preload="metadata" aria-hidden="true">
+            </video>
             <noscript><img src="/images/homepage/og-cover.png" alt="EATS SYSTEMS hero image"></noscript>
         </section>
 
-        <!-- About Us Section -->
+        <!-- About Us -->
         <section id="about" class="about-section">
             <div class="container">
                 <h2>About Us</h2>
@@ -120,8 +115,7 @@
                     EATS SYSTEMS is a leading engineering company specializing in developing embedded systems from
                     concept
                     to mass production. We deliver comprehensive, tailor-made solutions that meet the unique
-                    requirements of
-                    our clients.
+                    requirements of our clients.
                 </p>
                 <p>
                     Our expertise in both software and hardware design enables us to transform ideas into cutting-edge
@@ -133,44 +127,39 @@
             </div>
         </section>
 
-        <!-- Our Specialties Section -->
+        <!-- Our Specialties -->
         <section id="specialties" class="specialties-section">
             <div class="container">
                 <h2>Our Specialties</h2>
                 <div class="specialties-grid">
-                    <!-- Specialty 1 -->
                     <div class="specialty-card">
                         <img src="/images/specialties/embedded-engineering.png" alt="Embedded Engineering">
                         <h3>Embedded Engineering</h3>
                         <p>We develop advanced embedded systems tailored to your needs.</p>
                     </div>
-                    <!-- Specialty 2 -->
                     <div class="specialty-card">
                         <img src="/images/specialties/electrical-engineering.png" alt="Electrical Engineering">
                         <h3>Electrical Engineering</h3>
                         <p>Our expertise in electrical design ensures optimal performance.</p>
                     </div>
-                    <!-- Specialty 3 -->
                     <div class="specialty-card">
                         <img src="/images/specialties/pcb-design.png" alt="PCB Design">
                         <h3>PCB Design</h3>
                         <p>We create efficient PCB layouts for complex electronic systems.</p>
                     </div>
-                    <!-- Specialty 4 -->
                     <div class="specialty-card">
                         <img src="/images/specialties/low-power-systems.png" alt="Low Power Systems">
                         <h3>Low Power Systems</h3>
                         <p>Specializing in energy-efficient designs for extended battery life.</p>
                     </div>
                 </div>
-                <!-- Read More Button -->
                 <div class="read-more-container">
                     <a href="specialties/" class="read-more">Read more</a>
                 </div>
             </div>
         </section>
 
-        <!-- From Idea to Product Section -->
+        <!-- From Idea to Product -->
         <section id="idea" class="idea-section">
             <div class="container">
                 <h2>From Idea to Product</h2>
@@ -179,21 +168,19 @@
                     concept to mass production. Our multidisciplinary team ensures that your vision becomes a reality,
                     providing expertise in design, prototyping, testing, and manufacturing.
                 </p>
-                <!-- Read More Button -->
                 <div class="read-more-container">
                     <a href="idea-to-product/" class="read-more">Read more</a>
                 </div>
             </div>
         </section>
 
-        <!-- OUR SYSTEMS Section -->
+        <!-- OUR SYSTEMS -->
         <section id="our-systems" class="systems-section">
             <div class="container">
                 <h2>OUR SYSTEMS</h2>
 
                 <div class="systems-carousel" data-interval="5000" aria-label="Our systems">
                     <div class="systems-stage" aria-roledescription="carousel">
-                        <!-- Slide 1 -->
                         <figure class="systems-card" data-index="0" data-pos="-1" role="group"
                             aria-roledescription="slide" aria-label="UHF RFID Sticker-Tag Reader Module">
                             <div class="media">
@@ -203,7 +190,6 @@
                             <figcaption dir="auto">UHF RFID Sticker-Tag Reader Module</figcaption>
                         </figure>
 
-                        <!-- Slide 2 (starts centered) -->
                         <figure class="systems-card" data-index="1" data-pos="0" role="group"
                             aria-roledescription="slide" aria-label="WIFIGATE">
                             <div class="media">
@@ -212,7 +198,6 @@
                             <figcaption dir="auto">WIFIGATE</figcaption>
                         </figure>
 
-                        <!-- Slide 3 -->
                         <figure class="systems-card" data-index="2" data-pos="1" role="group"
                             aria-roledescription="slide" aria-label="BYERE BOX - Build Your Escape Room Easily!">
                             <div class="media">
@@ -223,42 +208,30 @@
                         </figure>
                     </div>
 
-                    <!-- Small dots (clickable) -->
                     <div class="systems-pips" role="tablist" aria-label="Slide navigation">
                         <button class="pip is-active" role="tab" aria-selected="true"
                             aria-label="Go to UHF Technology"></button>
                         <button class="pip" role="tab" aria-label="Go to WIFIGATE"></button>
                         <button class="pip" role="tab" aria-label="BYERE BOX - Build Your Escape Room Easily!"></button>
                     </div>
-                    <!-- End of carousel -->
                 </div>
-                <!-- Read More Button for Our Systems -->
+
                 <div class="read-more-container">
                     <a href="our-systems/" class="read-more">Read more</a>
                 </div>
             </div>
         </section>
 
-        <!-- Contact Us Section -->
+        <!-- Contact Us -->
         <section id="contact" class="contact-section">
             <div class="container">
                 <h2>Contact Us</h2>
                 <p>If you have any questions or inquiries, feel free to get in touch with us. We're here to help you
-                    with
-                    your engineering and technology needs.</p>
+                    with your engineering and technology needs.</p>
 
-                <!-- NEW: show support email -->
                 <p>Email: <a href="mailto:support@eats-systems.com">support@eats-systems.com</a></p>
 
-                <!-- Note Section (separate from the contact grid)
-                <div class="note-container">
-                    <div class="contact-note">
-                        <p><strong>Note:</strong> EATS SYSTEMS is not open to any new services yet.</p>
-                    </div>
-                </div> -->
-
                 <div class="contact-grid">
-                    <!-- Contact Form (Formspree stays the same) -->
                     <div class="contact-form">
                         <form name="contact-form" action="https://formspree.io/f/xwkdjvry" method="POST" novalidate>
                             <p id="contact-help" class="sr-only">All fields are required.</p>
@@ -275,7 +248,6 @@
                             <textarea id="message" name="message" rows="4" required
                                 aria-describedby="contact-help"></textarea>
 
-                            <!-- Optional: nicer subject line in your inbox -->
                             <input type="hidden" name="_subject" value="New message from EATS-SYSTEMS.com contact form">
 
                             <div aria-live="polite" id="form-status" class="sr-only"></div>
@@ -288,66 +260,33 @@
                 </div>
             </div>
         </section>
-
-        <!-- Footer Section -->
-        <footer class="footer-section">
-            <div class="container">
-                <!-- Footer Content -->
-                <div class="footer-columns">
-                    <!-- Left Column (Slogan) -->
-                    <div class="footer-left">
-                        <p class="footer-slogan" style="margin-left: 0;">
-                            Let's turn your idea into reality! Contact us.
-                        </p>
-                    </div>
-                </div>
-                <!-- Divider -->
-                <hr class="footer-divider">
-                <!-- Footer Bottom -->
-                <div class="footer-bottom">
-                    <p class="footer-copyright">
-                        &copy; 2022 EATS-SYSTEMS. All rights reserved.
-                    </p>
-                </div>
-            </div>
-            <br><br>
-        </footer>
     </main>
 
-    <!-- Main JavaScript -->
-    <script src="/js/main.js"></script>
+    <!-- Footer (partial include outside <main>) -->
+    <div data-include="/partials/footer.html"></div>
 
-    <!-- SEO overrides (must come BEFORE seo.js) -->
+    <!-- Main JavaScript (defer so it won't block rendering) -->
+    <script src="/js/main.js" defer></script>
+
+    <!-- SEO overrides (keep before seo.js) -->
     <script>
         window.EATS_SEO = {
-            // Branding
             siteName: "EATS SYSTEMS — Embedded & Electronics Engineering",
             orgName: "EATS SYSTEMS",
-
-            // URLs (use absolute for crawlers)
             url: "https://eats-systems.com",
             logo: "https://eats-systems.com/images/logo.png",
             cover: "https://eats-systems.com/images/og-cover.jpg",
-
-            // Page meta
             title: "EATS - Engineering and Technology Solutions",
             description: "EATS SYSTEMS specializes in developing embedded systems from concept to mass production.",
             lang: document.documentElement.lang || "en",
             languages: ["en", "he"],
-
-            // Public profiles (add more when ready)
             sameAs: ["https://github.com/NaveItay"],
-
-            // Twitter cards (optional)
             enableTwitter: true,
             twitterCard: "summary_large_image",
-            twitterHandle: "" // e.g., "@eats_systems"
+            twitterHandle: ""
         };
     </script>
-
-    <!-- SEO bootstrap -->
     <script src="/js/seo.js" defer></script>
-
 </body>
 
 </html>
