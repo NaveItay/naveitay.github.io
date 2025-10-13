@@ -1,21 +1,56 @@
 (function seoBootstrap() {
-  // --- defaults (can be overridden via window.EATS_SEO before this script) ---
-  var cfg = Object.assign({
+  // --- read per-page overrides from the <script src="/js/seo.js" ...> tag ---
+  function getScriptOverrides() {
+    var scripts = document.getElementsByTagName("script");
+    var me = null;
+    for (var i = scripts.length - 1; i >= 0; i--) {
+      var s = scripts[i];
+      var src = s.getAttribute("src") || "";
+      if (src.indexOf("/js/seo.js") !== -1) { me = s; break; }
+    }
+    if (!me || !me.dataset) return {};
+
+    var out = {};
+    Object.keys(me.dataset).forEach(function (k) {
+      var v = me.dataset[k];
+      if (v == null) return;
+      // smart-ish parsing: JSON -> boolean -> number -> string
+      var parsed = v;
+      try {
+        // If it looks like JSON (starts with { or [ or "true"/"false"/number"), try parse
+        if (/^\s*(\[|\{|"|true|false|-?\d)/i.test(v)) parsed = JSON.parse(v);
+      } catch (e) { /* keep as string */ }
+
+      if (parsed === "true") parsed = true;
+      else if (parsed === "false") parsed = false;
+      else if (!isNaN(parsed) && parsed !== "" && typeof parsed !== "object") parsed = Number(parsed);
+
+      // camelCase the dataset key (title -> title, twitterHandle -> twitterHandle)
+      out[k] = parsed;
+    });
+    return out;
+  }
+
+  // --- defaults (sane site-wide values) ---
+  var defaults = {
     siteName: "EATS - Engineering and Technology Solutions",
-    orgName:  "EATS SYSTEMS",
-    url:      "https://eats-systems.com",
-    logo:     "https://eats-systems.com/images/logo.png",
-    cover:    "https://eats-systems.com/images/og-cover.jpg",
-    title:    document.title || "EATS - Engineering and Technology Solutions",
+    orgName: "EATS SYSTEMS",
+    url: "https://eats-systems.com",
+    logo: "https://eats-systems.com/images/logo.png",
+    cover: "https://eats-systems.com/images/og-cover.jpg",
+    title: document.title || "EATS - Engineering and Technology Solutions",
     description: "EATS SYSTEMS specializes in developing embedded systems from concept to mass production.",
-    lang:     document.documentElement.lang || "en",
-    languages:["en","he"],
+    lang: document.documentElement.lang || "en",
+    languages: ["en", "he"],
     supportEmail: "support@eats-systems.com",
-    sameAs:   [],  // e.g., ["https://www.linkedin.com/company/...","https://github.com/NaveItay"]
+    sameAs: [], // e.g., ["https://github.com/NaveItay"]
     enableTwitter: true,
-    twitterCard: "summary_large_image", // or "summary"
-    twitterHandle: "" // e.g., "@eats_systems"
-  }, (window.EATS_SEO || {}));
+    twitterCard: "summary_large_image",
+    twitterHandle: ""
+  };
+
+  // --- build final config: defaults < script data-* < window.EATS_SEO (if present) ---
+  var cfg = Object.assign({}, defaults, getScriptOverrides(), (window.EATS_SEO || {}));
 
   // --- helpers ---
   function addMeta(name, content, attr) {
@@ -54,7 +89,6 @@
   }
   function canonicalFromLocation() {
     try {
-      // normalize trailing slash on root only
       var u = new URL(window.location.href);
       u.hash = "";
       if (u.pathname === "/") u.pathname = "/";
@@ -73,7 +107,7 @@
   addMeta("og:image", cfg.cover, "property");
   addMeta("og:site_name", cfg.orgName, "property");
 
-  // --- Twitter Cards (optional) ---
+  // --- Twitter Cards ---
   if (cfg.enableTwitter) {
     addMeta("twitter:card", cfg.twitterCard);
     addMeta("twitter:title", cfg.title);
@@ -82,23 +116,20 @@
     if (cfg.twitterHandle) addMeta("twitter:site", cfg.twitterHandle);
   }
 
-  // --- Basic meta (fallbacks) ---
+  // --- Basic meta fallbacks ---
   addMeta("description", cfg.description);
   addMeta("theme-color", "#ffffff");
 
-  // --- hreflang (if you serve multiple languages) ---
-  // Example: create self hreflang if lang known; extend as needed for alternates.
+  // --- hreflang (simple same-URL per language; expand if you localize URLs) ---
   if (cfg.languages && cfg.languages.length) {
     var selfHref = canonicalFromLocation();
     cfg.languages.forEach(function(l){
-      // if you have per-language URLs, replace selfHref with the correct localized URL
       var link = document.createElement("link");
       link.setAttribute("rel", "alternate");
       link.setAttribute("hreflang", l);
       link.setAttribute("href", selfHref);
       document.head.appendChild(link);
     });
-    // x-default
     var xd = document.createElement("link");
     xd.setAttribute("rel","alternate");
     xd.setAttribute("hreflang","x-default");
@@ -140,8 +171,7 @@
   };
   addJSONLD("ld-site", siteLD);
 
-  // --- Optional: WebPage JSON-LD (lightweight) ---
-  // Good for single-page sites; includes breadcrumb stub you can expand later
+  // --- WebPage JSON-LD (lightweight) ---
   var pageLD = {
     "@context": "https://schema.org",
     "@type": "WebPage",
@@ -154,8 +184,8 @@
   };
   addJSONLD("ld-page", pageLD);
 
-  // Console hint (remove if you prefer silence)
+  // Debug hint
   if (typeof console !== "undefined") {
-    console.info("[SEO] Structured data & meta injected for", cfg.url);
+    console.info("[SEO] Meta & JSON-LD injected", cfg);
   }
 })();

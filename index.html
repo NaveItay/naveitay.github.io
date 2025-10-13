@@ -265,28 +265,9 @@
     <!-- Footer (partial include outside <main>) -->
     <div data-include="/partials/footer.html"></div>
 
-    <!-- Main JavaScript (defer so it won't block rendering) -->
-    <script src="/js/main.js" defer></script>
-
-    <!-- SEO overrides (keep before seo.js) -->
-    <script>
-        window.EATS_SEO = {
-            siteName: "EATS SYSTEMS — Embedded & Electronics Engineering",
-            orgName: "EATS SYSTEMS",
-            url: "https://eats-systems.com",
-            logo: "https://eats-systems.com/images/logo.png",
-            cover: "https://eats-systems.com/images/og-cover.jpg",
-            title: "EATS - Engineering and Technology Solutions",
-            description: "EATS SYSTEMS specializes in developing embedded systems from concept to mass production.",
-            lang: document.documentElement.lang || "en",
-            languages: ["en", "he"],
-            sameAs: ["https://github.com/NaveItay"],
-            enableTwitter: true,
-            twitterCard: "summary_large_image",
-            twitterHandle: ""
-        };
-    </script>
-    <script src="/js/seo.js" defer></script>
+    <!-- JavaScript -->
+    <script src="/js/main.js" defer></script> // Main script
+    <script src="/js/seo.js" defer></script> // SEO script (must come AFTER main.js)
 </body>
 
 </html>
