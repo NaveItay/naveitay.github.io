@@ -886,3 +886,34 @@ body.links-highlight a.read-more:focus-visible {
 .systems-stage {
     overflow: visible;
 }
+
+/* About page: founders layout */
+.founders-section .founders {
+    display: flex;
+    /* or: display: grid; place-items: center; */
+    flex-wrap: wrap;
+    justify-content: center;
+    /* centers children horizontally */
+    gap: 1.5rem;
+}
+
+.founders-section .founder {
+    text-align: center;
+    /* centers the text under the image */
+    max-width: 280px;
+    /* optional: keeps card narrow on mobile */
+    margin: 0 auto;
+    /* ensure the card itself is centered if it wraps */
+}
+
+.founders-section .founder img {
+    display: block;
+    /* remove inline-gap behavior */
+    margin-inline: auto;
+    /* center the image horizontally */
+    width: min(60vw, 240px);
+    /* responsive size; caps at 240px */
+    height: auto;
+    border-radius: 8px;
+    /* optional nicety */
+}

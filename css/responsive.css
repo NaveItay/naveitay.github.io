@@ -526,3 +526,11 @@ video {
         font-size: 14px;
     }
 }
+
+/* ---------- ≥640px ------------------------------------ */
+@media (min-width: 640px) {
+    .founders-section .founder img {
+        width: 240px;
+        /* steadier size on tablet+ */
+    }
+}
