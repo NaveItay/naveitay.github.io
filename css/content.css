@@ -877,3 +877,12 @@ body.links-highlight a.read-more:focus-visible {
     background-color: #e96e4b !important;
     color: #ffffff !important;
 }
+
+/* === OUR SYSTEMS carousel === */
+.systems-carousel {
+    overflow: hidden;
+}
+
+.systems-stage {
+    overflow: visible;
+}

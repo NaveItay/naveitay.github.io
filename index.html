@@ -3,7 +3,6 @@
 
 <head>
     <meta charset="UTF-8" />
-    <!-- Viewport -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>EATS - Engineering and Technology Solutions</title>
@@ -22,7 +21,7 @@
     <link rel="manifest" href="/site.webmanifest">
     <meta name="theme-color" content="#ffffff">
 
-    <!-- Resource hints (safe) -->
+    <!-- Resource hints -->
     <link rel="dns-prefetch" href="https://formspree.io">
     <link rel="preconnect" href="https://formspree.io" crossorigin>
 
@@ -34,50 +33,6 @@
     <link rel="stylesheet" href="/css/content.css">
     <link rel="stylesheet" href="/css/homepage-video-styles.css">
     <link rel="stylesheet" href="/css/responsive.css">
-
-    <!-- Anti horizontal scroll (scoped + safe) -->
-    <style>
-        html,
-        body {
-            max-width: 100%;
-            overflow-x: hidden;
-        }
-
-        @supports (overflow-x: clip) {
-
-            html,
-            body {
-                overflow-x: clip;
-            }
-        }
-
-        .video-section {
-            overflow: hidden;
-        }
-
-        .video-section video {
-            display: block;
-            width: 100%;
-            max-width: 100%;
-            height: auto;
-        }
-
-        .systems-carousel {
-            overflow: hidden;
-        }
-
-        .systems-stage {
-            overflow: visible;
-        }
-
-        img,
-        svg,
-        canvas,
-        iframe {
-            max-width: 100%;
-            height: auto;
-        }
-    </style>
 </head>
 
 <body>
@@ -102,8 +57,7 @@
     <main id="main-content" tabindex="-1">
         <section class="video-section">
             <video src="/videos/EATS-SYSTEMS-HD.mp4" poster="/images/homepage/og-cover.png" playsinline muted autoplay
-                loop preload="metadata" aria-hidden="true">
-            </video>
+                loop preload="metadata" aria-hidden="true"></video>
             <noscript><img src="/images/homepage/og-cover.png" alt="EATS SYSTEMS hero image"></noscript>
         </section>
 
@@ -266,8 +220,8 @@
     <div data-include="/partials/footer.html"></div>
 
     <!-- JavaScript -->
-    <script src="/js/main.js" defer></script> // Main script
-    <script src="/js/seo.js" defer></script> // SEO script (must come AFTER main.js)
+    <script src="/js/main.js" defer></script>
+    <script src="/js/seo.js" defer></script>
 </body>
 
 </html>
