@@ -313,6 +313,45 @@
                 gap: 6px;
             }
         }
+
+        /* --- Video section --- */
+        .video-section {
+            background: #fff;
+            padding: clamp(24px, 3vw, 48px) 20px;
+        }
+
+        .video-section .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .video-frame {
+            position: relative;
+            width: 100%;
+            /* 16:9 responsive frame */
+            aspect-ratio: 16/9;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, .08);
+            border: 1px solid rgba(0, 0, 0, .06);
+            background: #000;
+        }
+
+        .video-frame video,
+        .video-fallback {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Reduce motion respect (autoplay stays; removes any transitions if you add later) */
+        @media (prefers-reduced-motion: reduce) {
+            .video-frame video {
+                animation: none;
+                transition: none;
+            }
+        }
     </style>
 </head>
 
@@ -339,6 +378,23 @@
             <h1>WIFIGATE — Choose Your Plan</h1>
             <p class="sub">Three flexible plans to fit your connectivity and scale needs.</p>
         </section>
+
+        <!-- Demo Video -->
+        <section class="video-section" aria-label="WIFIGATE demo video">
+            <div class="container">
+                <div class="video-frame">
+                    <video id="wfg-video" playsinline muted autoplay loop preload="metadata"
+                        poster="/images/wifigate/video-poster.jpg" aria-hidden="true">
+                        <source src="/videos/WIFIGATE_video_animation_FHD.mp4" type="video/mp4" />
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <noscript>
+                    <img src="/images/wifigate/video-poster.jpg" alt="WIFIGATE demo preview" class="video-fallback">
+                </noscript>
+            </div>
+        </section>
+
 
         <!-- Plans -->
         <section class="wfg-plans">
