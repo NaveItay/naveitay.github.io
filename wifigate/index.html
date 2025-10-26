@@ -74,22 +74,111 @@
             color: #111827;
         }
 
-        .wfg-hero {
-            padding: clamp(32px, 4vw, 64px) 20px 16px;
-            text-align: center;
+        /* --- Why WIFIGATE --- */
+        .why-wfg {
             background: #fff;
+            padding: clamp(28px, 4vw, 56px) 20px 10px;
+            text-align: center;
         }
 
-        .wfg-hero h1 {
-            font-size: clamp(2rem, 1.3rem + 2.2vw, 3rem);
-            margin: 0 0 10px;
-            letter-spacing: .5px;
+        .why-wfg .container {
+            max-width: 1100px;
+            margin: 0 auto;
         }
 
-        .wfg-hero p.sub {
+        .why-wfg h1 {
+            font-size: clamp(2rem, 1.4rem + 2.2vw, 3rem);
+            margin: 0 0 8px;
+            letter-spacing: .4px;
+        }
+
+        .why-wfg .sub {
             color: #666;
             margin: 0;
-            font-size: 1.05rem;
+        }
+
+        /* --- Video section --- */
+        .video-section {
+            background: #fff;
+            padding: clamp(24px, 3vw, 48px) 20px;
+        }
+
+        .video-section .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .video-frame {
+            position: relative;
+            width: 100%;
+            /* 16:9 responsive frame */
+            aspect-ratio: 16/9;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, .08);
+            border: 1px solid rgba(0, 0, 0, .06);
+            background: #000;
+        }
+
+        .video-frame video,
+        .video-fallback {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .video-frame video {
+                animation: none;
+                transition: none;
+            }
+        }
+
+        /* --- Why explanation --- */
+        .why-explain {
+            background: #fff;
+            padding: 10px 20px clamp(24px, 3vw, 48px);
+        }
+
+        .why-explain .container {
+            display: grid;
+            gap: clamp(14px, 2vw, 20px);
+            grid-template-columns: 1fr;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .why-card {
+            border: 1px solid rgba(0, 0, 0, .06);
+            border-radius: 16px;
+            background: #f9fafb;
+            box-shadow: 0 10px 24px rgba(0, 0, 0, .06);
+            padding: clamp(16px, 2.2vw, 24px);
+        }
+
+        .why-card h2,
+        .why-card h3 {
+            margin: 0 0 8px;
+        }
+
+        .why-card .lead {
+            font-weight: 600;
+            color: #111827;
+            margin: 4px 0 10px;
+        }
+
+        .why-card .features {
+            margin: 8px 0 10px;
+            padding-inline-start: 1.2em;
+        }
+
+        .why-card .features li {
+            margin: 6px 0;
+        }
+
+        .why-card .closer {
+            margin-top: 10px;
         }
 
         /* --- Plans --- */
@@ -170,7 +259,6 @@
             line-height: 1.65;
             margin: 4px 0 0;
             font-size: .95rem;
-            /* smaller description text */
         }
 
         .plan-note {
@@ -293,7 +381,6 @@
             outline-offset: 3px;
         }
 
-        /* Subtle highlight (kept for other uses) */
         .hl {
             background: #fff3bf;
             padding: 0 .2em;
@@ -311,45 +398,6 @@
         @media (max-width: 480px) {
             .plan-badge-row {
                 gap: 6px;
-            }
-        }
-
-        /* --- Video section --- */
-        .video-section {
-            background: #fff;
-            padding: clamp(24px, 3vw, 48px) 20px;
-        }
-
-        .video-section .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .video-frame {
-            position: relative;
-            width: 100%;
-            /* 16:9 responsive frame */
-            aspect-ratio: 16/9;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 12px 35px rgba(0, 0, 0, .08);
-            border: 1px solid rgba(0, 0, 0, .06);
-            background: #000;
-        }
-
-        .video-frame video,
-        .video-fallback {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-
-        /* Reduce motion respect (autoplay stays; removes any transitions if you add later) */
-        @media (prefers-reduced-motion: reduce) {
-            .video-frame video {
-                animation: none;
-                transition: none;
             }
         }
     </style>
@@ -373,10 +421,12 @@
     <div id="a11y-status" class="sr-only" role="status" aria-live="polite"></div>
 
     <main id="main" tabindex="-1">
-        <!-- Hero -->
-        <section class="wfg-hero">
-            <h1>WIFIGATE — Choose Your Plan</h1>
-            <p class="sub">Three flexible plans to fit your connectivity and scale needs.</p>
+        <!-- Why WIFIGATE -->
+        <section class="why-wfg" id="why">
+            <div class="container">
+                <h1>Why WIFIGATE?</h1>
+                <p class="sub">Secure, simple, and flexible access control—without mandatory subscriptions.</p>
+            </div>
         </section>
 
         <!-- Demo Video -->
@@ -395,6 +445,29 @@
             </div>
         </section>
 
+        <!-- Why explanation (English only) -->
+        <section class="why-explain">
+            <div class="container">
+                <div class="why-card">
+                    <h2>Why pay a monthly subscription for a gate?</h2>
+                    <p class="lead">It’s just a gate—so we built a plan that doesn’t force you to pay monthly.</p>
+
+                    <ul class="features">
+                        <li><strong>No monthly fee</strong> on our first plan—we’re proud of it.</li>
+                        <li><strong>Maximum security</strong> by design.</li>
+                        <li><strong>Encrypted, local user database</strong> with no exposure to the internet.</li>
+                        <li><strong>24-hour guest pass</strong> feature.</li>
+                        <li>One-button <strong>digital RF learning</strong> (RF Learning Code).</li>
+                        <li><strong>Unlimited RF remotes</strong> supported.</li>
+                        <li>Up to <strong>3000 app users</strong>; more users available for an additional fee.</li>
+                        <li><strong>Sniffer-resistant</strong> to prevent capture and replay attempts.</li>
+                    </ul>
+
+                    <p class="closer">WIFIGATE gives you full control—without monthly fees, with strong security, and
+                        simple operation.</p>
+                </div>
+            </div>
+        </section>
 
         <!-- Plans -->
         <section class="wfg-plans">
@@ -406,8 +479,7 @@
                         <div class="plan-title">
                             <h2>No Monthly Fee</h2>
                             <div class="plan-badge-row">
-                                <span class="plan-badge" aria-label="Up to twenty thousand users">Up to 3000
-                                    users</span>
+                                <span class="plan-badge" aria-label="Up to three thousand users">Up to 3000 users</span>
                                 <span class="plan-badge" aria-label="Import and export CSV files">Import/Export CSV
                                     file</span>
                             </div>
@@ -463,8 +535,7 @@
                         <div class="plan-title">
                             <h2>₪5 / month</h2>
                             <div class="plan-badge-row">
-                                <span class="plan-badge" aria-label="Up to twenty thousand users">Up to 3000
-                                    users</span>
+                                <span class="plan-badge" aria-label="Up to three thousand users">Up to 3000 users</span>
                                 <span class="plan-badge" aria-label="Import and export CSV files">Import/Export CSV
                                     file</span>
                             </div>
@@ -532,8 +603,7 @@
                         <div class="plan-title">
                             <h2>₪12 / month</h2>
                             <div class="plan-badge-row">
-                                <span class="plan-badge" aria-label="Up to twenty thousand users">Up to 3000
-                                    users</span>
+                                <span class="plan-badge" aria-label="Up to three thousand users">Up to 3000 users</span>
                                 <span class="plan-badge" aria-label="Import and export CSV files">Import/Export CSV
                                     file</span>
                             </div>
@@ -593,7 +663,7 @@
                         </div>
 
                         <p class="plan-desc">
-                            All-in-One: 4G, WiFi, Bluetooth, and 433&nbsp;MHz RF in parallel. Open the gate worldwide.
+                            All-in-one: 4G, WiFi, Bluetooth, and 433&nbsp;MHz RF in parallel. Open the gate worldwide.
                         </p>
                         <ul class="plan-list">
                             <li>Input voltage: <strong>12-24 VDC</strong></li>
