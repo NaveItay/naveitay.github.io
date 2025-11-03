@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>Open WiFiGate</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <script>
+    // 🔹 Fonction Base64 → JSON
+    function decodeJson(b64) {
+      try {
+        const json = atob(b64);
+        return JSON.parse(json);
+      } catch (e) {
+        console.error("❌ decodeJson error:", e);
+        return null;
+      }
+    }
+
+    // 🔹 Récupère les paramètres GET
+    function getQueryParams() {
+      const qs = location.search.replace(/^\?/, '');
+      const parts = qs ? qs.split('&') : [];
+      const out = {};
+      parts.forEach(p => {
+        const [k, v] = p.split('=');
+        if (!k) return;
+        out[decodeURIComponent(k)] = v ? decodeURIComponent(v) : '';
+      });
+      return out;
+    }
+
+    (function () {
+      const p = getQueryParams();
+      let data = {};
+
+      // ✅ Si on a ?data= → on décode tout d’un coup
+      if (p.data) {
+        const decoded = decodeJson(p.data);
+        if (decoded) data = decoded;
+      } else {
+        // sinon, on garde les anciens paramètres
+        data = p;
+      }
+
+      const deep = `wifigate://gate/${encodeURIComponent(data.id || "")}?` +
+        `chip=${encodeURIComponent(data.chip || "")}` +
+        `&name=${encodeURIComponent(data.name || "")}` +
+        `&version=${encodeURIComponent(data.version || "-")}` +
+        `&subscription=${encodeURIComponent(data.subscription || "-")}` +
+        `&created=${encodeURIComponent(data.created || Date.now())}` +
+        (data.isGuest ? `&isGuest=${encodeURIComponent(data.isGuest)}` : "") +
+        (data.hostPhone ? `&hostPhone=${encodeURIComponent(data.hostPhone)}` : "") +
+        (data.guestPhone ? `&guestPhone=${encodeURIComponent(data.guestPhone)}` : "") +
+        (data.accessDate ? `&accessDate=${encodeURIComponent(data.accessDate)}` : "") +
+        (data.accessStart ? `&accessStart=${encodeURIComponent(data.accessStart)}` : "") +
+        (data.accessEnd ? `&accessEnd=${encodeURIComponent(data.accessEnd)}` : "");
+
+      console.log("🔗 Redirecting to:", deep);
+
+      // 🔁 Redirige vers l'app après une courte pause
+      setTimeout(() => (window.location.href = deep), 200);
+
+      // 🧭 Fallback visible si l’app ne s’ouvre pas
+      document.addEventListener("DOMContentLoaded", () => {
+        const el = document.getElementById("info");
+        el.innerHTML = `
+          <p>Opening WiFiGate…</p>
+          <p>If nothing happens, <a href="${deep}">open manually</a>.</p>
+        `;
+      });
+    })();
+  </script>
+</head>
+
+<body>
+  <div id="info" style="font-family:system-ui,Arial;max-width:720px;margin:48px auto;text-align:center;">
+    <p>Opening WiFiGate…</p>
+  </div>
+</body>
+
+</html>
