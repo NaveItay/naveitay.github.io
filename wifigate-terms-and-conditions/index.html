@@ -1,0 +1,409 @@
+<!-- wifigate/wifigate-terms-and-conditions.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WIFIGATE — Terms & Conditions</title>
+
+    <!-- Site CSS (root-level files) -->
+    <link rel="stylesheet" href="/css/fonts.css">
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="/css/content.css">
+    <link rel="stylesheet" href="/css/responsive.css">
+
+    <style>
+        /* Page-specific tweaks */
+        .legal-hero {
+            background: #fff;
+            padding: clamp(28px, 4vw, 56px) 20px 10px;
+            border-bottom: 1px solid rgba(0, 0, 0, .06);
+        }
+
+        .legal-hero .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .legal-hero h1 {
+            margin: 0 0 8px;
+            font-size: clamp(2rem, 1.4rem + 2.2vw, 3rem);
+        }
+
+        .legal-meta {
+            color: #6b7280;
+            margin: 0;
+            font-size: .95rem;
+        }
+
+        .legal-body {
+            background: #fff;
+            padding: clamp(22px, 3vw, 44px) 20px;
+        }
+
+        .legal-body .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: clamp(16px, 3vw, 28px);
+        }
+
+        @media (max-width: 980px) {
+            .legal-body .container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* TOC */
+        .toc {
+            position: sticky;
+            top: 16px;
+            align-self: start;
+            border: 1px solid rgba(0, 0, 0, .06);
+            background: #f9fafb;
+            border-radius: 14px;
+            box-shadow: 0 10px 24px rgba(0, 0, 0, .06);
+            padding: 16px;
+        }
+
+        .toc h2 {
+            font-size: 1.05rem;
+            margin: 0 0 8px;
+        }
+
+        .toc ol {
+            margin: 0;
+            padding-left: 1.2rem;
+        }
+
+        .toc a {
+            text-decoration: none;
+        }
+
+        .toc a:focus-visible {
+            outline: 3px solid #0b6bff;
+            outline-offset: 3px;
+        }
+
+        /* Sections */
+        .legal-section {
+            border: 1px solid rgba(0, 0, 0, .06);
+            border-radius: 16px;
+            background: #ffffff;
+            box-shadow: 0 10px 24px rgba(0, 0, 0, .06);
+            padding: clamp(16px, 2.2vw, 24px);
+            margin-bottom: clamp(14px, 2vw, 20px);
+        }
+
+        .legal-section h2 {
+            margin-top: 0;
+        }
+
+        .legal-section h3 {
+            margin-bottom: 6px;
+        }
+
+        .legal-section ul {
+            padding-left: 1.2rem;
+        }
+
+        .hl {
+            background: #fff3bf;
+            padding: 0 .2em;
+            border-radius: .25em;
+        }
+
+        /* Callouts */
+        .note {
+            background: #f8fafc;
+            border-left: 4px solid #d1e7ff;
+            padding: 10px 12px;
+            border-radius: 10px;
+            color: #475569;
+            margin: 8px 0;
+        }
+
+        /* Accessibility helpers carried from base */
+        .skip-link {
+            position: absolute;
+            left: -999px;
+        }
+
+        .skip-link:focus {
+            left: 16px;
+            top: 10px;
+            background: #000;
+            color: #fff;
+            padding: 8px 10px;
+            border-radius: 8px;
+            z-index: 10;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header placeholder (filled by /js/main.js just like index) -->
+    <div id="header-placeholder"></div>
+
+    <!-- Skip to main content -->
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <!-- Accessibility toolbar -->
+    <div class="a11y-toolbar" role="region" aria-label="Accessibility controls">
+        <span class="a11y-icon" aria-hidden="true">♿</span>
+        <button id="btn-font" type="button" aria-pressed="false" title="Larger text">A+</button>
+        <button id="btn-motion" type="button" aria-pressed="false" title="Reduce motion">Reduce&nbsp;motion</button>
+        <button id="btn-links" type="button" aria-pressed="false" title="Highlight links">Highlight&nbsp;links</button>
+        <button id="btn-reset" type="button" aria-pressed="false" title="Reset accessibility settings">Reset</button>
+    </div>
+    <div id="a11y-status" class="sr-only" role="status" aria-live="polite"></div>
+
+    <main id="main" tabindex="-1">
+        <!-- Hero -->
+        <section class="legal-hero">
+            <div class="container">
+                <h1>Terms &amp; Conditions</h1>
+                <p class="legal-meta">
+                    Effective date: <time datetime="2025-11-03">November 3, 2025</time> •
+                    Last updated: <time datetime="2025-11-03">November 3, 2025</time>
+                </p>
+                <p class="note" role="note">
+                    These Terms govern your purchase, installation, and use of the WIFIGATE hardware device,
+                    mobile/desktop apps, firmware, and related services (the “Service”). By using WIFIGATE you agree to
+                    these Terms.
+                </p>
+            </div>
+        </section>
+
+        <!-- Body -->
+        <section class="legal-body">
+            <div class="container">
+                <!-- TOC -->
+                <nav class="toc" aria-label="On this page">
+                    <h2>Contents</h2>
+                    <ol>
+                        <li><a href="#definitions">Definitions</a></li>
+                        <li><a href="#eligibility">Eligibility; Accounts</a></li>
+                        <li><a href="#plans">Plans &amp; Payment</a></li>
+                        <li><a href="#install">Installation &amp; Use</a></li>
+                        <li><a href="#security">Security &amp; Data</a></li>
+                        <li><a href="#acceptable-use">Acceptable Use</a></li>
+                        <li><a href="#rf-compliance">RF &amp; Legal Compliance</a></li>
+                        <li><a href="#warranty">Limited Hardware Warranty</a></li>
+                        <li><a href="#disclaimers">Disclaimers</a></li>
+                        <li><a href="#liability">Limitation of Liability</a></li>
+                        <li><a href="#termination">Term; Suspension; Termination</a></li>
+                        <li><a href="#changes">Changes to the Service &amp; Terms</a></li>
+                        <li><a href="#governing-law">Governing Law; Disputes</a></li>
+                        <li><a href="#export">Export Controls</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ol>
+                </nav>
+
+                <!-- Content -->
+                <div>
+                    <section id="definitions" class="legal-section" aria-labelledby="definitions-h">
+                        <h2 id="definitions-h">1) Definitions</h2>
+                        <ul>
+                            <li><strong>“Device”</strong> means the WIFIGATE hardware unit and accessories.</li>
+                            <li><strong>“Service”</strong> means the Device, firmware, apps, cloud/remote functionality,
+                                and support.</li>
+                            <li><strong>“You”</strong> or <strong>“Customer”</strong> means the person or entity using
+                                the Service.</li>
+                        </ul>
+                    </section>
+
+                    <section id="eligibility" class="legal-section" aria-labelledby="eligibility-h">
+                        <h2 id="eligibility-h">2) Eligibility; Accounts</h2>
+                        <ul>
+                            <li>You must be legally able to enter into these Terms. If you use the Service for an
+                                organization, you represent you have authority to bind that organization.</li>
+                            <li>You are responsible for safeguarding credentials and for all activity under your
+                                account.</li>
+                        </ul>
+                    </section>
+
+                    <section id="plans" class="legal-section" aria-labelledby="plans-h">
+                        <h2 id="plans-h">3) Plans &amp; Payment</h2>
+                        <p>WIFIGATE offers multiple plans:</p>
+                        <ul>
+                            <li><strong>Plan 1 — No Monthly Fee.</strong> Local control (BLE) and 433&nbsp;MHz receiver;
+                                CSV import/export. No recurring charge.</li>
+                            <li><strong>Plan 2 — ₪5/month.</strong> Adds Wi-Fi remote access (worldwide), alongside BLE
+                                and 433&nbsp;MHz.</li>
+                            <li><strong>Plan 3 — ₪12/month.</strong> Adds Cellular (4G) in parallel with Wi-Fi, BLE, and
+                                433&nbsp;MHz.</li>
+                        </ul>
+                        <p class="note">Taxes, SIM/data fees (where applicable), and third-party access charges are your
+                            responsibility. Subscriptions auto-renew monthly until canceled as described in your order
+                            flow. We may update plan features and pricing prospectively.</p>
+                        <ul>
+                            <li><strong>Billing.</strong> You authorize us to charge your selected payment method for
+                                subscription fees and applicable taxes.</li>
+                            <li><strong>Cancellation.</strong> You can cancel any time; cancellations take effect at the
+                                end of the current billing period.</li>
+                            <li><strong>Refunds.</strong> Except where required by law, fees are non-refundable.</li>
+                        </ul>
+                    </section>
+
+                    <section id="install" class="legal-section" aria-labelledby="install-h">
+                        <h2 id="install-h">4) Installation &amp; Use</h2>
+                        <ul>
+                            <li><strong>Qualified install.</strong> The Device must be installed according to our
+                                documentation by a qualified person, using <span class="hl">12–24&nbsp;VDC</span> and
+                                suitable wiring practices.</li>
+                            <li><strong>Environment.</strong> Ensure proper enclosure, power protection, and adherence
+                                to site safety rules.</li>
+                            <li><strong>Updates.</strong> We may provide firmware/app updates. You consent to receiving
+                                updates that improve security or functionality.</li>
+                            <li><strong>Backups.</strong> For CSV user lists and any local data, you are responsible for
+                                backups/exports.</li>
+                        </ul>
+                    </section>
+
+                    <section id="security" class="legal-section" aria-labelledby="security-h">
+                        <h2 id="security-h">5) Security &amp; Data</h2>
+                        <p>The Service is designed with strong security, including encrypted, local user databases and
+                            optional time-limited guest passes. Some features (e.g., remote access) may require internet
+                            connectivity.</p>
+                        <ul>
+                            <li><strong>Local Data.</strong> Where configured for offline/local operation, user data is
+                                stored on the Device and not exposed to the internet.</li>
+                            <li><strong>Remote Features.</strong> If you enable Wi-Fi or Cellular, certain metadata may
+                                be processed to deliver the Service.</li>
+                            <li><strong>Privacy.</strong> Our <a href="/wifigate/wifigate-privacy.html">Privacy
+                                    Policy</a> explains how we handle personal data.</li>
+                            <li><strong>Your duties.</strong> Maintain strong admin credentials, role-appropriate
+                                access, and timely removal of departing users.</li>
+                        </ul>
+                    </section>
+
+                    <section id="acceptable-use" class="legal-section" aria-labelledby="acceptable-use-h">
+                        <h2 id="acceptable-use-h">6) Acceptable Use</h2>
+                        <ul>
+                            <li>No unlawful, harmful, or unsafe use (including interference with emergency access).</li>
+                            <li>No reverse engineering, decompiling, or bypassing security controls except to the extent
+                                permitted by law.</li>
+                            <li>No reselling, leasing, or providing the Service to third parties without our written
+                                consent.</li>
+                        </ul>
+                    </section>
+
+                    <section id="rf-compliance" class="legal-section" aria-labelledby="rf-compliance-h">
+                        <h2 id="rf-compliance-h">7) RF &amp; Legal Compliance</h2>
+                        <ul>
+                            <li>You are responsible for ensuring any RF features (e.g., 433&nbsp;MHz receiver, remote
+                                transmitters) are used in compliance with local laws and site rules.</li>
+                            <li>Where Cellular is used, you must maintain an active data plan and comply with carrier
+                                terms.</li>
+                            <li>Where Wi-Fi is used, you must have permission to connect to the network and comply with
+                                network policies.</li>
+                        </ul>
+                    </section>
+
+                    <section id="warranty" class="legal-section" aria-labelledby="warranty-h">
+                        <h2 id="warranty-h">8) Limited Hardware Warranty</h2>
+                        <p>For hardware purchased directly from us or an authorized reseller, we warrant the Device will
+                            be free from defects in materials and workmanship under normal use for <strong>12
+                                months</strong> from delivery.</p>
+                        <ul>
+                            <li>Remedies: repair, replacement, or refund (at our discretion). Return may be required.
+                            </li>
+                            <li>Exclusions: damage from misuse, improper installation, accidents, modifications,
+                                unauthorized repairs, or external causes (power surges, water ingress, etc.).</li>
+                            <li>Firmware/software are provided “as is” (see Disclaimers).</li>
+                        </ul>
+                    </section>
+
+                    <section id="disclaimers" class="legal-section" aria-labelledby="disclaimers-h">
+                        <h2 id="disclaimers-h">9) Disclaimers</h2>
+                        <p>Except for the Limited Hardware Warranty above, the Service is provided <strong>“as is” and
+                                “as available”</strong> without warranties of any kind, express or implied, including
+                            merchantability, fitness for a particular purpose, non-infringement, and uninterrupted or
+                            error-free operation.</p>
+                    </section>
+
+                    <section id="liability" class="legal-section" aria-labelledby="liability-h">
+                        <h2 id="liability-h">10) Limitation of Liability</h2>
+                        <ul>
+                            <li>To the maximum extent permitted by law, we are not liable for any indirect, incidental,
+                                special, consequential, or punitive damages, or for lost profits, revenues, or data,
+                                arising from or related to the Service or these Terms.</li>
+                            <li>Our aggregate liability for all claims relating to the Service shall not exceed the
+                                greater of (a) the amounts you paid to us for the Service in the <strong>12
+                                    months</strong> preceding the event giving rise to the claim, or (b) ₪500.</li>
+                        </ul>
+                    </section>
+
+                    <section id="termination" class="legal-section" aria-labelledby="termination-h">
+                        <h2 id="termination-h">11) Term; Suspension; Termination</h2>
+                        <ul>
+                            <li>We may suspend or terminate access if you breach these Terms, for security reasons, or
+                                as required by law.</li>
+                            <li>Upon termination, your right to use the Service ceases, but provisions that by their
+                                nature should survive (e.g., liability limits) will survive.</li>
+                        </ul>
+                    </section>
+
+                    <section id="changes" class="legal-section" aria-labelledby="changes-h">
+                        <h2 id="changes-h">12) Changes to the Service &amp; Terms</h2>
+                        <p>We may modify the Service (including features and plan details) and these Terms from time to
+                            time. Material changes will be effective prospectively and, where required, we will provide
+                            notice. Continued use after changes indicates acceptance.</p>
+                    </section>
+
+                    <section id="governing-law" class="legal-section" aria-labelledby="governing-law-h">
+                        <h2 id="governing-law-h">13) Governing Law; Disputes</h2>
+                        <p>These Terms are governed by the laws of the <strong>State of Israel</strong>, without regard
+                            to conflict-of-laws principles. The exclusive jurisdiction and venue for any dispute arising
+                            out of or relating to these Terms or the Service shall be the competent courts located in
+                            <strong>Tel Aviv-Yafo, Israel</strong>, and you consent to personal jurisdiction there.
+                        </p>
+                    </section>
+
+                    <section id="export" class="legal-section" aria-labelledby="export-h">
+                        <h2 id="export-h">14) Export Controls</h2>
+                        <p>You agree to comply with applicable export, import, and sanctions laws. You represent you are
+                            not located in, under the control of, or a national or resident of any restricted country or
+                            on any restricted list.</p>
+                    </section>
+
+                    <section id="contact" class="legal-section" aria-labelledby="contact-h">
+                        <h2 id="contact-h">15) Contact</h2>
+                        <p>Questions about these Terms? Reach us via the <a href="/#contact">Contact Sales</a> form or
+                            email the support address listed in your order confirmation.</p>
+                        <p class="note">For warranty returns or RMA, please include proof of purchase, Device serial
+                            number, and a detailed fault description.</p>
+                    </section>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer-section">
+        <div class="container">
+            <div class="footer-columns">
+                <div class="footer-left">
+                    <p class="footer-slogan" style="margin-left:0;">
+                        Let's turn your idea into reality! Contact us.
+                    </p>
+                </div>
+            </div>
+            <hr class="footer-divider">
+            <div class="footer-bottom">
+                <p class="footeropyright">
+                    &copy; 2022 EATS-SYSTEMS. All rights reserved.
+                </p>
+            </div>
+        </div>
+        <br><br>
+    </footer>
+
+    <script src="/js/main.js"></script>
+</body>
+
+</html>
