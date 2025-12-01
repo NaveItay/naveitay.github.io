@@ -5,6 +5,20 @@
   <meta charset="utf-8" />
   <title>Open WiFiGate</title>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+  <!-- ✅ Open Graph tags for WhatsApp / Telegram / Facebook previews -->
+  <meta property="og:title" content="WiFiGate Access" />
+  <meta property="og:description" content="Tap to open your gate securely with WiFiGate." />
+  <meta property="og:image" content="https://www.eats-systems.com/images/systems/wifigate.png" />
+  <meta property="og:url" content="https://www.eats-systems.com/wifigate-link/" />
+  <meta property="og:type" content="website" />
+
+  <!-- (Optional but nice) Twitter preview -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="WiFiGate Access" />
+  <meta name="twitter:description" content="Tap to open your gate securely with WiFiGate." />
+  <meta name="twitter:image" content="https://www.eats-systems.com/images/systems/wifigate.png" />
+
   <script>
     // Get query string parameters as an object
     function getQueryParams() {
@@ -23,9 +37,13 @@
       // Directly use plain query parameters (no Base64)
       const data = getQueryParams();
 
+      // ✅ Support new "id only" format (no chip in URL)
+      const id = data.id || "";
+      const chip = data.chip || id; // fall back to id if chip is missing
+
       const deep =
-        `wifigate://gate/${encodeURIComponent(data.id || "")}?` +
-        `chip=${encodeURIComponent(data.chip || "")}` +
+        `wifigate://gate/${encodeURIComponent(id)}?` +
+        `chip=${encodeURIComponent(chip || "")}` +
         `&name=${encodeURIComponent(data.name || "")}` +
         `&version=${encodeURIComponent(data.version || "-")}` +
         `&subscription=${encodeURIComponent(data.subscription || "-")}` +
