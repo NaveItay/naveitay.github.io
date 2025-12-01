@@ -10,6 +10,10 @@
   <meta property="og:title" content="WiFiGate Access" />
   <meta property="og:description" content="Tap to open your gate securely with WiFiGate." />
   <meta property="og:image" content="https://www.eats-systems.com/images/systems/wifigate.png" />
+  <!-- Optional: tell crawlers the logical size (after you upload a bigger image) -->
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
   <meta property="og:url" content="https://www.eats-systems.com/wifigate-link/" />
   <meta property="og:type" content="website" />
 
@@ -107,23 +111,21 @@
             role = "PRE_ADMIN";
             break;
           default:
-            // If it's an unknown short code, just pass as-is.
             role = data.r;
         }
       } else if (data.role) {
         role = data.role;
       }
 
-      // Phones: short "h"/"p" or verbose hostPhone/guestPhone
+      // Phones
       const hostPhone = data.h || data.hostPhone || "";
       const guestPhone = data.p || data.guestPhone || "";
 
-      // Access window: short "sd"/"ss"/"se" or verbose accessDate/accessStart/accessEnd
+      // Access window
       const accessDate = data.sd || data.accessDate || "";
       const accessStart = data.ss || data.accessStart || "";
       const accessEnd = data.se || data.accessEnd || "";
 
-      // Optional "kind" (kept as-is if provided)
       const kind = data.kind || "";
 
       // Build the deep link query string using the verbose keys
@@ -145,19 +147,12 @@
       addParam("subscription", subscription);
       addParam("created", created);
 
-      if (role) {
-        addParam("role", role);
-      }
-      if (kind) {
-        addParam("kind", kind);
-      }
-      if (isGuest) {
-        addParam("isGuest", "true");
-      }
+      if (role) addParam("role", role);
+      if (kind) addParam("kind", kind);
+      if (isGuest) addParam("isGuest", "true");
 
       addParam("hostPhone", hostPhone);
       addParam("guestPhone", guestPhone);
-
       addParam("accessDate", accessDate);
       addParam("accessStart", accessStart);
       addParam("accessEnd", accessEnd);
@@ -175,7 +170,7 @@
       document.addEventListener("DOMContentLoaded", () => {
         const el = document.getElementById("info");
         el.innerHTML = `
-            <p>Opening WiFiGate\u2026</p>
+            <p>Opening WiFiGate...</p>
             <p>If nothing happens, <a href="${deep}">open manually</a>.</p>
           `;
       });
@@ -190,7 +185,7 @@
         margin: 48px auto;
         text-align: center;
       ">
-    <p>Opening WiFiGate…</p>
+    <p>Opening WiFiGate...</p>
   </div>
 </body>
 
