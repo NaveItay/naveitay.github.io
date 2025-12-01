@@ -10,7 +10,7 @@
   <meta property="og:title" content="WiFiGate Access" />
   <meta property="og:description" content="Tap to open your gate securely with WiFiGate." />
   <meta property="og:image" content="https://www.eats-systems.com/images/systems/wifigate.png" />
-  <!-- Optional: tell crawlers the logical size (after you upload a bigger image) -->
+  <!-- Optional: logical size (after you upload a bigger image) -->
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
 
@@ -46,6 +46,7 @@
        *
        * 1) New SHORT params (for shorter WhatsApp links):
        *    - i   → gate id / system id
+       *    - n   → display name
        *    - g   → guest flag ("1" | "0")
        *    - r   → role code ("A" | "U" | "G" | "PU" | "PA")
        *    - h   → host phone
@@ -69,8 +70,10 @@
       // chip param: if not present, we reuse the id as systemId
       const chip = data.chip || id;
 
-      // Name / version / subscription / created: verbose-only for now
-      const name = data.name || "";
+      // Name / version / subscription / created:
+      //   - prefer verbose "name"
+      //   - fallback to short "n"
+      const name = data.name || data.n || "";
       const version = data.version || "-";
       const subscription = data.subscription || "-";
       const created = data.created || Date.now();
