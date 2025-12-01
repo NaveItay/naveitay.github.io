@@ -34,50 +34,150 @@
     }
 
     (function () {
-      // Directly use plain query parameters (no Base64)
+      // Read all raw query params (short + verbose)
       const data = getQueryParams();
 
-      // ✅ Support new "id only" format (no chip in URL)
-      const id = data.id || "";
-      const chip = data.chip || id; // fall back to id if chip is missing
+      /**
+       * We support two URL formats:
+       *
+       * 1) New SHORT params (for shorter WhatsApp links):
+       *    - i   → gate id / system id
+       *    - g   → guest flag ("1" | "0")
+       *    - r   → role code ("A" | "U" | "G" | "PU" | "PA")
+       *    - h   → host phone
+       *    - p   → guest phone
+       *    - sd  → access date (YYYY-MM-DD)
+       *    - ss  → access start (ms since epoch)
+       *    - se  → access end   (ms since epoch)
+       *
+       * 2) Old VERBOSE params (backwards compatible):
+       *    - id, chip, name, version, subscription, created
+       *    - isGuest, kind, role, hostPhone, guestPhone
+       *    - accessDate, accessStart, accessEnd
+       *
+       * Here we *normalize* everything to the verbose names when
+       * building the deep link, so the mobile app can keep using
+       * the existing parseIncomingLink logic.
+       */
 
-      const deep =
-        `wifigate://gate/${encodeURIComponent(id)}?` +
-        `chip=${encodeURIComponent(chip || "")}` +
-        `&name=${encodeURIComponent(data.name || "")}` +
-        `&version=${encodeURIComponent(data.version || "-")}` +
-        `&subscription=${encodeURIComponent(data.subscription || "-")}` +
-        `&created=${encodeURIComponent(data.created || Date.now())}` +
-        (data.role ? `&role=${encodeURIComponent(data.role)}` : "") +
-        (data.isGuest ? `&isGuest=${encodeURIComponent(data.isGuest)}` : "") +
-        (data.hostPhone
-          ? `&hostPhone=${encodeURIComponent(data.hostPhone)}`
-          : "") +
-        (data.guestPhone
-          ? `&guestPhone=${encodeURIComponent(data.guestPhone)}`
-          : "") +
-        (data.accessDate
-          ? `&accessDate=${encodeURIComponent(data.accessDate)}`
-          : "") +
-        (data.accessStart
-          ? `&accessStart=${encodeURIComponent(data.accessStart)}`
-          : "") +
-        (data.accessEnd
-          ? `&accessEnd=${encodeURIComponent(data.accessEnd)}`
-          : "");
+      // Identifier: prefer short "i", fallback to old "id"
+      const id = data.i || data.id || "";
+      // chip param: if not present, we reuse the id as systemId
+      const chip = data.chip || id;
+
+      // Name / version / subscription / created: verbose-only for now
+      const name = data.name || "";
+      const version = data.version || "-";
+      const subscription = data.subscription || "-";
+      const created = data.created || Date.now();
+
+      // Guest flag:
+      //  - short form "g" = "1" | "0"
+      //  - old form "isGuest" = "true" | "false"
+      const rawGuestFlag = data.g != null ? data.g : data.isGuest;
+      const isGuest =
+        rawGuestFlag === "1" ||
+        rawGuestFlag === "true" ||
+        rawGuestFlag === true;
+
+      // Role:
+      //  - short "r" uses compact codes:
+      //        "A"  → "ADMIN"
+      //        "U"  → "USER"
+      //        "G"  → "GUEST"
+      //        "PU" → "PRE_USER"
+      //        "PA" → "PRE_ADMIN"
+      //  - old "role" is already the full string.
+      let role = "";
+      if (data.r) {
+        switch (data.r) {
+          case "A":
+            role = "ADMIN";
+            break;
+          case "U":
+            role = "USER";
+            break;
+          case "G":
+            role = "GUEST";
+            break;
+          case "PU":
+            role = "PRE_USER";
+            break;
+          case "PA":
+            role = "PRE_ADMIN";
+            break;
+          default:
+            // If it's an unknown short code, just pass as-is.
+            role = data.r;
+        }
+      } else if (data.role) {
+        role = data.role;
+      }
+
+      // Phones: short "h"/"p" or verbose hostPhone/guestPhone
+      const hostPhone = data.h || data.hostPhone || "";
+      const guestPhone = data.p || data.guestPhone || "";
+
+      // Access window: short "sd"/"ss"/"se" or verbose accessDate/accessStart/accessEnd
+      const accessDate = data.sd || data.accessDate || "";
+      const accessStart = data.ss || data.accessStart || "";
+      const accessEnd = data.se || data.accessEnd || "";
+
+      // Optional "kind" (kept as-is if provided)
+      const kind = data.kind || "";
+
+      // Build the deep link query string using the verbose keys
+      const deepBase = `wifigate://gate/${encodeURIComponent(id)}`;
+      let deepQuery = "";
+
+      function addParam(key, value) {
+        if (value === undefined || value === null || value === "") return;
+        deepQuery +=
+          (deepQuery ? "&" : "") +
+          encodeURIComponent(key) +
+          "=" +
+          encodeURIComponent(String(value));
+      }
+
+      addParam("chip", chip);
+      addParam("name", name);
+      addParam("version", version);
+      addParam("subscription", subscription);
+      addParam("created", created);
+
+      if (role) {
+        addParam("role", role);
+      }
+      if (kind) {
+        addParam("kind", kind);
+      }
+      if (isGuest) {
+        addParam("isGuest", "true");
+      }
+
+      addParam("hostPhone", hostPhone);
+      addParam("guestPhone", guestPhone);
+
+      addParam("accessDate", accessDate);
+      addParam("accessStart", accessStart);
+      addParam("accessEnd", accessEnd);
+
+      const deep = deepBase + (deepQuery ? `?${deepQuery}` : "");
 
       console.log("🔗 Redirecting to:", deep);
 
       // Redirect to the app after a short delay
-      setTimeout(() => (window.location.href = deep), 200);
+      setTimeout(() => {
+        window.location.href = deep;
+      }, 200);
 
       // Fallback message if the app does not open
       document.addEventListener("DOMContentLoaded", () => {
         const el = document.getElementById("info");
         el.innerHTML = `
-          <p>Opening WiFiGate…</p>
-          <p>If nothing happens, <a href="${deep}">open manually</a>.</p>
-        `;
+            <p>Opening WiFiGate\u2026</p>
+            <p>If nothing happens, <a href="${deep}">open manually</a>.</p>
+          `;
       });
     })();
   </script>
