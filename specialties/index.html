@@ -29,20 +29,14 @@
     <link rel="stylesheet" href="/css/content.css">
     <link rel="stylesheet" href="/css/homepage-video-styles.css">
     <link rel="stylesheet" href="/css/responsive.css">
+    <link rel="stylesheet" href="/css/accessibility.css">
 </head>
 
 <body>
     <!-- Placeholder for Header -->
     <div id="header-placeholder"></div>
 
-    <!-- Accessibility toolbar -->
-    <div class="a11y-toolbar" role="region" aria-label="Accessibility controls">
-        <span class="a11y-icon" aria-hidden="true">♿</span>
-        <button id="btn-font" type="button" aria-pressed="false" title="Larger text">A+</button>
-        <button id="btn-motion" type="button" aria-pressed="false" title="Reduce motion">Reduce&nbsp;motion</button>
-        <button id="btn-links" type="button" aria-pressed="false" title="Highlight links">Highlight&nbsp;links</button>
-        <button id="btn-reset" type="button" aria-pressed="false" title="Reset accessibility settings">Reset</button>
-    </div>
+    <main id="main-content" tabindex="-1">
 
     <!-- Specialties Content Section -->
     <section class="specialties-content-section">
@@ -136,11 +130,13 @@
             </div>
         </div>
     </section>
+    </main>
 
     <!-- Footer (partial include outside <main>) -->
     <div data-include="/partials/footer.html"></div>
 
     <!-- Include JavaScript file -->
+    <script src="/js/accessibility.js"></script>
     <script src="/js/main.js"></script>
 </body>
 

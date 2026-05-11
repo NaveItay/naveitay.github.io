@@ -75,6 +75,17 @@ function initNavigation() {
   }
 }
 
+function isSiteReducedMotionEnabled() {
+  if (typeof isReducedMotionRequested === 'function') {
+    return isReducedMotionRequested();
+  }
+
+  return Boolean(
+    window.matchMedia &&
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  );
+}
+
 // Scroll to section if URL contains a hash
 document.addEventListener('DOMContentLoaded', () => {
   const hash = window.location.hash;
@@ -196,7 +207,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function start() {
     stop();
-    if (window.A11Y?.reduce) return; // כיבוד Reduce motion
+    if (isSiteReducedMotionEnabled()) return;
     timer = setInterval(next, intervalMs);
   }
   function stop() {
@@ -251,121 +262,23 @@ document.addEventListener('DOMContentLoaded', function () {
   io.observe(root);
 
   // כיבוד מתג motion מהסרגל + שינויי פריסה (ריסייז)
-  window.addEventListener('a11y:motion-changed', (e) => { e.detail.reduce ? stop() : start(); });
+  document.addEventListener('site-accessibility-change', (e) => {
+    e.detail?.reducedMotion ? stop() : start();
+  });
   window.addEventListener('resize', layout);
 });
 
-// === Accessibility module & toolbar ===
 document.addEventListener('DOMContentLoaded', function () {
-  const A11Y = {
-    get reduce() {
-      const saved = localStorage.getItem('a11y.reduce');
-      if (saved !== null) return saved === '1';
-      return window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    },
-    setReduce(on) {
-      localStorage.setItem('a11y.reduce', on ? '1' : '0');
-      document.body.classList.toggle('reduce-motion', on);
-      window.dispatchEvent(new CustomEvent('a11y:motion-changed', { detail: { reduce: on } }));
-      announce(`Animations ${on ? 'paused' : 'resumed'}.`);
-    },
-    get contrast() { return localStorage.getItem('a11y.contrast') === '1'; },
-    setContrast(on) {
-      localStorage.setItem('a11y.contrast', on ? '1' : '0');
-      document.body.classList.toggle('contrast-high', on);
-      announce(`High contrast ${on ? 'on' : 'off'}.`);
-    },
-    get textLg() { return localStorage.getItem('a11y.textLg') === '1'; },
-    setTextLg(on) {
-      localStorage.setItem('a11y.textLg', on ? '1' : '0');
-      document.body.classList.toggle('text-lg', on);
-      announce(`Text size ${on ? 'increased' : 'normal'}.`);
-    },
-    // New feature: highlight links for better discoverability
-    get links() { return localStorage.getItem('a11y.links') === '1'; },
-    setLinks(on) {
-      localStorage.setItem('a11y.links', on ? '1' : '0');
-      document.body.classList.toggle('highlight-links', on);
-      announce(`Link highlighting ${on ? 'enabled' : 'disabled'}.`);
-    },
-    // Reset all accessibility settings to defaults
-    resetAll() {
-      this.setContrast(false);
-      this.setReduce(false);
-      this.setTextLg(false);
-      this.setLinks(false);
-    }
-  };
-  window.A11Y = A11Y;
-
-  // Apply saved state on load
-  document.body.classList.toggle('reduce-motion', A11Y.reduce);
-  document.body.classList.toggle('contrast-high', A11Y.contrast);
-  document.body.classList.toggle('text-lg', A11Y.textLg);
-  document.body.classList.toggle('highlight-links', A11Y.links);
-
-  // Toolbar wiring
-  const btnContrast = document.getElementById('btn-contrast');
-  const btnMotion = document.getElementById('btn-motion');
-  const btnFont = document.getElementById('btn-font');
-  const btnLinks = document.getElementById('btn-links');
-  const btnReset = document.getElementById('btn-reset');
-  const setPressed = (el, on) => el && el.setAttribute('aria-pressed', on ? 'true' : 'false');
-
-  setPressed(btnContrast, A11Y.contrast);
-  setPressed(btnMotion, A11Y.reduce);
-  setPressed(btnFont, A11Y.textLg);
-  setPressed(btnLinks, A11Y.links);
-  setPressed(btnReset, false);
-
-  btnContrast?.addEventListener('click', () => {
-    const on = !A11Y.contrast; A11Y.setContrast(on); setPressed(btnContrast, on);
-  });
-  btnMotion?.addEventListener('click', () => {
-    const on = !A11Y.reduce; A11Y.setReduce(on); setPressed(btnMotion, on);
-    syncMotionWithMedia();
-  });
-  btnFont?.addEventListener('click', () => {
-    const on = !A11Y.textLg; A11Y.setTextLg(on); setPressed(btnFont, on);
-  });
-  // Toggle link highlighting
-  btnLinks?.addEventListener('click', () => {
-    const on = !A11Y.links; A11Y.setLinks(on); setPressed(btnLinks, on);
-  });
-  // Reset all accessibility settings
-  btnReset?.addEventListener('click', () => {
-    A11Y.resetAll();
-    setPressed(btnContrast, false);
-    setPressed(btnMotion, false);
-    setPressed(btnFont, false);
-    setPressed(btnLinks, false);
-    setPressed(btnReset, false);
-  });
-
-  // Announcements for SR
-  function announce(text) {
-    const live = document.getElementById('a11y-status');
-    if (!live) return;
-    live.textContent = '';
-    setTimeout(() => (live.textContent = text), 30);
-  }
-
-  // Skip link moves focus to main (support both #main and #main-content)
-  const main = document.getElementById('main') || document.getElementById('main-content');
-  document.querySelector('.skip-link')?.addEventListener('click', () => {
-    setTimeout(() => main?.focus(), 0);
-  });
-
-  // Pause or play background video according to motion preference
   function syncMotionWithMedia() {
-    const shouldReduce = A11Y.reduce;
+    const shouldReduce = isSiteReducedMotionEnabled();
     document.querySelectorAll('.video-section video').forEach(v => {
       if (shouldReduce) { v.pause(); }
       else { v.play().catch(() => { }); }
     });
   }
+
   syncMotionWithMedia();
-  window.addEventListener('a11y:motion-changed', syncMotionWithMedia);
+  document.addEventListener('site-accessibility-change', syncMotionWithMedia);
 });
 
 // Render support@eats-systems.com without exposing a plain mailto to scrapers
